@@ -1,6 +1,5 @@
-import preload from './preloadScene.js';
-import create from './createScene.js';
-
+/*import preload from './preloadScene.js';
+import create from './createScene.js';*/
 const engineConfig = {
     type: Phaser.AUTO,
     width: 500,
@@ -11,9 +10,6 @@ const engineConfig = {
             gravity: { y: 0 }
         }
     },
-    scene: {
-        preload,
-        create
-    }
+    scene: [ Boot, MainMenu, LoadLevel ]
 };
 const game = new Phaser.Game(engineConfig);

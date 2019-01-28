@@ -1,0 +1,25 @@
+{
+  "name": "hawaiianfactory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoineheseque/HawaiianFactory.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoineheseque/HawaiianFactory/issues"
+  },
+  "homepage": "https://github.com/antoineheseque/HawaiianFactory#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "node-static": "0.7.11"
+  },
+  "engines": {
+    "node": "10.13.0"
+  }
+}

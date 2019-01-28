@@ -1,0 +1,12 @@
+{
+  "start": {
+    "world": "Kauai",
+    "level": "level_01"
+  },
+  "worlds": [
+    "Kauai",
+    "Honolulu",
+    "Maui",
+    "Hawaii"
+  ]
+}
