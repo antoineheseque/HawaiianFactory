@@ -1,3 +1,13 @@
+/*
+var assets = [
+  'images/tiles/grass.png',
+  'images/tiles/dirt.png',
+  'images/tiles/sea.png',
+  'images/tiles/wall.png',
+  'images/tiles/ground.png'
+];
+*/
+
 class Boot extends Phaser.Scene{
 
   constructor ()
@@ -51,9 +61,13 @@ class Boot extends Phaser.Scene{
     loadingText.setOrigin(0.5, 0.5);
 
     // Loading ASSETS ///////////////
-    for (var i = 0; i < 300; i++) {
-        this.load.image('logo'+i, 'images/tiles/dirt.png');
-    }
+    // Load JSON file into a dictionnary
+    loadJSON('../images/assets.json', function(response, phaser) {
+      var assets = JSON.parse(response);
+      assets.tiles.forEach(function(element){
+        phaser.load.image('tile' + element.id, 'images/' + element.image);
+      }, this);
+    }, this);
   }
 
   create ()

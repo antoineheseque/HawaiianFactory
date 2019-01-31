@@ -1,11 +1,3 @@
-var assets = [
-  'images/tiles/grass.png',
-  'images/tiles/dirt.png',
-  'images/tiles/sea.png',
-  'images/tiles/wall.png',
-  'images/tiles/ground.png'
-];
-
 class MainMenu extends Phaser.Scene {
 
   constructor ()
@@ -37,8 +29,13 @@ class MainMenu extends Phaser.Scene {
 
   create ()
   {
+    var played = false;
     this.input.on('pointerdown', function () {
-      this.scene.start('loadLevel');
+      if(!played){
+        this.scene.start('loadLevel');
+        played = true;
+      }
+
     }, this);
   }
 }

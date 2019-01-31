@@ -1,9 +1,7 @@
-/*import preload from './preloadScene.js';
-import create from './createScene.js';*/
 const engineConfig = {
     type: Phaser.AUTO,
-    width: 500,
-    height: 300,
+    width: 800,
+    height: 450,
     physics: {
         default: 'arcade',
         arcade: {
