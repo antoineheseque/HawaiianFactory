@@ -29,8 +29,9 @@ class MainMenu extends Phaser.Scene {
 
   create ()
   {
-    var player = prompt("Entrez le nom du directeur :", "Gilbert Montagné");
-    this.username = player;
+    /*var player = prompt("Entrez le nom du directeur :", "Gilbert Montagné");
+    this.username = player;*/
+    this.username = "Gilbert Montagné";
     this.clickButton = this.add.text(this.cameras.main.width/2, this.cameras.main.height/2 + 100, 'Play!', { fill: '#0f0' })
       .setInteractive()
       .on('pointerdown', () => this.scene.start('loadLevel'));
