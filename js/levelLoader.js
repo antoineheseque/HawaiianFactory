@@ -22,24 +22,38 @@ class LoadLevel extends Phaser.Scene {
     this.level = new Level(this.levelJSON, this);
     this.level.loadLevel();
 
-    var cursors = this.input.keyboard.createCursorKeys();
+    // Camera movement system
+    var leftKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+    var rightKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
+    var upKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
+    var downKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+
     var controlConfig = {
         camera: this.cameras.main,
-        left: cursors.left,
-        right: cursors.right,
-        up: cursors.up,
-        down: cursors.down,
-        acceleration: 0.06,
-        drag: 0.0005,
-        maxSpeed: 1.0
+        left: leftKey,
+        right: rightKey,
+        up: upKey,
+        down: downKey,
+        acceleration: 0.05,
+        drag: 0.0003,
+        maxSpeed: 0.8
     };
     this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
+    // Zoom system
+    this.zoomIn = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
+    this.zoomOut = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.zoom = 1;
     console.log("Map loaded!");
   }
 
   update (time, delta)
   {
     this.controls.update(delta);
+    if(this.zoomIn.isDown)
+      this.zoom += 0.01;
+    if(this.zoomOut.isDown)
+      this.zoom -= 0.01;
+    this.cameras.main.setZoom(this.zoom);
   }
 }
