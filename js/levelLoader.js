@@ -50,9 +50,9 @@ class LoadLevel extends Phaser.Scene {
   update (time, delta)
   {
     this.controls.update(delta);
-    if(this.zoomIn.isDown)
+    if(this.zoomIn.isDown && this.zoom < 1.8)
       this.zoom += 0.01;
-    if(this.zoomOut.isDown)
+    if(this.zoomOut.isDown && this.zoom > 0.4)
       this.zoom -= 0.01;
     this.cameras.main.setZoom(this.zoom);
   }
