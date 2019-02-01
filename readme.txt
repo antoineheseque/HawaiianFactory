@@ -1,7 +1,7 @@
 # HAWAIIAN FACTORY
 
 #################
-# For local use #
+# For local use 
 #################
 #
 # cd /projectFolder
