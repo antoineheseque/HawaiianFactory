@@ -29,13 +29,8 @@ class MainMenu extends Phaser.Scene {
 
   create ()
   {
-    var played = false;
-    this.input.on('pointerdown', function () {
-      if(!played){
-        this.scene.start('loadLevel');
-        played = true;
-      }
-
-    }, this);
+    this.clickButton = this.add.text(400, 300, 'Play!', { fill: '#0f0' })
+      .setInteractive()
+      .on('pointerdown', () => this.scene.start('loadLevel'));
   }
 }
