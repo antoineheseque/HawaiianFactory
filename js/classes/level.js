@@ -17,7 +17,7 @@ class Level {
     this.phaser.cameras.main.setBounds(0, 0, maxWidth*32, maxHeight*32);
     //this.phaser.cameras.main.setViewport(0, 0, maxWidth*32, maxHeight*32);
     //this.cameras.main.centerOn(0, 0);
-    this.phaser.cameras.main.setZoom(0.7);
+    this.phaser.cameras.main.setZoom(1.55);
     for(var y = 0; y < maxHeight; y++){
       for(var x = 0; x < maxWidth; x++){
         // Add dimention array when starting new line
