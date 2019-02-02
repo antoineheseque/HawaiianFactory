@@ -27,12 +27,12 @@ class Boot extends Phaser.Scene{
     var progressBar = this.add.graphics();
     var progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, 0.8);
-    progressBox.fillRect(85, 130, 320, 50);
+    progressBox.fillRect(width/4-10, height/2-10, width/2, 50);
 
     // PercentText ///////////////
     var percentText = this.make.text({
       x: width / 2,
-      y: height / 2,
+      y: height / 2 + 15,
       text: '0%',
       style: {
         font: '18px monospace',
@@ -44,7 +44,7 @@ class Boot extends Phaser.Scene{
     this.load.on('progress', function (value) {
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(95, 140, 300 * value, 30);
+      progressBar.fillRect(width/4, height/2, (width/2-20) * value, 30);
       percentText.setText(parseInt(value * 100) + '%');
     });
 
