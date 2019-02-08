@@ -9,6 +9,9 @@ const engineConfig = {
             gravity: { y: 0 }
         }
     },
+    //audio: {
+        //disableWebAudio: true
+    //}
     scene: [ Boot, MainMenu, LoadLevel ]
 };
 const game = new Phaser.Game(engineConfig);
