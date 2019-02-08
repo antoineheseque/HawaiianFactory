@@ -25,15 +25,21 @@ class MainMenu extends Phaser.Scene {
       }
     });
     name.setOrigin(0.5, 0.5);
+
+    this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);
   }
 
   create ()
   {
     /*var player = prompt("Entrez le nom du directeur :", "Gilbert Montagné");
     this.username = player;*/
+    var music = this.sound.add('theme');
     this.username = "Gilbert Montagné";
     this.clickButton = this.add.text(this.cameras.main.width/2, this.cameras.main.height/2 + 100, 'Play!', { fill: '#0f0' })
       .setInteractive()
       .on('pointerdown', () => this.scene.start('loadLevel'));
+    music.play();
+
   }
+
 }
