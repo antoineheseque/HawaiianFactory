@@ -45,6 +45,9 @@ class LoadLevel extends Phaser.Scene {
     this.zoomOut = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     this.zoom = 1;
     console.log("Map loaded!");
+
+    this.scene.launch('gameUI');
+    this.scene.launch('gameEngine');
   }
 
   update (time, delta)

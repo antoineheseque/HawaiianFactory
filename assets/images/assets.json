@@ -8,7 +8,7 @@
  "margin":0,
  "name":"World",
  "spacing":0,
- "tilecount":26,
+ "tilecount":27,
  "tiledversion":"1.2.1",
  "tileheight":32,
  "tiles":[
@@ -171,6 +171,12 @@
         {
          "id":37,
          "image":"tiles\/wallint1bis.png",
+         "imageheight":32,
+         "imagewidth":32
+        }, 
+        {
+         "id":38,
+         "image":"tiles\/cornerinter.png",
          "imageheight":32,
          "imagewidth":32
         }],

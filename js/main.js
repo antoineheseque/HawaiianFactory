@@ -9,6 +9,6 @@ const engineConfig = {
             gravity: { y: 0 }
         }
     },
-    scene: [ Boot, MainMenu, LoadLevel ]
+    scene: [ Boot, MainMenu, LoadLevel, GameUI, GameEngine ]
 };
 const game = new Phaser.Game(engineConfig);
