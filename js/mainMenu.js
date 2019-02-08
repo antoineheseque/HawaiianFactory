@@ -25,8 +25,6 @@ class MainMenu extends Phaser.Scene {
       }
     });
     name.setOrigin(0.5, 0.5);
-
-    this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);
   }
 
   create ()

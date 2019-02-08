@@ -1,13 +1,3 @@
-/*
-var assets = [
-  'images/tiles/grass.png',
-  'images/tiles/dirt.png',
-  'images/tiles/sea.png',
-  'images/tiles/wall.png',
-  'images/tiles/ground.png'
-];
-*/
-
 class Boot extends Phaser.Scene{
 
   constructor ()
@@ -68,6 +58,9 @@ class Boot extends Phaser.Scene{
         phaser.load.image('tile' + element.id, 'images/' + element.image);
       }, this);
     }, this);
+
+    // Load music
+    this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);
   }
 
   create ()
