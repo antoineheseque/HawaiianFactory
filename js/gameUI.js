@@ -28,9 +28,9 @@ class GameUI extends Phaser.Scene {
   loadMainMenu(){
     var container = this.add.container(0, this.height-this.menuSize);
 
-    var machinesButton = this.add.text(this.width/2-50, 40, 'Machines', { fill: '#0f0' }).setInteractive();
+    var machinesButton = this.add.text(this.width/2-50, 40, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
     container.add(machinesButton);
-    var environmentButton = this.add.text(this.width/2+50, 40, 'Environment', { fill: '#0f0' }).setInteractive();
+    var environmentButton = this.add.text(this.width/2+50, 40, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
     container.add(environmentButton);
 
     machinesButton.on('pointerdown', () => {
