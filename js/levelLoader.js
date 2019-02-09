@@ -3,6 +3,7 @@ class LoadLevel extends Phaser.Scene {
   constructor ()
   {
     super({ key: 'loadLevel' });
+    this.selectedObject = -1;
   }
 
   preload ()
@@ -19,8 +20,18 @@ class LoadLevel extends Phaser.Scene {
 
   create ()
   {
+    this.anims.create({
+        key: 'activated',
+        frames: [
+            { key: 'machine1-1' },
+            { key: 'machine1-2' }
+        ],
+        frameRate: 4,
+        repeat: -1
+    });
+
     this.level = new Level(this.levelJSON, this);
-    this.level.loadLevel();
+    this.mouseInteraction = new MouseInteraction(this);
 
     // Camera movement system
     var leftKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
@@ -46,12 +57,13 @@ class LoadLevel extends Phaser.Scene {
     this.zoom = 1;
     console.log("Map loaded!");
 
-    this.scene.launch('gameUI');
-    this.scene.launch('gameEngine');
+    this.scene.launch('gameUI', this);
+    this.scene.launch('gameEngine', this);
   }
 
   update (time, delta)
   {
+    this.mouseInteraction.update();
     this.controls.update(delta);
     if(this.zoomIn.isDown && this.zoom < 1.8)
       this.zoom += 0.01;

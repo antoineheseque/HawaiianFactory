@@ -7,10 +7,12 @@ class GameEngine extends Phaser.Scene {
 
   preload ()
   {
+    
   }
 
   create ()
   {
+
     console.log("ENGINE loaded!");
   }
 

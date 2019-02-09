@@ -59,6 +59,14 @@ class Boot extends Phaser.Scene{
       }, this);
     }, this);
 
+    // Load other images
+    this.load.image('gray', 'images/ui/gray.png');
+    this.load.image('red', 'images/ui/red.png');
+    this.load.image('play', 'images/ui/playButton.png');
+
+    this.load.image('machine1-1', 'images/objects/machine1-1.png');
+    this.load.image('machine1-2', 'images/objects/machine1-2.png');
+
     // Load music
     this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);
   }
@@ -66,6 +74,7 @@ class Boot extends Phaser.Scene{
   create ()
   {
     // Load main menu
+    //this.scene.scale.startFullscreen();
     this.scene.start('mainMenu');
   }
 }
