@@ -1,7 +1,8 @@
 class Tile{
-  constructor(id, x, y, level){
-    this.id = id;
-    this.position = [x, y];
-    this.image = level.phaser.add.image(32*x, 32*y, 'tile' + id).setOrigin(0, 0);
+  constructor(type, name, x, y, level){
+    this.type = type;
+    this.name = name;
+    if(this.type == 'ground')
+      this.image = level.phaser.add.image(32*x, 32*y, 'tile' + name).setOrigin(0, 0);
   }
 }

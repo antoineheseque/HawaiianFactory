@@ -1,9 +1,10 @@
-class Machine{
+class Machine extends Tile{
 
-  constructor(id, x, y, phaser){
+  constructor(type, name, x, y, level){
+    super();
     this.level = 1;
-    this.phaser = phaser;
+    this.phaser = level;
 
-    phaser.phaser.add.sprite(x, y, id).play('activated').setOrigin(0, 0);;
+    level.phaser.add.sprite(x, y, name).play('activated').setOrigin(0, 0);
   }
 }
