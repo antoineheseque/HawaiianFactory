@@ -31,4 +31,10 @@ class Level {
     }
     //this.objects[4][8] = new Machine('machine1-1', 8*32, 4*32, this);
   }
+
+  addMachine(x,y,id){
+    // Bien sur un sol et aucun objet deja present
+    if(this.objects[y][x] == null && this.background[y][x].id == 13)
+      this.objects[y][x] = new Machine(id, x*32, y*32, this);
+  }
 }

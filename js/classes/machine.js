@@ -4,6 +4,6 @@ class Machine{
     this.level = 1;
     this.phaser = phaser;
 
-    phaser.phaser.add.sprite(x, y, id).play('activated');
+    phaser.phaser.add.sprite(x, y, id).play('activated').setOrigin(0, 0);;
   }
 }

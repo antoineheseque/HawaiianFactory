@@ -34,6 +34,9 @@ class MouseInteraction{
           // 13 = GROUND ID
           if(this.level.level.background[wP.y/32][wP.x/32].id == 13){
             this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
+            this.image.setInteractive().on('pointerdown', () => {
+              this.level.level.addMachine(wP.x/32, wP.y/32, this.level.selectedObject);
+            });
           }
           else {
             this.image = this.level.add.image(wP.x, wP.y, 'red').setOrigin(0, 0).setAlpha(0.5);
