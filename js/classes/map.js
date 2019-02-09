@@ -1,19 +1,19 @@
-class Level {
+class Map {
 
-  constructor(levelJSON, phaser){
+  constructor(mapJSON, phaser){
     // Une couche pour le niveau,
     // Une couche pour les objets (machines, éoliennes, ...)
     this.background = [];
     this.objects = [];
     this.phaser = phaser;
-    this.levelJSON = levelJSON;
+    this.mapJSON = mapJSON;
     this.loadLevel();
   }
 
   loadLevel(){
     //AFFICHER LE BACKGROUND
-    this.maxWidth = this.levelJSON.layers[0].width;
-    this.maxHeight = this.levelJSON.layers[0].height;
+    this.maxWidth = this.mapJSON.layers[0].width;
+    this.maxHeight = this.mapJSON.layers[0].height;
 
     this.phaser.cameras.main.setBounds(0, 0, this.maxWidth*32, this.maxHeight*32);
     //this.phaser.cameras.main.setViewport(0, 0, maxWidth*32, maxHeight*32);
@@ -26,7 +26,7 @@ class Level {
           this.objects[y] = [];
         }
         // Set tile in the 2-dimentional array
-        this.background[y][x] = new Tile('ground', this.levelJSON.layers[0].data[y*this.maxWidth+x]-1, x, y, this);
+        this.background[y][x] = new Tile('ground', this.mapJSON.layers[0].data[y*this.maxWidth+x]-1, x, y, this);
       }
     }
     //this.objects[4][8] = new Machine('machine1-1', 8*32, 4*32, this);

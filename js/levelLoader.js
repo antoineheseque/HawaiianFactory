@@ -30,45 +30,18 @@ class LoadLevel extends Phaser.Scene {
         repeat: -1
     });
 
-    this.level = new Level(this.levelJSON, this);
+    this.level = new Map(this.levelJSON, this);
     this.mouseInteraction = new MouseInteraction(this);
+    this.cameraMovement = new CameraMovement(this);
 
-    // Camera movement system
-    var leftKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
-    var rightKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    var upKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
-    var downKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
-
-    var controlConfig = {
-        camera: this.cameras.main,
-        left: leftKey,
-        right: rightKey,
-        up: upKey,
-        down: downKey,
-        acceleration: 0.05,
-        drag: 0.0003,
-        maxSpeed: 0.8
-    };
-    this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
-
-    // Zoom system
-    this.zoomIn = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-    this.zoomOut = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
-    this.zoom = 1;
+    this.UI = this.scene.launch('gameUI', this);
+    this.game = this.scene.launch('gameEngine', this);
     console.log("Map loaded!");
-
-    this.scene.launch('gameUI', this);
-    this.scene.launch('gameEngine', this);
   }
 
   update (time, delta)
   {
     this.mouseInteraction.update();
-    this.controls.update(delta);
-    if(this.zoomIn.isDown && this.zoom < 1.8)
-      this.zoom += 0.01;
-    if(this.zoomOut.isDown && this.zoom > 0.4)
-      this.zoom -= 0.01;
-    this.cameras.main.setZoom(this.zoom);
+    this.cameraMovement.update(delta);
   }
 }

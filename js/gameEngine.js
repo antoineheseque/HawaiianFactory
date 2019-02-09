@@ -5,9 +5,13 @@ class GameEngine extends Phaser.Scene {
     super({ key: 'gameEngine' });
   }
 
+  init(level){
+    this.level = level;
+  }
+
   preload ()
   {
-    
+    this.money = new MoneyStat(1000, this);
   }
 
   create ()
@@ -18,6 +22,6 @@ class GameEngine extends Phaser.Scene {
 
   update (time, delta)
   {
-
+    this.money.update(time);
   }
 }
