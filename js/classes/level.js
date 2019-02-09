@@ -32,9 +32,14 @@ class Level {
     //this.objects[4][8] = new Machine('machine1-1', 8*32, 4*32, this);
   }
 
-  addMachine(x,y,name){
+  addObject(type,name,x,y){
     // Bien sur un sol et aucun objet deja present
-    if(this.objects[y][x] == null && this.background[y][x].name == 13)
-      this.objects[y][x] = new Machine('machine', name, x*32, y*32, this);
+    if(this.objects[y][x] == null){
+      if(this.background[y][x].name == 13 && type == 'machines')
+        this.objects[y][x] = new Machine('machines', name, x, y, this);
+      else if(this.background[y][x].name == 1 && type == 'environment')
+        this.objects[y][x] = new Tile('environment', name, x, y, this);
+          // NEW TILE EST TEMPORAIRE
+    }
   }
 }

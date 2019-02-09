@@ -66,6 +66,8 @@ class Boot extends Phaser.Scene{
 
     this.load.image('machine1-1', 'images/objects/machine1-1.png');
     this.load.image('machine1-2', 'images/objects/machine1-2.png');
+    this.load.image('turbine1-1', 'images/objects/turbine1.png');
+    this.load.image('turbine1-2', 'images/objects/turbine2.png');
 
     // Load music
     this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);

@@ -31,12 +31,23 @@ class MouseInteraction{
         if(this.level.selectedObject == -1)
           this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
         else { // Si on a un objet
-          // 13 = GROUND ID
-          if(this.level.level.background[wP.y/32][wP.x/32].name == 13 && this.level.level.objects[wP.y/32][wP.x/32] == null){
-            this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
-            this.image.setInteractive().on('pointerdown', () => {
-              this.level.level.addMachine(wP.x/32, wP.y/32, this.level.selectedObject);
-            });
+          if(this.level.level.objects[wP.y/32][wP.x/32] == null){
+            // 13 = GROUND ID
+            if(this.level.level.background[wP.y/32][wP.x/32].name == 13 && this.level.selectedType == 'machines'){
+              this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
+              this.image.setInteractive().on('pointerdown', () => {
+                this.level.level.addObject(this.level.selectedType, this.level.selectedObject, wP.x/32, wP.y/32);
+              });
+            }
+            else if(this.level.level.background[wP.y/32][wP.x/32].name == 1 && this.level.selectedType == 'environment'){
+              this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
+              this.image.setInteractive().on('pointerdown', () => {
+                this.level.level.addObject(this.level.selectedType, this.level.selectedObject, wP.x/32, wP.y/32);
+              });
+            }
+            else {
+              this.image = this.level.add.image(wP.x, wP.y, 'red').setOrigin(0, 0).setAlpha(0.5);
+            }
           }
           else {
             this.image = this.level.add.image(wP.x, wP.y, 'red').setOrigin(0, 0).setAlpha(0.5);

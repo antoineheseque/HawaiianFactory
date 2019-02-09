@@ -5,6 +5,6 @@ class Machine extends Tile{
     this.level = 1;
     this.phaser = level;
 
-    level.phaser.add.sprite(x, y, name).play('activated').setOrigin(0, 0);
+    level.phaser.add.sprite(x*32, y*32, name).play('activated').setOrigin(0, 0);
   }
 }
