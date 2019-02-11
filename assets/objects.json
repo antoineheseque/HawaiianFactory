@@ -1,0 +1,24 @@
+{
+  "machines":{
+    "machine1":{
+      "name":"Machine à levier",
+      "upgrades":[
+        {
+          "cost":1000,
+          "texture":"machine1-1"
+        }
+      ]
+    }
+  },
+  "environment":{
+    "turbine":{
+      "name":"Éolienne à triple pâles",
+      "upgrades":[
+        {
+          "cost":1000,
+          "texture":"turbine1-1"
+        }
+      ]
+    }
+  }
+}

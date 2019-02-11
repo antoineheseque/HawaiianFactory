@@ -9,6 +9,13 @@ class MouseInteraction{
     this.width = level.cameras.main.width;
   }
 
+  preload(){
+    // Get level file
+    loadJSON('../objects.json', function(response, mI) {
+      mI.objects = JSON.parse(response);
+    }, this);
+  }
+
   update(){
     // Afficher en jeu la case survolée
     var sP = this.level.input.activePointer;
@@ -31,18 +38,20 @@ class MouseInteraction{
         if(this.level.selectedObject == -1)
           this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
         else { // Si on a un objet
+          var stats = this.objects[this.level.selectedType][this.level.selectedObject];
+          var image = stats.upgrades[0].texture;
           if(this.level.level.objects[wP.y/32][wP.x/32] == null){
             // 13 = GROUND ID
-            if(this.level.level.background[wP.y/32][wP.x/32].name == 13 && this.level.selectedType == 'machines'){
+            if(this.level.level.background[wP.y/32][wP.x/32].stats.name == 13 && this.level.selectedType == 'machines'){
               this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
               this.image.setInteractive().on('pointerdown', () => {
-                this.level.level.addObject(this.level.selectedType, this.level.selectedObject, wP.x/32, wP.y/32);
+                this.level.level.addObject(this.level.selectedType, stats, wP.x/32, wP.y/32);
               });
             }
-            else if(this.level.level.background[wP.y/32][wP.x/32].name == 1 && this.level.selectedType == 'environment'){
+            else if(this.level.level.background[wP.y/32][wP.x/32].stats.name == 1 && this.level.selectedType == 'environment'){
               this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
               this.image.setInteractive().on('pointerdown', () => {
-                this.level.level.addObject(this.level.selectedType, this.level.selectedObject, wP.x/32, wP.y/32);
+                this.level.level.addObject(this.level.selectedType, stats, wP.x/32, wP.y/32);
               });
             }
             else {
@@ -52,7 +61,7 @@ class MouseInteraction{
           else {
             this.image = this.level.add.image(wP.x, wP.y, 'red').setOrigin(0, 0).setAlpha(0.5);
           }
-          this.image2 = this.level.add.image(wP.x, wP.y, this.level.selectedObject).setOrigin(0, 0);
+          this.image2 = this.level.add.image(wP.x, wP.y, image).setOrigin(0, 0);
         }
 
         this.oldX = wP.x;

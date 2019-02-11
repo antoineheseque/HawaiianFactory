@@ -1,10 +1,10 @@
 class Tile{
-  constructor(type, name, x, y, level){
+  constructor(type, stats, x, y, level){
     this.type = type;
-    this.name = name;
+    this.stats = stats;
     if(this.type == 'ground')
-      this.image = level.phaser.add.image(32*x, 32*y, 'tile' + name).setOrigin(0, 0);
+      this.image = level.phaser.add.image(32*x, 32*y, 'tile' + stats.name).setOrigin(0, 0);
     else if(this.type == 'environment')
-      this.image = level.phaser.add.image(32*x, 32*y, name).setOrigin(0, 0);
+      this.image = level.phaser.add.image(32*x, 32*y, stats.upgrades[0].texture).setOrigin(0, 0);
   }
 }

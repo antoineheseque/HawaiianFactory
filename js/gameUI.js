@@ -10,6 +10,13 @@ class GameUI extends Phaser.Scene {
     this.level = level;
   }
 
+  preload(){
+    // Get level file
+    loadJSON('../objects.json', function(response, mI) {
+      mI.objects = JSON.parse(response);
+    }, this);
+  }
+
   create ()
   {
     this.width = this.cameras.main.width;
@@ -45,13 +52,13 @@ class GameUI extends Phaser.Scene {
 
   loadMachinesMenu(){
     var container = this.add.container(0, this.height-100);
+    this.level.selectedType = 'machines';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
     container.add(clickButton);
 
     var machine1 = this.add.sprite(100, 20, 'machine1-1').play('activated').setInteractive().on('pointerdown', () => {
-      this.level.selectedObject = 'machine1-1';
-      this.level.selectedType = 'machines';
+      this.level.selectedObject = 'machine1';
     });
     container.add(machine1);
 
@@ -64,19 +71,18 @@ class GameUI extends Phaser.Scene {
 
   loadEnvironmentMenu(){
     var container = this.add.container(0, this.height-100);
+    this.level.selectedType = 'environment';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
     container.add(clickButton);
 
     var turbine1 = this.add.image(100, 20, 'turbine1-1').setInteractive().on('pointerdown', () => {
-      this.level.selectedObject = 'turbine1-1';
-      this.level.selectedType = 'environment';
+      this.level.selectedObject = 'turbine';
     });
     container.add(turbine1);
 
     var turbine2 = this.add.image(150, 20, 'turbine1-2').setInteractive().on('pointerdown', () => {
-      this.level.selectedObject = 'turbine1-2';
-      this.level.selectedType = 'environment';
+      this.level.selectedObject = 'turbine';
     });
     container.add(turbine2);
 
