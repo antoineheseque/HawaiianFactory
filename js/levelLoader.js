@@ -8,6 +8,17 @@ class LoadLevel extends Phaser.Scene {
 
   preload ()
   {
+    // FULLSCREEN (PROBLEM)
+    /*var canvas = this.sys.game.canvas;
+    var fullscreen = this.sys.game.device.fullscreen;
+
+    if (!fullscreen.available)
+    {
+        return;
+    }
+
+    canvas[fullscreen.request]();*/
+
     // Get level file
     loadJSON('../levels/levels.json', function(response, phaser) {
       var levels = JSON.parse(response);
@@ -20,6 +31,7 @@ class LoadLevel extends Phaser.Scene {
 
   create ()
   {
+
     this.anims.create({
         key: 'activated',
         frames: [

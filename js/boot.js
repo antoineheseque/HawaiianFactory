@@ -7,6 +7,7 @@ class Boot extends Phaser.Scene{
 
   preload ()
   {
+
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
 

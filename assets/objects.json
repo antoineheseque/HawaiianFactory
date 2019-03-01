@@ -19,6 +19,15 @@
           "texture":"turbine1-1"
         }
       ]
+    },
+    "turbine2":{
+      "name":"Éolienne à triple pâles améliorée",
+      "upgrades":[
+        {
+          "cost":10000,
+          "texture":"turbine1-2"
+        }
+      ]
     }
   }
 }
