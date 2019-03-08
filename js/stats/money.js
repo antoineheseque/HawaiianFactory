@@ -31,9 +31,9 @@ class MoneyStat{
     }
   }
 
-  checkPriceSelected(object){
-    if(this.money > object.levels[0].cost){
-      this.money -= object.levels[0].cost;
+  checkPriceSelected(cost){
+    if(this.money > cost){
+      this.money -= cost;
       console.log('A PAYE');
       return true;
     }
