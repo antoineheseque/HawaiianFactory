@@ -60,12 +60,10 @@ class GameUI extends Phaser.Scene {
 
     var x = 100;
     var y = 20;
-    for(var element in this.objects['machines']){
-      var el = this.objects['machines'][element];
-
-      // MODIFIER LE NOM DU SPRITE
-      var machine = this.add.sprite(x, y, el.upgrades[0].texture).play('activated').setInteractive().on('pointerdown', () => {
-        this.level.selectedObject = element;
+    Object.values(this.objects['machines']).forEach(function(element, index) {
+      //var el = gameUI.objects['environment'][element];
+      var machine = this.add.sprite(x, y, element.upgrades[0].texture).play('activated').setInteractive().on('pointerdown', () => {
+        this.level.selectedObject = Object.keys(this.objects['machines'])[index];
       });
       container.add(machine);
       x += 40;
@@ -73,7 +71,7 @@ class GameUI extends Phaser.Scene {
         x = 100;
         y += 40;
       }
-    }
+    }, this);
 
     clickButton.on('pointerdown', () => {
       this.level.selectedObject = -1;
@@ -92,11 +90,27 @@ class GameUI extends Phaser.Scene {
     var x = 100;
     var y = 20;
 
-    for(var element in this.objects['environment']){
+    /*for(var element in this.objects['environment']){
       var el = this.objects['environment'][element];
       // MODIFIER LE NOM DU SPRITE
       var obj = this.add.image(x, y, el.upgrades[0].texture).setInteractive().on('pointerdown', () => {
-        //this.level.selectedObject = element;
+        this.level.selectedObject = ele;
+      });
+      obj._events.pointerdown.ele = el;
+      console.log(obj);
+
+      container.add(obj);
+      x += 40;
+      if(x > 120){
+        x = 100;
+        y += 40;
+      }
+    }*/
+
+    Object.values(this.objects['environment']).forEach(function(element, index) {
+      //var el = gameUI.objects['environment'][element];
+      var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+        this.level.selectedObject = Object.keys(this.objects['environment'])[index];
       });
       container.add(obj);
       x += 40;
@@ -104,7 +118,7 @@ class GameUI extends Phaser.Scene {
         x = 100;
         y += 40;
       }
-    }
+    }, this);
 
     clickButton.on('pointerdown', () => {
       this.level.selectedObject = -1;
