@@ -37,7 +37,7 @@ class Map {
   addObject(type,stats,x,y){
     // Bien sur un sol et aucun objet deja present
     if(this.objects[y][x] == null){
-      if(this.phaser.money.checkPriceSelected(stats.upgrades[0].cost)){
+      if(this.phaser.money.buy(stats.upgrades[0].cost)){
         if(this.background[y][x].stats.name == 13 && type == 'machines')
           this.objects[y][x] = new Machine('machines', stats, x, y, this);
         else if(this.background[y][x].stats.name == 1 && type == 'environment')

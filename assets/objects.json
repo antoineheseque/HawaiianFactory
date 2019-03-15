@@ -22,6 +22,11 @@
           "cost":2500,
           "texture":"compacteur2",
           "frames":2
+        },
+        {
+          "cost":5000,
+          "texture":"compacteur3",
+          "frames":2
         }
       ]
     },

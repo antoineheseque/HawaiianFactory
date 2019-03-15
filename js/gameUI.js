@@ -25,11 +25,6 @@ class GameUI extends Phaser.Scene {
     var mBackground = this.add.graphics();
     mBackground.fillStyle(0x222222, 0.8);
     mBackground.fillRect(0, this.height-this.menuSize, this.width, this.menuSize);
-    //
-
-    //var mBackground = this.add.graphics();
-    //mBackground.fillStyle(0x222222, 0.6);
-    //mBackground.fillRect(this.width-2*this.menuSize, 0, 2*this.menuSize, this.height-this.menuSize);
 
     // Afficher le menu en bas
     this.loadMainMenu();
@@ -38,7 +33,6 @@ class GameUI extends Phaser.Scene {
 
   loadMainMenu(){
     var container = this.add.container(0, this.height-this.menuSize);
-
     var machinesButton = this.add.text(this.width/2-50, 40, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
     container.add(machinesButton);
     var environmentButton = this.add.text(this.width/2+50, 40, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
@@ -55,12 +49,17 @@ class GameUI extends Phaser.Scene {
   }
 
   loadMachinesMenu(){
-
     var container = this.add.container(0, this.height-100);
     this.level.selectedType = 'machines';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
     container.add(clickButton);
+
+    // Vérifier si un menu d'info n'est pas ouvert
+    if(this.level.selectedObject == -2){
+      this.level.selectedObject = -1;
+      this.level.mouseInteraction.container.destroy();
+    }
 
     var x = 100;
     var y = 20;
@@ -100,6 +99,12 @@ class GameUI extends Phaser.Scene {
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
     container.add(clickButton);
+
+    // Vérifier si un menu d'info n'est pas ouvert
+    if(this.level.selectedObject == -2){
+      this.level.selectedObject = -1;
+      this.level.mouseInteraction.container.destroy();
+    }
 
     var x = 100;
     var y = 20;

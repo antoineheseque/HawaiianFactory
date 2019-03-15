@@ -9,9 +9,23 @@ class Machine extends Tile{
 
     this.x = x;
     this.y = y;
-    if(stats.upgrades[0].frames > 1)
-      level.phaser.add.sprite(x*32, y*32, stats.upgrades[0].texture + '-1').play(stats.upgrades[0].texture).setOrigin(0, 0);
+    this.createTile();
+  }
+
+  createTile(){
+    if(this.stats.upgrades[this.level-1].frames > 1)
+      this.image = this.phaser.phaser.add.sprite(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture + '-1').play(this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
+        this.phaser.phaser.mouseInteraction.getInformations(this);
+      });
     else
-      level.phaser.add.image(x*32, y*32, stats.upgrades[0].texture).setOrigin(0, 0);
+      this.image = this.phaser.phaser.add.image(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
+        this.phaser.phaser.mouseInteraction.getInformations(this);
+      });
+  }
+
+  upgrade(){
+    this.level++;
+    this.image.destroy();
+    this.createTile();
   }
 }

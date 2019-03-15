@@ -33,8 +33,14 @@ class MoneyStat{
 
   checkPriceSelected(cost){
     if(this.money > cost){
+      return true;
+    }
+    return false;
+  }
+
+  buy(cost){
+    if(this.money > cost){
       this.money -= cost;
-      console.log('A PAYE');
       return true;
     }
     return false;
