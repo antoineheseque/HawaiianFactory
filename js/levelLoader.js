@@ -31,16 +31,42 @@ class LoadLevel extends Phaser.Scene {
 
   create ()
   {
+    // Load JSON file into a dictionnary
+    loadJSON('../objects.json', function(response, phaser) {
+      var assets = JSON.parse(response);
 
-    this.anims.create({
-        key: 'activated',
-        frames: [
-            { key: 'machine1-1' },
-            { key: 'machine1-2' }
-        ],
-        frameRate: 4,
-        repeat: -1
-    });
+      // Load machines objects
+      Object.values(assets['machines']).forEach(function(element){ // Parcourir toute les images
+        element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
+          if(element2.frames > 1){ // Quand il n'y a qu'une frame pour l'upgrade
+            var frames = phaser.getFrames(element2.texture, element2.frames);
+
+            var config = {
+                key: element2.texture,
+                frames: frames,
+                frameRate: 2*element2.frames,
+                repeat: -1
+            };
+            phaser.anims.create(config);
+          }
+        }, this);
+      }, this);
+
+      // Load environment objects
+      Object.values(assets['environment']).forEach(function(element){ // Parcourir toute les images
+        element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
+          if(element2.frames > 1){ // Quand il n'y a qu'une frame pour l'upgrade
+            var frames = phaser.getFrames(element2.texture, element2.frames);
+            phaser.anims.create({
+                key: element2.texture,
+                frames: frames,
+                frameRate: 2*element2.frames,
+                repeat: -1
+            });
+          }
+        }, element);
+      }, this);
+    }, this);
 
     this.level = new Map(this.levelJSON, this);
     this.mouseInteraction = new MouseInteraction(this);
@@ -56,5 +82,14 @@ class LoadLevel extends Phaser.Scene {
   {
     this.mouseInteraction.update();
     this.cameraMovement.update(delta);
+  }
+
+  getFrames(text, nbr)
+  {
+    var frames = [];
+    for(var i = 1; i <= nbr; i++){
+      frames.push({ 'key':text+'-'+i });
+    }
+    return frames;
   }
 }

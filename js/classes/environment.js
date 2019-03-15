@@ -1,4 +1,4 @@
-class Machine extends Tile{
+class Environment extends Tile{
 
   constructor(type, stats, x, y, level){
     super();

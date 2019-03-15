@@ -39,7 +39,7 @@ class MouseInteraction{
           this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
         else { // Si on a un objet
           var stats = this.objects[this.level.selectedType][this.level.selectedObject];
-          var image = stats.upgrades[0].texture;
+          var image = stats.upgrades[0].frames > 1 ? stats.upgrades[0].texture + '-1' : stats.upgrades[0].texture;
           if(this.level.level.objects[wP.y/32][wP.x/32] == null){
             // 13 = GROUND ID
             if(this.level.level.background[wP.y/32][wP.x/32].stats.name == 13 && this.level.selectedType == 'machines'){

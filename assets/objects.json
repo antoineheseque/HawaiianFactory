@@ -5,7 +5,38 @@
       "upgrades":[
         {
           "cost":1000,
-          "texture":"machine1-1"
+          "texture":"machine1",
+          "frames":2
+        }
+      ]
+    },
+    "compacteur1":{
+      "name":"Compacteur à déchets",
+      "upgrades":[
+        {
+          "cost":500,
+          "texture":"compacteur1",
+          "frames":2
+        },
+        {
+          "cost":2500,
+          "texture":"compacteur2",
+          "frames":2
+        }
+      ]
+    },
+    "compacteur1":{
+      "name":"Compacteur à déchets",
+      "upgrades":[
+        {
+          "cost":500,
+          "texture":"compacteur1",
+          "frames":2
+        },
+        {
+          "cost":2500,
+          "texture":"compacteur2",
+          "frames":2
         }
       ]
     }
@@ -16,7 +47,8 @@
       "upgrades":[
         {
           "cost":1000,
-          "texture":"turbine1-1"
+          "texture":"turbine1",
+          "frames":1
         }
       ]
     },
@@ -25,7 +57,18 @@
       "upgrades":[
         {
           "cost":10000,
-          "texture":"turbine1-2"
+          "texture":"turbine2",
+          "frames":1
+        }
+      ]
+    },
+    "turbine3":{
+      "name":"Turbine écologique en Rubis",
+      "upgrades":[
+        {
+          "cost":1000,
+          "texture":"ecoturbine1",
+          "frames":3
         }
       ]
     }

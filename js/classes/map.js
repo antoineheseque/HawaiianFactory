@@ -41,7 +41,7 @@ class Map {
         if(this.background[y][x].stats.name == 13 && type == 'machines')
           this.objects[y][x] = new Machine('machines', stats, x, y, this);
         else if(this.background[y][x].stats.name == 1 && type == 'environment')
-          this.objects[y][x] = new Tile('environment', stats, x, y, this);
+          this.objects[y][x] = new Environment('environment', stats, x, y, this);
             // NEW TILE EST TEMPORAIRE
       }
     }

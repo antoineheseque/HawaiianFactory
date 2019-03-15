@@ -27,6 +27,10 @@ class GameUI extends Phaser.Scene {
     mBackground.fillRect(0, this.height-this.menuSize, this.width, this.menuSize);
     //
 
+    //var mBackground = this.add.graphics();
+    //mBackground.fillStyle(0x222222, 0.6);
+    //mBackground.fillRect(this.width-2*this.menuSize, 0, 2*this.menuSize, this.height-this.menuSize);
+
     // Afficher le menu en bas
     this.loadMainMenu();
     console.log("UI loaded!");
@@ -62,12 +66,22 @@ class GameUI extends Phaser.Scene {
     var y = 20;
     Object.values(this.objects['machines']).forEach(function(element, index) {
       //var el = gameUI.objects['environment'][element];
-      var machine = this.add.sprite(x, y, element.upgrades[0].texture).play('activated').setInteractive().on('pointerdown', () => {
-        this.level.selectedObject = Object.keys(this.objects['machines'])[index];
-      });
+
+      // Si il y a une animation
+      if(element.upgrades[0].frames > 1){
+        var name = element.upgrades[0].texture;
+        var machine = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+          this.level.selectedObject = Object.keys(this.objects['machines'])[index];
+        });
+      }
+      else{
+        var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+          this.level.selectedObject = Object.keys(this.objects['machines'])[index];
+        });
+      }
       container.add(machine);
       x += 40;
-      if(x > 120){
+      if(x > 600){
         x = 100;
         y += 40;
       }
@@ -90,31 +104,23 @@ class GameUI extends Phaser.Scene {
     var x = 100;
     var y = 20;
 
-    /*for(var element in this.objects['environment']){
-      var el = this.objects['environment'][element];
-      // MODIFIER LE NOM DU SPRITE
-      var obj = this.add.image(x, y, el.upgrades[0].texture).setInteractive().on('pointerdown', () => {
-        this.level.selectedObject = ele;
-      });
-      obj._events.pointerdown.ele = el;
-      console.log(obj);
-
-      container.add(obj);
-      x += 40;
-      if(x > 120){
-        x = 100;
-        y += 40;
-      }
-    }*/
-
     Object.values(this.objects['environment']).forEach(function(element, index) {
-      //var el = gameUI.objects['environment'][element];
-      var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
-        this.level.selectedObject = Object.keys(this.objects['environment'])[index];
-      });
+
+      // Si il y a une animation
+      if(element.upgrades[0].frames > 1){
+        var name = element.upgrades[0].texture;
+        var obj = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+          this.level.selectedObject = Object.keys(this.objects['environment'])[index];
+        });
+      }
+      else{
+        var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+          this.level.selectedObject = Object.keys(this.objects['environment'])[index];
+        });
+      }
       container.add(obj);
       x += 40;
-      if(x > 120){
+      if(x > 600){
         x = 100;
         y += 40;
       }
