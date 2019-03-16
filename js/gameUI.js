@@ -8,6 +8,7 @@ class GameUI extends Phaser.Scene {
 
   init(level){
     this.level = level;
+    this.level.UI = this;
   }
 
   preload(){
@@ -32,6 +33,7 @@ class GameUI extends Phaser.Scene {
   }
 
   loadMainMenu(){
+    this.level.selectedType = 'none';
     var container = this.add.container(0, this.height-this.menuSize);
     var machinesButton = this.add.text(this.width/2-50, 40, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
     container.add(machinesButton);
@@ -58,7 +60,7 @@ class GameUI extends Phaser.Scene {
     // Vérifier si un menu d'info n'est pas ouvert
     if(this.level.selectedObject == -2){
       this.level.selectedObject = -1;
-      this.level.mouseInteraction.container.destroy();
+      this.level.UI.container.destroy();
     }
 
     var x = 100;
@@ -103,7 +105,7 @@ class GameUI extends Phaser.Scene {
     // Vérifier si un menu d'info n'est pas ouvert
     if(this.level.selectedObject == -2){
       this.level.selectedObject = -1;
-      this.level.mouseInteraction.container.destroy();
+      this.level.UI.container.destroy();
     }
 
     var x = 100;
@@ -137,5 +139,83 @@ class GameUI extends Phaser.Scene {
       this.loadMainMenu();
       container.destroy();
     });
+  }
+
+  getInformations(object){
+    if(this.level.selectedObject < 0 && this.level.selectedType == 'none'){
+      this.level.selectedObject = -2;
+      if(this.container != null)
+        this.container.destroy();
+      this.container = this.showInformationsMenu();
+
+      // Show name
+      var name = this.make.text({
+        x: this.width -100,
+        y: 20,
+        text: object.stats.name,
+        style: {
+          font: '14px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 180 }
+        }
+      });
+      name.setOrigin(0.5, 0.5);
+      this.container.add(name);
+
+      // Show Level
+      var level = this.make.text({
+        x: this.width - 100,
+        y: 40,
+        text: 'Niveau ' + object.level,
+        style: {
+          font: '12px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 180 }
+        }
+      });
+      level.setOrigin(0.5, 0.5);
+      this.container.add(level);
+
+      // Show Button upgrade
+      var cost = 'Augmenter au niveau 2 pour 0 $';
+      if(object.stats.upgrades.length > object.level){
+        var price = object.stats.upgrades[object.level].cost;
+        cost = 'Augmenter au niveau ' + (object.level+1) + ' pour ' + price + ' €';
+      }
+      else{
+        cost = "Niveau MAX atteint!";
+      }
+      var color = '#0f0';
+      if(!this.level.money.checkPriceSelected(price) || cost == "Niveau MAX atteint!")
+        color = '#e9431b';
+
+      var upgrade = this.add.text(this.width - 190, 300, cost, { fill: color, wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      {
+        if(object.stats.upgrades.length > object.level){
+          var price = object.stats.upgrades[object.level].cost;
+          // Vérifier si on peut acheter et augmenter d'un niveau.
+          if(this.level.money.buy(price)){
+            object.upgrade();
+            this.getInformations(object);
+          }
+        }
+      });
+      this.container.add(upgrade);
+
+    }
+  }
+
+  showInformationsMenu(){
+    var container = this.add.container(0, 0);
+
+    // Add Background
+    var background = this.add.graphics();
+    background.fillStyle(0x222222, 0.6);
+    background.fillRect(this.width - 200, 0, 200, this.height-100);
+    container.add(background);
+    var closeButton = this.add.text(this.width - 20, 10, 'X', { fill: '#0f0' }).setInteractive().on('pointerdown', () => { container.destroy(); this.level.selectedObject = -1;});
+    container.add(closeButton);
+
+    return container;
   }
 }

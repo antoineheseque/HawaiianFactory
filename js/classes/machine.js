@@ -15,11 +15,11 @@ class Machine extends Tile{
   createTile(){
     if(this.stats.upgrades[this.level-1].frames > 1)
       this.image = this.phaser.phaser.add.sprite(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture + '-1').play(this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
-        this.phaser.phaser.mouseInteraction.getInformations(this);
+        this.phaser.phaser.UI.getInformations(this);
       });
     else
       this.image = this.phaser.phaser.add.image(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
-        this.phaser.phaser.mouseInteraction.getInformations(this);
+        this.phaser.phaser.UI.getInformations(this);
       });
   }
 

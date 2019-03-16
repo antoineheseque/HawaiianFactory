@@ -4,6 +4,7 @@ class LoadLevel extends Phaser.Scene {
   {
     super({ key: 'loadLevel' });
     this.selectedObject = -1;
+    this.selectedType = 'none';
   }
 
   preload ()
@@ -73,7 +74,7 @@ class LoadLevel extends Phaser.Scene {
     this.mouseInteraction.preload();
     this.cameraMovement = new CameraMovement(this);
 
-    this.UI = this.scene.launch('gameUI', this);
+    this.scene.launch('gameUI', this);
     this.game = this.scene.launch('gameEngine', this);
     console.log("Map loaded!");
   }
