@@ -176,6 +176,21 @@ class GameUI extends Phaser.Scene {
       level.setOrigin(0.5, 0.5);
       this.container.add(level);
 
+      if(object.type = 'machine'){
+        // Show Level
+        var level = this.make.text({
+          x: this.width - 200,
+          y: 80,
+          text: 'Gain: ' + (object.stats.upgrades[object.level-1].gain*30) + '€ / mois',
+          style: {
+            font: '12px monospace',
+            fill: '#ffffff',
+            wordWrap: { width: 200 }
+          }
+        });
+        this.container.add(level);
+      }
+
       // Show Button upgrade
       var cost = 'Augmenter au niveau 2 pour 0 $';
       if(object.stats.upgrades.length > object.level){

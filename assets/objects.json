@@ -5,7 +5,7 @@
       "upgrades":[
         {
           "cost":1000,
-          "gain":10,
+          "gain":2.5,
           "texture":"machine1",
           "frames":2
         }
@@ -21,14 +21,14 @@
           "frames":2
         },
         {
-          "cost":2500,
+          "cost":5000,
           "gain":20,
           "texture":"compacteur2",
           "frames":2
         },
         {
-          "cost":5000,
-          "gain":50,
+          "cost":30000,
+          "gain":75,
           "texture":"compacteur3",
           "frames":2
         }

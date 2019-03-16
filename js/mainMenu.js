@@ -21,7 +21,10 @@ class MainMenu extends Phaser.Scene {
 
     /*var player = prompt("Entrez le nom du directeur :", "Gilbert Montagné");
     this.username = player;*/
-    //var music = this.sound.add('theme');
+
+    var music = this.sound.add('theme');
+    music.play();
+
     this.username = "Gilbert Montagné";
 
     var background = this.add.image(0,0,'background').setOrigin(0,0).setDisplaySize(width, height);
