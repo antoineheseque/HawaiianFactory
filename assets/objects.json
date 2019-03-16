@@ -29,21 +29,6 @@
           "frames":2
         }
       ]
-    },
-    "compacteur1":{
-      "name":"Compacteur à déchets",
-      "upgrades":[
-        {
-          "cost":500,
-          "texture":"compacteur1",
-          "frames":2
-        },
-        {
-          "cost":2500,
-          "texture":"compacteur2",
-          "frames":2
-        }
-      ]
     }
   },
   "environment":{

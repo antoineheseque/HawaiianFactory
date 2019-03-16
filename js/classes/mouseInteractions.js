@@ -35,8 +35,9 @@ class MouseInteraction{
           this.image2.destroy();
         }
 
-        if(this.level.selectedObject < 0)
+        if(this.level.selectedObject < 0){
           this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
+        }
         else { // Si on a un objet
 
           var stats = this.objects[this.level.selectedType][this.level.selectedObject];
