@@ -22,22 +22,108 @@ class GameUI extends Phaser.Scene {
   {
     this.width = this.cameras.main.width;
     this.height = this.cameras.main.height;
-    // Background
-    var mBackground = this.add.graphics();
-    mBackground.fillStyle(0x222222, 0.8);
-    mBackground.fillRect(0, this.height-this.menuSize, this.width, this.menuSize);
+
+    // Background Menu
+    var bgMenu = this.add.graphics();
+    bgMenu.fillStyle(0x222222, 0.7);
+    bgMenu.fillRect(300, this.height-this.menuSize, this.width-300, this.menuSize);
+
+    // Background Factory
+    var bgFactory = this.add.graphics();
+    bgFactory.fillStyle(0x222222, 1);
+    bgFactory.fillRect(0, this.height-this.menuSize, 300, this.menuSize);
 
     // Afficher le menu en bas
     this.loadMainMenu();
+    this.loadFactoryMenu();
     console.log("UI loaded!");
+  }
+
+  loadFactoryMenu(){
+    var container = this.add.container(0, this.height-this.menuSize);
+
+    /*var progressBar1 = this.add.graphics();
+    var progressBox1 = this.add.graphics();
+    progressBox1.fillStyle(0xC5C5C5, 0.8);
+    progressBox1.fillRect(55, 10, 20, 60);
+    var percentText1 = this.make.text({
+      x: 75,
+      y: 65,
+      text: '0%',
+      style: {
+        font: '8px monospace',
+        fill: '#ffffff'
+      }
+    });
+    percentText1.setOrigin(0.5, 0.5);
+    container.add(progressBar1);
+    container.add(progressBox1);
+    container.add(percentText1);*/
+
+    // Details Button
+    var factoryButton = this.add.text(150, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
+      this.loadFactoryDetails();
+    });
+    container.add(factoryButton);
+
+  }
+
+  loadFactoryDetails(){
+    if(this.level.selectedObject < 0 && this.level.selectedType == 'none'){
+      this.level.selectedObject = -3;
+      if(this.container != null)
+        this.container.destroy();
+      this.container = this.showInformationsMenu();
+
+      // Show name
+      var name = this.make.text({
+        x: this.width -100,
+        y: 20,
+        text: 'Détails de l\'Usine',
+        style: {
+          font: '14px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 180 }
+        }
+      });
+      name.setOrigin(0.5, 0.5);
+      this.container.add(name);
+
+      // Show Level
+      var gain = this.make.text({
+        x: this.width - 190,
+        y: 65,
+        text: 'Gain: ' + (this.level.money.addMoneyAmount*30) + '€ / mois',
+        style: {
+          font: '12px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 200 }
+        }
+      });
+      this.container.add(gain);
+
+      // Show Level
+      var gain = this.make.text({
+        x: this.width - 190,
+        y: 40,
+        text: 'Ile: ' + this.level.levels.start.world,
+        style: {
+          font: '16px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 200 }
+        }
+      });
+      this.container.add(gain);
+    }
   }
 
   loadMainMenu(){
     this.level.selectedType = 'none';
-    var container = this.add.container(0, this.height-this.menuSize);
-    var machinesButton = this.add.text(this.width/2-50, 40, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
+    var container = this.add.container(300, this.height-this.menuSize);
+    container.width = 500;
+    var machinesButton = this.add.text(200, 50, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
     container.add(machinesButton);
-    var environmentButton = this.add.text(this.width/2+50, 40, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
+    var environmentButton = this.add.text(300, 50, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
     container.add(environmentButton);
 
     machinesButton.on('pointerdown', () => {
@@ -51,7 +137,8 @@ class GameUI extends Phaser.Scene {
   }
 
   loadMachinesMenu(){
-    var container = this.add.container(0, this.height-100);
+    var container = this.add.container(300, this.height-100);
+    container.width = 500;
     this.level.selectedType = 'machines';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
@@ -96,7 +183,8 @@ class GameUI extends Phaser.Scene {
   }
 
   loadEnvironmentMenu(){
-    var container = this.add.container(0, this.height-100);
+    var container = this.add.container(300, this.height-100);
+    container.width = 500;
     this.level.selectedType = 'environment';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
@@ -176,11 +264,11 @@ class GameUI extends Phaser.Scene {
       level.setOrigin(0.5, 0.5);
       this.container.add(level);
 
-      if(object.type = 'machine'){
+      if(object.type == 'machines'){
         // Show Level
         var level = this.make.text({
-          x: this.width - 200,
-          y: 80,
+          x: this.width - 190,
+          y: 65,
           text: 'Gain: ' + (object.stats.upgrades[object.level-1].gain*30) + '€ / mois',
           style: {
             font: '12px monospace',
