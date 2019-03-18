@@ -160,11 +160,23 @@ class GameUI extends Phaser.Scene {
         var name = element.upgrades[0].texture;
         var machine = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
+        }).on('pointerover', () => {
+          this.loadPreviewObjectStats(element, machine.x, machine.y);
+        }).on('pointerout', () => {
+          if(this.previewObjectStats != null){
+              this.previewObjectStats.destroy();
+          }
         });
       }
       else{
         var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
+        }).on('pointerover', () => {
+          this.loadPreviewObjectStats(element, machine.x, machine.y);
+        }).on('pointerout', () => {
+          if(this.previewObjectStats != null){
+              this.previewObjectStats.destroy();
+          }
         });
       }
       container.add(machine);
@@ -206,11 +218,23 @@ class GameUI extends Phaser.Scene {
         var name = element.upgrades[0].texture;
         var obj = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
+        }).on('pointerover', () => {
+          this.loadPreviewObjectStats(element, obj.x, obj.y);
+        }).on('pointerout', () => {
+          if(this.previewObjectStats != null){
+              this.previewObjectStats.destroy();
+          }
         });
       }
       else{
         var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
+        }).on('pointerover', () => {
+          this.loadPreviewObjectStats(element, obj.x, obj.y);
+        }).on('pointerout', () => {
+          if(this.previewObjectStats != null){
+              this.previewObjectStats.destroy();
+          }
         });
       }
       container.add(obj);
@@ -227,6 +251,67 @@ class GameUI extends Phaser.Scene {
       this.loadMainMenu();
       container.destroy();
     });
+  }
+
+  loadPreviewObjectStats(obj, x, y){
+    if(this.previewObjectStats != null){
+        this.previewObjectStats.destroy();
+    }
+    this.previewObjectStats = this.add.container(300+x-40, this.height-100+y-75);
+    this.previewObjectStats.width = 80;
+    this.previewObjectStats.height = 55;
+    var bgMenu = this.add.graphics();
+    bgMenu.fillStyle(0x222222, 1);
+    bgMenu.fillRect(0, 0, 80, 55);
+    this.previewObjectStats.add(bgMenu);
+
+    // Show name
+    var name = this.make.text({
+      x: 40,
+      y: 10,
+      text: obj.name,
+      style: {
+        font: '10px monospace',
+        fill: '#ffffff',
+        wordWrap: { width: 75 }
+      }
+    });
+    name.setOrigin(0.5, 0.5);
+    this.previewObjectStats.add(name);
+
+    // Show gain
+    if(this.level.selectedType == 'machines'){
+      // Show Level
+      var level = this.make.text({
+        x: 5,
+        y: 25,
+        text: (obj.upgrades[0].gain*30) + '€ / mois',
+        style: {
+          font: '10px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 75 }
+        }
+      });
+      this.previewObjectStats.add(level);
+    }
+
+    // Show cost
+    var color = '#0f0';
+    if(!this.level.money.checkPriceSelected(obj.upgrades[0].cost))
+      color = '#e9431b';
+    var cost = this.make.text({
+      x: 40,
+      y: 45,
+      text: obj.upgrades[0].cost + " $",
+      style: {
+        font: '12px monospace',
+        fill: color,
+        wordWrap: { width: 75 }
+      }
+    });
+
+    cost.setOrigin(0.5, 0.5);
+    this.previewObjectStats.add(cost);
   }
 
   getInformations(object){
