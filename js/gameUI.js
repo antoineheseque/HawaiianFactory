@@ -377,7 +377,7 @@ class GameUI extends Phaser.Scene {
       if(!this.level.money.checkPriceSelected(price) || cost == "Niveau MAX atteint!")
         color = '#e9431b';
 
-      var upgrade = this.add.text(this.width - 190, 300, cost, { fill: color, wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      var upgrade = this.add.text(this.width - 190, 280, cost, { fill: color, wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
       {
         if(object.stats.upgrades.length > object.level){
           var price = object.stats.upgrades[object.level].cost;
@@ -390,6 +390,13 @@ class GameUI extends Phaser.Scene {
       });
       this.container.add(upgrade);
 
+      var sell = this.add.text(this.width - 190, 320, 'Vendre pour ' + object.stats.upgrades[0].cost/2, { wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      {
+        this.level.level.removeObject(object);
+        if(this.container != null)
+          this.container.destroy();
+      });
+      this.container.add(sell);
     }
   }
 

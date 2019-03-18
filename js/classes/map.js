@@ -47,4 +47,13 @@ class Map {
       }
     }
   }
+
+  removeObject(obj){
+    this.phaser.money.sell(obj.stats.upgrades[obj.level-1].cost/2);
+    if(obj.type == 'machines')
+      this.phaser.money.removeMoneyEachDay(obj.stats.upgrades[obj.level-1].gain);
+    this.objects[obj.y][obj.x].image.destroy();
+    this.objects[obj.y][obj.x] = null;
+
+  }
 }

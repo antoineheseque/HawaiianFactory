@@ -64,4 +64,8 @@ class MoneyStat{
     }
     return false;
   }
+
+  sell(cost){
+    this.money += cost;
+  }
 }
