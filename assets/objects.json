@@ -68,6 +68,7 @@
     },
     "tree1":{
       "name":"Arbres fruitiers",
+      "isInside":true,
       "upgrades":[
         {
           "cost":250,

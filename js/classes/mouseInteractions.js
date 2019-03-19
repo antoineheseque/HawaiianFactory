@@ -45,7 +45,10 @@ class MouseInteraction{
 
           if(this.level.level.objects[wP.y/32][wP.x/32] == null){
             // 13 = GROUND ID
-            if(this.level.level.background[wP.y/32][wP.x/32].stats.name == 13 && this.level.selectedType == 'machines'){
+            if(this.level.level.background[wP.y/32][wP.x/32].stats.name == 13 &&
+              (this.level.selectedType == 'machines' || (this.level.selectedType == 'environment' && stats.isInside)))
+            {
+
               this.image = this.level.add.image(wP.x, wP.y, 'gray').setOrigin(0, 0).setAlpha(0.5);
               this.image.setInteractive().on('pointerdown', () => {
                 this.level.level.addObject(this.level.selectedType, stats, wP.x/32, wP.y/32);
