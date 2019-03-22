@@ -3,10 +3,12 @@ class Boot extends Phaser.Scene{
   constructor ()
   {
     super({ key: 'boot' });
+    // Load music
   }
 
   preload ()
   {
+    this.load.audio('theme', ['../musics/StompDance.mp3']);
 
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
@@ -96,15 +98,15 @@ class Boot extends Phaser.Scene{
     // Load other images
     this.load.image('gray', 'images/ui/gray.png');
     this.load.image('red', 'images/ui/red.png');
-    this.load.image('play', 'images/ui/playButton.png');
+    this.load.image('play', 'images/ui/play.png');
+    this.load.image('logo', 'images/ui/logo.png');
+    this.load.image('background', 'images/ui/hawaii.jpg');
+
 
     /*this.load.image('machine1-1', 'images/objects/machine1-1.png');
     this.load.image('machine1-2', 'images/objects/machine1-2.png');
     this.load.image('turbine1-1', 'images/objects/turbine1.png');
     this.load.image('turbine1-2', 'images/objects/turbine2.png');*/
-
-    // Load music
-    //this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);
   }
 
   create ()

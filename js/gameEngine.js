@@ -7,6 +7,7 @@ class GameEngine extends Phaser.Scene {
 
   init(level){
     this.level = level;
+    this.level.game = this;
   }
 
   preload ()

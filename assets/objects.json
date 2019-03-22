@@ -5,6 +5,7 @@
       "upgrades":[
         {
           "cost":1000,
+          "gain":2.5,
           "texture":"machine1",
           "frames":2
         }
@@ -15,16 +16,19 @@
       "upgrades":[
         {
           "cost":500,
+          "gain":1.25,
           "texture":"compacteur1",
           "frames":2
         },
         {
-          "cost":2500,
+          "cost":5000,
+          "gain":20,
           "texture":"compacteur2",
           "frames":2
         },
         {
-          "cost":5000,
+          "cost":30000,
+          "gain":75,
           "texture":"compacteur3",
           "frames":2
         }
@@ -59,6 +63,17 @@
           "cost":1000,
           "texture":"ecoturbine1",
           "frames":3
+        }
+      ]
+    },
+    "tree1":{
+      "name":"Arbres fruitiers",
+      "isInside":true,
+      "upgrades":[
+        {
+          "cost":250,
+          "texture":"tree1",
+          "frames":1
         }
       ]
     }

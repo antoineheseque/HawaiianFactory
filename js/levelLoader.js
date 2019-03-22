@@ -4,6 +4,7 @@ class LoadLevel extends Phaser.Scene {
   {
     super({ key: 'loadLevel' });
     this.selectedObject = -1;
+    this.selectedType = 'none';
   }
 
   preload ()
@@ -21,9 +22,9 @@ class LoadLevel extends Phaser.Scene {
 
     // Get level file
     loadJSON('../levels/levels.json', function(response, phaser) {
-      var levels = JSON.parse(response);
+      phaser.levels = JSON.parse(response);
       // Get level JSON file
-      loadJSON('../levels/' + levels.start.world + '/' + levels.start.level + '.json', function(resp, phas) {
+      loadJSON('../levels/' + phaser.levels.start.world + '/' + phaser.levels.start.level + '.json', function(resp, phas) {
         phas.levelJSON = JSON.parse(resp);
       }, phaser);
     }, this);
@@ -73,7 +74,7 @@ class LoadLevel extends Phaser.Scene {
     this.mouseInteraction.preload();
     this.cameraMovement = new CameraMovement(this);
 
-    this.UI = this.scene.launch('gameUI', this);
+    this.scene.launch('gameUI', this);
     this.game = this.scene.launch('gameEngine', this);
     console.log("Map loaded!");
   }

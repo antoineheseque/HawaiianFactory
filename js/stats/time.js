@@ -5,6 +5,7 @@ class Time{
 
     this.width = game.cameras.main.width;
     this.height = game.cameras.main.height;
+    this.time = 0
     this.preload();
   }
 
@@ -24,9 +25,17 @@ class Time{
     this.timeText.setOrigin(0.5, 0.5);
   }
 
+  // this.phaser.cameras.main.shake(1000, 0.02);
+  // Effet pour eruption volcanique
+
+
   update(time){
-    this.date.setMinutes(this.date.getMinutes()+150);
-    this.timeText.text = this.formatDate(this.date);
+    if(time - this.time > 150){
+      this.date.setDate(this.date.getDate()+1);
+      this.timeText.text = this.formatDate(this.date);
+      this.money += this.addMoneyAmount;
+      this.time = time;
+    }
   }
 
   formatDate(date) {

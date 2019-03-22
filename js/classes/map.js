@@ -38,12 +38,25 @@ class Map {
     // Bien sur un sol et aucun objet deja present
     if(this.objects[y][x] == null){
       if(this.phaser.money.buy(stats.upgrades[0].cost)){
-        if(this.background[y][x].stats.name == 13 && type == 'machines')
-          this.objects[y][x] = new Machine('machines', stats, x, y, this);
+
+        if(this.background[y][x].stats.name == 13){
+          if(type == 'machines')
+            this.objects[y][x] = new Machine('machines', stats, x, y, this);
+          else if(type == 'environment' && stats.isInside) // Si l'objet est un environnnement interieur
+            this.objects[y][x] = new Environment('environment', stats, x, y, this);
+        }
         else if(this.background[y][x].stats.name == 1 && type == 'environment')
           this.objects[y][x] = new Environment('environment', stats, x, y, this);
-            // NEW TILE EST TEMPORAIRE
       }
     }
+  }
+
+  removeObject(obj){
+    this.phaser.money.sell(obj.stats.upgrades[obj.level-1].cost/2);
+    if(obj.type == 'machines')
+      this.phaser.money.removeMoneyEachDay(obj.stats.upgrades[obj.level-1].gain);
+    this.objects[obj.y][obj.x].image.destroy();
+    this.objects[obj.y][obj.x] = null;
+
   }
 }

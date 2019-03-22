@@ -12,32 +12,27 @@ class MainMenu extends Phaser.Scene {
 
     // Change background color
     this.cameras.main.setBackgroundColor('#03396C');
-    console.log("MENU SHOWN");
-
-    // Name text ///////////////
-    var name = this.make.text({
-      x: width / 2,
-      y: height / 2 - 40,
-      text: 'Hawaiian Factory',
-      style: {
-        font: '36px monospace',
-        fill: '#ffffff'
-      }
-    });
-    name.setOrigin(0.5, 0.5);
   }
 
   create ()
   {
+    var width = this.cameras.main.width;
+    var height = this.cameras.main.height;
+
     /*var player = prompt("Entrez le nom du directeur :", "Gilbert Montagné");
     this.username = player;*/
-    //var music = this.sound.add('theme');
-    this.username = "Gilbert Montagné";
-    this.clickButton = this.add.text(this.cameras.main.width/2, this.cameras.main.height/2 + 100, 'Play!', { fill: '#0f0' })
-      .setInteractive()
-      .on('pointerdown', () => this.scene.start('loadLevel'));
-    //music.play();
 
+    var music = this.sound.add('theme');
+    music.play();
+
+    this.username = "Gilbert Montagné";
+
+    var background = this.add.image(0,0,'background').setOrigin(0,0).setDisplaySize(width, height);
+
+    var logo = this.add.image(width/2, height/2-100, 'logo').setDisplaySize(400, 100);
+
+    var play = this.add.image(width/2, height/2+100, 'play').setDisplaySize(140, 100).setInteractive()
+    .on('pointerdown', () => this.scene.start('loadLevel'));
   }
 
 }
