@@ -390,7 +390,7 @@ class GameUI extends Phaser.Scene {
       });
       this.container.add(upgrade);
 
-      var sell = this.add.text(this.width - 190, 320, 'Vendre pour ' + object.stats.upgrades[0].cost/2, { wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      var sell = this.add.text(this.width - 190, 320, 'Vendre pour ' + object.stats.upgrades[object.level-1].cost/2, { wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
       {
         this.level.level.removeObject(object);
         if(this.container != null)

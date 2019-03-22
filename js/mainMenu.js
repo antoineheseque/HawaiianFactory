@@ -29,9 +29,9 @@ class MainMenu extends Phaser.Scene {
 
     var background = this.add.image(0,0,'background').setOrigin(0,0).setDisplaySize(width, height);
 
-    var logo = this.add.image(width/2, height/2-100, 'logo').setDisplaySize(400, 100);
+    var logo = this.add.image(width/2, height/2-100, 'logo').setDisplaySize(450, 100);
 
-    var play = this.add.image(width/2, height/2+100, 'play').setDisplaySize(140, 100).setInteractive()
+    var play = this.add.image(width/2, height/2+100, 'play').setDisplaySize(160, 80).setInteractive()
     .on('pointerdown', () => this.scene.start('loadLevel'));
   }
 

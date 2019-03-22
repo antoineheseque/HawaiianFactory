@@ -19,6 +19,7 @@ class GameEngine extends Phaser.Scene {
   create ()
   {
     console.log("ENGINE loaded!");
+    this.level.money.create();
   }
 
   update (time, delta)

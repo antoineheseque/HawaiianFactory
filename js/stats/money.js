@@ -10,9 +10,9 @@ class MoneyStat{
   preload(){
     var mBackground = this.game.add.graphics();
     mBackground.fillStyle(0x222222, 0.8);
-    mBackground.fillRect(10, 10, 100, 40);
+    mBackground.fillRect(10, 10, 140, 40);
     this.moneyText = this.game.make.text({
-      x: 60,
+      x: 100,
       y: 30,
       text: '0 $',
       style: {
@@ -30,6 +30,10 @@ class MoneyStat{
       // deleteOnMatch: false,
     });
     this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; }, this);
+  }
+
+  create(){
+    this.game.add.image(35, 30, 'gold');
   }
 
   update(time){
