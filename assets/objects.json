@@ -1,17 +1,5 @@
 {
-  "machines":{
-    "machine1":{
-      "name":"Machine à levier",
-      "upgrades":[
-        {
-          "cost":1000,
-          "gain":2.5,
-          "texture":"machine1",
-          "frames":2
-        }
-      ]
-    },
-    "compacteur1":{
+  "machines":{"compacteur1":{
       "name":"Compacteur à déchets",
       "upgrades":[
         {
@@ -30,6 +18,17 @@
           "cost":30000,
           "gain":75,
           "texture":"compacteur3",
+          "frames":2
+        }
+      ]
+    },
+    "machine1":{
+      "name":"Machine à levier",
+      "upgrades":[
+        {
+          "cost":1000,
+          "gain":2.5,
+          "texture":"machine1",
           "frames":2
         }
       ]
@@ -74,6 +73,31 @@
           "cost":250,
           "texture":"tree1",
           "frames":1
+        }
+      ]
+    },
+    "buisson1":{
+      "name":"Buisson à fruits rouge",
+      "upgrades":[
+        {
+          "cost":750,
+          "texture":"buisson1",
+          "frames":3
+        },
+        {
+          "cost":15000,
+          "texture":"buisson2",
+          "frames":3
+        }
+      ]
+    },
+    "tree2":{
+      "name":"Arbre",
+      "upgrades":[
+        {
+          "cost":50,
+          "texture":"tree2",
+          "frames":2
         }
       ]
     }

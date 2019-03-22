@@ -1,12 +1,38 @@
-{
-  "start": {
-    "world": "Kauai",
-    "level": "level_01"
+[
+  {
+    "name":"Kauai",
+    "machines":{
+      "start":3,
+      "max":6,
+      "cost":3000
+    },
+    "rent":0
   },
-  "worlds": [
-    "Kauai",
-    "Honolulu",
-    "Maui",
-    "Hawaii"
-  ]
-}
+  {
+    "name":"Honolulu",
+    "machines":{
+      "start":5,
+      "max":10,
+      "cost":7500
+    },
+    "rent":750
+  },
+  {
+    "name":"Mauai",
+    "machines":{
+      "start":10,
+      "max":15,
+      "cost":3500
+    },
+    "rent":2500
+  },
+  {
+    "name":"Hawaii",
+    "machines":{
+      "start":10,
+      "max":20,
+      "cost":10000
+    },
+    "rent":5000
+  }
+]

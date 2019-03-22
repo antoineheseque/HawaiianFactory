@@ -106,7 +106,7 @@ class GameUI extends Phaser.Scene {
       var gain = this.make.text({
         x: this.width - 190,
         y: 40,
-        text: 'Ile: ' + this.level.levels.start.world,
+        text: 'Ile: ' + this.level.worlds[this.level.worldIndex].name,
         style: {
           font: '16px monospace',
           fill: '#ffffff',
@@ -121,9 +121,9 @@ class GameUI extends Phaser.Scene {
     this.level.selectedType = 'none';
     var container = this.add.container(300, this.height-this.menuSize);
     container.width = 500;
-    var machinesButton = this.add.text(200, 50, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
+    var machinesButton = this.add.text(200, 50, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);
     container.add(machinesButton);
-    var environmentButton = this.add.text(300, 50, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);;
+    var environmentButton = this.add.text(300, 50, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);
     container.add(environmentButton);
 
     machinesButton.on('pointerdown', () => {

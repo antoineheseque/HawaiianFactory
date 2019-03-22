@@ -74,5 +74,13 @@ class MouseInteraction{
         this.oldY = wP.y;
       }
     }
+    else{
+      if(this.image != null){
+        this.image.destroy();
+      }
+      if(this.image2 != null){
+        this.image2.destroy();
+      }
+    }
   }
 }

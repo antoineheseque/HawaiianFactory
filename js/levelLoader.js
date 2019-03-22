@@ -22,9 +22,10 @@ class LoadLevel extends Phaser.Scene {
 
     // Get level file
     loadJSON('../levels/levels.json', function(response, phaser) {
-      phaser.levels = JSON.parse(response);
+      phaser.worlds = JSON.parse(response);
       // Get level JSON file
-      loadJSON('../levels/' + phaser.levels.start.world + '/' + phaser.levels.start.level + '.json', function(resp, phas) {
+      phaser.worldIndex = 0;
+      loadJSON('../levels/' + phaser.worlds[0].name + '/level_01.json', function(resp, phas) {
         phas.levelJSON = JSON.parse(resp);
       }, phaser);
     }, this);
