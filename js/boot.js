@@ -3,10 +3,12 @@ class Boot extends Phaser.Scene{
   constructor ()
   {
     super({ key: 'boot' });
+    // Load music
   }
 
   preload ()
   {
+    this.load.audio('theme', ['../musics/StompDance.mp3']);
 
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
@@ -60,18 +62,51 @@ class Boot extends Phaser.Scene{
       }, this);
     }, this);
 
+    // Load JSON file into a dictionnary
+    loadJSON('../objects.json', function(response, phaser) {
+      var assets = JSON.parse(response);
+
+      // Load machines objects
+      Object.values(assets['machines']).forEach(function(element){ // Parcourir toute les images
+        element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
+          if(element2.frames > 1){ // Quand il n'y a qu'une frame pour l'upgrade
+            for(var i = 1; i <= element2.frames; i++){
+              phaser.load.image(element2.texture + '-' + i, 'images/objects/machines/' + element2.texture + '-' + i + '.png');
+            }
+          }
+          else{
+            phaser.load.image(element2.texture, 'images/objects/machines/' + element2.texture + '.png');
+          }
+        }, this);
+      }, this);
+
+      // Load environment objects
+      Object.values(assets['environment']).forEach(function(element){ // Parcourir toute les images
+        element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
+          if(element2.frames > 1){ // Quand il n'y a qu'une frame pour l'upgrade
+            for(var i = 1; i <= element2.frames; i++){
+              phaser.load.image(element2.texture + '-' + i, 'images/objects/environment/' + element2.texture + '-' + i + '.png');
+            }
+          }
+          else{
+            phaser.load.image(element2.texture, 'images/objects/environment/' + element2.texture + '.png');
+          }
+        }, element);
+      }, this);
+    }, this);
+
     // Load other images
     this.load.image('gray', 'images/ui/gray.png');
     this.load.image('red', 'images/ui/red.png');
-    this.load.image('play', 'images/ui/playButton.png');
+    this.load.image('play', 'images/ui/play.png');
+    this.load.image('logo', 'images/ui/logo.png');
+    this.load.image('background', 'images/ui/hawaii.jpg');
 
-    this.load.image('machine1-1', 'images/objects/machine1-1.png');
+
+    /*this.load.image('machine1-1', 'images/objects/machine1-1.png');
     this.load.image('machine1-2', 'images/objects/machine1-2.png');
     this.load.image('turbine1-1', 'images/objects/turbine1.png');
-    this.load.image('turbine1-2', 'images/objects/turbine2.png');
-
-    // Load music
-    this.load.audio('theme', ['../musics/4-mots-sur-un-piano.mp3']);
+    this.load.image('turbine1-2', 'images/objects/turbine2.png');*/
   }
 
   create ()
