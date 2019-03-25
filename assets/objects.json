@@ -32,6 +32,29 @@
           "frames":2
         }
       ]
+    },
+    "broyeur1":{
+      "name":"Broyeur à déchets",
+      "upgrades":[
+        {
+          "cost":15000,
+          "gain":15,
+          "texture":"broyeur1",
+          "frames":16
+        },
+        {
+          "cost":50000,
+          "gain":45,
+          "texture":"broyeur2",
+          "frames":17
+        },
+        {
+          "cost":100000,
+          "gain":150,
+          "texture":"broyeur3",
+          "frames":17
+        }
+      ]
     }
   },
   "environment":{
@@ -72,6 +95,17 @@
         {
           "cost":250,
           "texture":"tree1",
+          "frames":1
+        }
+      ]
+    },
+    "billard":{
+      "name":"Billard",
+      "isInside":true,
+      "upgrades":[
+        {
+          "cost":3000,
+          "texture":"billard",
           "frames":1
         }
       ]
