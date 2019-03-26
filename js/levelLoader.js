@@ -69,6 +69,10 @@ class LoadLevel extends Phaser.Scene {
 
     this.loadLevel(0);
 
+    this.miniCam = this.cameras.add(10, 50, 140, 85);
+    this.miniCam.setBounds(0, 0, this.maxWidth*32, this.maxHeight*32);
+    this.miniCam.setZoom(0.055);
+
     console.log("Map loaded!");
   }
 
