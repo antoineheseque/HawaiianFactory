@@ -19,16 +19,6 @@ class LoadLevel extends Phaser.Scene {
     }
 
     canvas[fullscreen.request]();*/
-
-    // Get level file
-    loadJSON('../levels/levels.json', function(response, phaser) {
-      phaser.worlds = JSON.parse(response);
-      // Get level JSON file
-      phaser.worldIndex = 0;
-      loadJSON('../levels/' + phaser.worlds[0].name + '/level_01.json', function(resp, phas) {
-        phas.levelJSON = JSON.parse(resp);
-      }, phaser);
-    }, this);
   }
 
   create ()
@@ -70,14 +60,36 @@ class LoadLevel extends Phaser.Scene {
       }, this);
     }, this);
 
-    this.level = new Map(this.levelJSON, this);
     this.mouseInteraction = new MouseInteraction(this);
     this.mouseInteraction.preload();
     this.cameraMovement = new CameraMovement(this);
 
     this.scene.launch('gameUI', this);
     this.game = this.scene.launch('gameEngine', this);
+
+    this.loadLevel(0);
+
     console.log("Map loaded!");
+  }
+
+  loadLevel(worldIndex){
+    this.worldIndex = worldIndex;
+    // Get level file
+    loadJSON('../levels/levels.json', function(response, phaser) {
+      phaser.worlds = JSON.parse(response);
+      // Get level JSON file
+
+      loadJSON('../levels/' + phaser.worlds[worldIndex].name + '/level_01.json', function(resp, phas) {
+        phas.levelJSON = JSON.parse(resp);
+      }, phaser);
+    }, this);
+
+    if(this.money){ // Si ce n'est pas le premier level
+      this.level.removeLevel();
+      this.money.money = 1000;
+      this.money.addMoneyAmount = 0;
+    }
+    this.level = new Map(this.levelJSON, this);
   }
 
   update (time, delta)

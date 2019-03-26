@@ -114,6 +114,59 @@ class GameUI extends Phaser.Scene {
         }
       });
       this.container.add(gain);
+
+      var upgrade = this.add.text(this.width - 150, 320, 'Changer d\'Usine', { fill: '#0f0' }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      {
+        this.loadFactoryRent();
+      });
+      this.container.add(upgrade);
+    }
+  }
+
+  loadFactoryRent(){
+    if(this.level.selectedObject < 0 && this.level.selectedType == 'none'){
+      this.level.selectedObject = -3;
+      if(this.container != null)
+        this.container.destroy();
+      this.container = this.showInformationsMenu();
+
+      var name = this.make.text({
+        x: this.width -100,
+        y: 20,
+        text: 'Changer d\'Usine',
+        style: {
+          font: '14px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 180 }
+        }
+      });
+      name.setOrigin(0.5, 0.5);
+      this.container.add(name);
+
+      // Show Level
+      var gain = this.make.text({
+        x: this.width - 190,
+        y: 40,
+        text: 'Ile: ' + this.level.worlds[this.level.worldIndex].name,
+        style: {
+          font: '16px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 200 }
+        }
+      });
+      this.container.add(gain);
+
+      var unlock = this.add.text(this.width - 180, 250, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 180 }}).setFontSize(16).setInteractive().on('pointerdown', () =>
+      {
+        this.level.loadLevel(this.level.worldIndex+1);
+      });
+      this.container.add(unlock);
+
+      var back = this.add.text(this.width - 150, 320, 'Retour', { fill: '#0f0' }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      {
+        this.loadFactoryDetails();
+      });
+      this.container.add(back);
     }
   }
 

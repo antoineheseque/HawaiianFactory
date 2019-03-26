@@ -13,9 +13,9 @@ class CameraMovement{
         right: rightKey,
         up: upKey,
         down: downKey,
-        acceleration: 0.05,
-        drag: 0.0003,
-        maxSpeed: 0.8
+        acceleration: 0.04,
+        drag: 0.0004,
+        maxSpeed: 0.6
     };
     this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
@@ -29,7 +29,7 @@ class CameraMovement{
     this.controls.update(delta);
     if(this.zoomIn.isDown && this.zoom < 1.8)
       this.zoom += 0.01;
-    if(this.zoomOut.isDown && this.zoom > 0.4)
+    if(this.zoomOut.isDown && this.zoom > 0.5)
       this.zoom -= 0.01;
     this.level.cameras.main.setZoom(this.zoom);
   }

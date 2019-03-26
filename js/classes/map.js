@@ -16,6 +16,7 @@ class Map {
     this.maxHeight = this.mapJSON.layers[0].height;
 
     this.phaser.cameras.main.setBounds(0, 0, this.maxWidth*32, this.maxHeight*32);
+    this.phaser.cameras.main.setScroll(this.maxWidth*16-450, this.maxHeight*16-250);
     //this.phaser.cameras.main.setViewport(0, 0, maxWidth*32, maxHeight*32);
     //this.cameras.main.centerOn(0, 0);
     for(var y = 0; y < this.maxHeight; y++){
@@ -47,6 +48,17 @@ class Map {
         }
         else if(this.background[y][x].stats.name == 1 && type == 'environment')
           this.objects[y][x] = new Environment('environment', stats, x, y, this);
+      }
+    }
+  }
+
+  removeLevel(){
+    for(var y = 0; y < this.maxHeight; y++){
+      for(var x = 0; x < this.maxWidth; x++){
+        if(this.background[y][x])
+          this.background[y][x].image.destroy();
+        if(this.objects[y][x])
+        this.background[y][x].image.destroy();
       }
     }
   }
