@@ -1,5 +1,6 @@
 {
-  "machines":{"compacteur1":{
+  "machines":{
+    "compacteur1":{
       "name":"Compacteur à déchets",
       "upgrades":[
         {

@@ -26,12 +26,12 @@ class GameUI extends Phaser.Scene {
     // Background Menu
     var bgMenu = this.add.graphics();
     bgMenu.fillStyle(0x222222, 0.7);
-    bgMenu.fillRect(300, this.height-this.menuSize, this.width-300, this.menuSize);
+    bgMenu.fillRect(500, this.height-this.menuSize, this.width-500, this.menuSize);
 
     // Background Factory
     var bgFactory = this.add.graphics();
     bgFactory.fillStyle(0x222222, 1);
-    bgFactory.fillRect(0, this.height-this.menuSize, 300, this.menuSize);
+    bgFactory.fillRect(0, this.height-this.menuSize, 500, this.menuSize);
 
     // Afficher le menu en bas
     this.loadMainMenu();
@@ -42,30 +42,11 @@ class GameUI extends Phaser.Scene {
   loadFactoryMenu(){
     var container = this.add.container(0, this.height-this.menuSize);
 
-    /*var progressBar1 = this.add.graphics();
-    var progressBox1 = this.add.graphics();
-    progressBox1.fillStyle(0xC5C5C5, 0.8);
-    progressBox1.fillRect(55, 10, 20, 60);
-    var percentText1 = this.make.text({
-      x: 75,
-      y: 65,
-      text: '0%',
-      style: {
-        font: '8px monospace',
-        fill: '#ffffff'
-      }
-    });
-    percentText1.setOrigin(0.5, 0.5);
-    container.add(progressBar1);
-    container.add(progressBox1);
-    container.add(percentText1);*/
-
     // Details Button
-    var factoryButton = this.add.text(150, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
+    var factoryButton = this.add.text(250, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setFontSize(16).setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
       this.loadFactoryDetails();
     });
     container.add(factoryButton);
-
   }
 
   loadFactoryDetails(){
@@ -77,45 +58,44 @@ class GameUI extends Phaser.Scene {
 
       // Show name
       var name = this.make.text({
-        x: this.width -100,
+        x: this.width - 130,
         y: 20,
         text: 'Détails de l\'Usine',
         style: {
-          font: '14px monospace',
+          font: '16px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 180 }
+          wordWrap: { width: 240 }
         }
       });
       name.setOrigin(0.5, 0.5);
       this.container.add(name);
 
-      // Show Level
-      var gain = this.make.text({
-        x: this.width - 190,
-        y: 65,
-        text: 'Gain: ' + (this.level.money.addMoneyAmount*30) + '€ / mois',
-        style: {
-          font: '12px monospace',
-          fill: '#ffffff',
-          wordWrap: { width: 200 }
-        }
-      });
-      this.container.add(gain);
-
-      // Show Level
-      var gain = this.make.text({
-        x: this.width - 190,
-        y: 40,
-        text: 'Ile: ' + this.level.worlds[this.level.worldIndex].name,
+      var ile = this.make.text({
+        x: this.width - 250,
+        y: 50,
+        text: 'L\'Usine est située à ' + this.level.worlds[this.level.worldIndex].name,
         style: {
           font: '16px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 200 }
+          wordWrap: { width: 240 }
+        }
+      });
+      this.container.add(ile);
+
+      // Show gain
+      var gain = this.make.text({
+        x: this.width - 250,
+        y: 80,
+        text: 'Gain: ' + (this.level.money.addMoneyAmount*30) + '€ / mois',
+        style: {
+          font: '16px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
         }
       });
       this.container.add(gain);
 
-      var upgrade = this.add.text(this.width - 150, 320, 'Changer d\'Usine', { fill: '#0f0' }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      var upgrade = this.add.text(this.width - 130, this.height - 130, 'Changer d\'Usine', { fill: '#0f0' }).setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
         this.loadFactoryRent();
       });
@@ -459,9 +439,9 @@ class GameUI extends Phaser.Scene {
     // Add Background
     var background = this.add.graphics();
     background.fillStyle(0x222222, 0.6);
-    background.fillRect(this.width - 200, 0, 200, this.height-100);
+    background.fillRect(this.width - 260, 0, 260, this.height-100);
     container.add(background);
-    var closeButton = this.add.text(this.width - 20, 10, 'X', { fill: '#0f0' }).setInteractive().on('pointerdown', () => { container.destroy(); this.level.selectedObject = -1;});
+    var closeButton = this.add.text(this.width - 20, 10, 'X', { fill: '#0f0' }).setFontSize(20).setInteractive().on('pointerdown', () => { container.destroy(); this.level.selectedObject = -1;});
     container.add(closeButton);
 
     return container;

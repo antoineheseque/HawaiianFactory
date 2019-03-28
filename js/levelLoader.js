@@ -10,7 +10,7 @@ class LoadLevel extends Phaser.Scene {
   preload ()
   {
     // FULLSCREEN (PROBLEM)
-    /*var canvas = this.sys.game.canvas;
+    var canvas = this.sys.game.canvas;
     var fullscreen = this.sys.game.device.fullscreen;
 
     if (!fullscreen.available)
@@ -18,7 +18,10 @@ class LoadLevel extends Phaser.Scene {
         return;
     }
 
-    canvas[fullscreen.request]();*/
+    canvas[fullscreen.request]();
+
+    this.width = this.cameras.main.width;
+    this.height = this.cameras.main.height;
   }
 
   create ()
@@ -98,7 +101,7 @@ class LoadLevel extends Phaser.Scene {
 
   update (time, delta)
   {
-    this.mouseInteraction.update();
+    //this.mouseInteraction.update();
     this.cameraMovement.update(delta);
   }
 

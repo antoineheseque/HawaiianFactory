@@ -27,10 +27,10 @@ class CameraMovement{
 
   update(delta){
     this.controls.update(delta);
-    if(this.zoomIn.isDown && this.zoom < 1.8)
-      this.zoom += 0.01;
+    if(this.zoomIn.isDown && this.zoom < 1.7)
+      this.zoom += 0.015;
     if(this.zoomOut.isDown && this.zoom > 0.5)
-      this.zoom -= 0.01;
+      this.zoom -= 0.015;
     this.level.cameras.main.setZoom(this.zoom);
   }
 }

@@ -1,7 +1,7 @@
 const engineConfig = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 450,
+    width: 1200, //800
+    height: 800, //450
     pixelArt: false, // true or false
     physics: {
         default: 'arcade',

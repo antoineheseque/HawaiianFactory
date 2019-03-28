@@ -16,8 +16,8 @@ class Map {
     this.maxHeight = this.mapJSON.layers[0].height;
 
     this.phaser.cameras.main.setBounds(0, 0, this.maxWidth*32, this.maxHeight*32);
+    this.phaser.cameras.main.setViewport(0, 0, this.phaser.width, this.phaser.height-100);
     this.phaser.cameras.main.centerToBounds();
-    //this.phaser.cameras.main.setViewport(0, 0, maxWidth*32, maxHeight*32);
     //this.cameras.main.centerOn(0, 0);
     for(var y = 0; y < this.maxHeight; y++){
       for(var x = 0; x < this.maxWidth; x++){
