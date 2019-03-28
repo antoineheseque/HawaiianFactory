@@ -111,38 +111,37 @@ class GameUI extends Phaser.Scene {
       this.container = this.showInformationsMenu();
 
       var name = this.make.text({
-        x: this.width -100,
+        x: this.width -130,
         y: 20,
         text: 'Changer d\'Usine',
         style: {
-          font: '14px monospace',
+          font: '16px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 180 }
+          wordWrap: { width: 240 }
         }
       });
       name.setOrigin(0.5, 0.5);
       this.container.add(name);
 
-      // Show Level
-      var gain = this.make.text({
-        x: this.width - 190,
-        y: 40,
-        text: 'Ile: ' + this.level.worlds[this.level.worldIndex].name,
+      var ile = this.make.text({
+        x: this.width - 250,
+        y: 50,
+        text: 'L\'Usine est située à ' + this.level.worlds[this.level.worldIndex].name,
         style: {
           font: '16px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 200 }
+          wordWrap: { width: 240 }
         }
       });
-      this.container.add(gain);
+      this.container.add(ile);
 
-      var unlock = this.add.text(this.width - 180, 250, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 180 }}).setFontSize(16).setInteractive().on('pointerdown', () =>
+      var unlock = this.add.text(this.width - 130, this.height - 200, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 250 }}).setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
         this.level.loadLevel(this.level.worldIndex+1);
       });
       this.container.add(unlock);
 
-      var back = this.add.text(this.width - 150, 320, 'Retour', { fill: '#0f0' }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      var back = this.add.text(this.width - 130, this.height - 130, 'Retour', { fill: '#0f0' }).setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
         this.loadFactoryDetails();
       });
@@ -356,13 +355,13 @@ class GameUI extends Phaser.Scene {
 
       // Show name
       var name = this.make.text({
-        x: this.width -100,
+        x: this.width - 130,
         y: 20,
         text: object.stats.name,
         style: {
-          font: '14px monospace',
+          font: '16px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 180 }
+          wordWrap: { width: 240 }
         }
       });
       name.setOrigin(0.5, 0.5);
@@ -398,7 +397,7 @@ class GameUI extends Phaser.Scene {
       }
 
       // Show Button upgrade
-      var cost = 'Augmenter au niveau 2 pour 0 $';
+      var cost = '';
       if(object.stats.upgrades.length > object.level){
         var price = object.stats.upgrades[object.level].cost;
         cost = 'Augmenter au niveau ' + (object.level+1) + ' pour ' + price + ' €';
