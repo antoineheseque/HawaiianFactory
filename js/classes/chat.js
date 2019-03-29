@@ -18,7 +18,7 @@ class Chat{
       resetOnMatch: true,
       // deleteOnMatch: false,
     });
-    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { console.log('played'); this.open('volcan'); }, this);
+    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { console.log('played'); this.open('prime1'); }, this);
   }
 
   open(key){
@@ -27,7 +27,7 @@ class Chat{
     var fontChat = this.level.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
     fontChat.fillRect(250, 200, this.level.width-500, 200);
-    var girl = this.level.UI.add.image(250, 224, 'girl5').setScale(0.4);
+    var girl = this.level.UI.add.image(250, 224, 'girl7').setScale(0.4);
     var msg = this.chat[key].text;
     var chat = this.level.UI.make.text({
       x: 390,
