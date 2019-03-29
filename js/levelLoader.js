@@ -9,17 +9,6 @@ class LoadLevel extends Phaser.Scene {
 
   preload ()
   {
-    // FULLSCREEN (PROBLEM)
-    var canvas = this.sys.game.canvas;
-    var fullscreen = this.sys.game.device.fullscreen;
-
-    if (!fullscreen.available)
-    {
-        return;
-    }
-
-    canvas[fullscreen.request]();
-
     this.width = this.cameras.main.width;
     this.height = this.cameras.main.height;
   }
