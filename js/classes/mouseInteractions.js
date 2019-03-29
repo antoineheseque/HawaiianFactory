@@ -30,7 +30,7 @@ class MouseInteraction{
         }
 
         if(this.level.selectedObject < 0){
-          this.image = this.level.add.image(x*32, y*32, 'gray').setOrigin(0, 0).setAlpha(0.5);
+          this.image = this.level.add.sprite(x*32, y*32, 'gray-1').play('gray').setOrigin(0, 0).setAlpha(0.5);
         }
         else { // Si on a un objet
 
@@ -43,23 +43,23 @@ class MouseInteraction{
               (this.level.selectedType == 'machines' || (this.level.selectedType == 'environment' && stats.isInside)))
             {
 
-              this.image = this.level.add.image(x*32, y*32, 'gray').setOrigin(0, 0).setAlpha(0.5);
+              this.image = this.level.add.sprite(x*32, y*32, 'gray-1').play('gray').setOrigin(0, 0).setAlpha(0.5);
               this.image.setInteractive().on('pointerdown', () => {
                 this.level.level.addObject(this.level.selectedType, stats, x, y);
               });
             }
             else if(this.level.level.background[y][x].stats.name == 1 && this.level.selectedType == 'environment'){
-              this.image = this.level.add.image(x*32, y*32, 'gray').setOrigin(0, 0).setAlpha(0.5);
+              this.image = this.level.add.sprite(x*32, y*32, 'gray-1').play('gray').setOrigin(0, 0).setAlpha(0.5);
               this.image.setInteractive().on('pointerdown', () => {
                 this.level.level.addObject(this.level.selectedType, stats, x, y);
               });
             }
             else {
-              this.image = this.level.add.image(x*32, y*32, 'red').setOrigin(0, 0).setAlpha(0.5);
+              this.image = this.level.add.sprite(x*32, y*32, 'red-1').play('red').setOrigin(0, 0).setAlpha(0.5);
             }
           }
           else {
-            this.image = this.level.add.image(x*32, y*32, 'red').setOrigin(0, 0).setAlpha(0.5);
+            this.image = this.level.add.sprite(x*32, y*32, 'red-1').play('red').setOrigin(0, 0).setAlpha(0.5);
           }
           this.image2 = this.level.add.image(x*32, y*32, image).setOrigin(0, 0);
         }

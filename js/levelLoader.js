@@ -36,6 +36,28 @@ class LoadLevel extends Phaser.Scene {
         }, this);
       }, this);
 
+      // Load cursor
+      phaser.anims.create({
+          key: 'gray',
+          frames: [
+            { key: 'gray-1' },
+            { key: 'gray-2' },
+            { key: 'gray-3' }
+          ],
+          frameRate: 3,
+          repeat: -1
+      });
+      phaser.anims.create({
+          key: 'red',
+          frames: [
+            { key: 'red-1' },
+            { key: 'red-2' },
+            { key: 'red-3' }
+          ],
+          frameRate: 3,
+          repeat: -1
+      });
+
       // Load environment objects
       Object.values(assets['environment']).forEach(function(element){ // Parcourir toute les images
         element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
