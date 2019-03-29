@@ -1,7 +1,6 @@
 class Chat{
   constructor(level){
     this.level = level;
-    this.typeSpeed = 0.5;
     this.preload();
   }
 
@@ -22,25 +21,39 @@ class Chat{
   }
 
   open(key){
-    this.container = this.level.UI.add.container(0, 300);
 
+    this.container = this.level.UI.add.container(300, 500);
     var fontChat = this.level.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
-    fontChat.fillRect(250, 200, this.level.width-500, 200);
-    var girl = this.level.UI.add.image(250, 224, 'girl7').setScale(0.4);
+    fontChat.fillRect(0, 0, this.level.width-500, 200);
+    var girl = this.level.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
     var chat = this.level.UI.make.text({
-      x: 390,
-      y: 224,
+      x: 130,
+      y: 20,
       text: msg,
       style: {
         font: '30px monospace',
         fill: '#ffffff',
-        wordWrap: { width: this.level.width-500 - 270}
+        wordWrap: { width: this.level.width-500 - 145}
       }
+    });
+    girl.setInteractive().on('pointerdown', () =>
+    {
+      var girl = this.level.UI.add.image(0, 25, 'girl' + 6).setScale(0.4);
+      this.container.add(girl);
+    });
+    fontChat.setInteractive().on('pointerdown', () =>
+    {
+      this.container.destroy();
+    });
+    chat.setInteractive().on('pointerdown', () =>
+    {
+      this.container.destroy();
     });
     this.container.add(fontChat);
     this.container.add(girl);
     this.container.add(chat);
+
   }
 }

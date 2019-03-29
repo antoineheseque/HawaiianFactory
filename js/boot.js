@@ -110,7 +110,7 @@ class Boot extends Phaser.Scene{
     this.load.image('red-2', 'images/ui/cursor1-2.png');
     this.load.image('red-3', 'images/ui/cursor1-3.png');
 
-    for(var i = 1; i <= 7; i++){
+    for(var i = 1; i <= 8; i++){
       this.load.image('girl'+i, 'images/ui/girl/' + i + '.png');
     }
   }
