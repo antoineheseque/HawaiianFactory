@@ -23,14 +23,32 @@
         }
       ]
     },
-    "machine1":{
-      "name":"Machine à levier",
+    "generateur1":{
+      "name":"Générateur de courant",
       "upgrades":[
         {
-          "cost":1000,
-          "gain":2.5,
-          "texture":"machine1",
-          "frames":2
+          "cost":500,
+          "gain":1.25,
+          "texture":"generateur1",
+          "frames":4
+        },
+        {
+          "cost":5000,
+          "gain":20,
+          "texture":"generateur2",
+          "frames":4
+        },
+        {
+          "cost":30000,
+          "gain":75,
+          "texture":"generateur3",
+          "frames":4
+        },
+        {
+          "cost":50000,
+          "gain":100,
+          "texture":"generateur4",
+          "frames":4
         }
       ]
     },
