@@ -66,6 +66,7 @@ class LoadLevel extends Phaser.Scene {
     this.mouseInteraction = new MouseInteraction(this);
     this.mouseInteraction.preload();
     this.cameraMovement = new CameraMovement(this);
+    this.chat = new Chat(this);
 
     this.scene.launch('gameUI', this);
     this.game = this.scene.launch('gameEngine', this);

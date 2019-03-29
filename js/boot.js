@@ -103,11 +103,16 @@ class Boot extends Phaser.Scene{
     this.load.image('gold', 'images/ui/gold.png');
     this.load.image('background', 'images/ui/hawaii.jpg');
 
+    this.load.image('gray-1', 'images/ui/sprite2-1.png');
+    this.load.image('gray-2', 'images/ui/sprite2-2.png');
+    this.load.image('gray-3', 'images/ui/sprite2-3.png');
+    this.load.image('red-1', 'images/ui/cursor1-1.png');
+    this.load.image('red-2', 'images/ui/cursor1-2.png');
+    this.load.image('red-3', 'images/ui/cursor1-3.png');
 
-    /*this.load.image('machine1-1', 'images/objects/machine1-1.png');
-    this.load.image('machine1-2', 'images/objects/machine1-2.png');
-    this.load.image('turbine1-1', 'images/objects/turbine1.png');
-    this.load.image('turbine1-2', 'images/objects/turbine2.png');*/
+    for(var i = 1; i <= 7; i++){
+      this.load.image('girl'+i, 'images/ui/girl/' + i + '.png');
+    }
   }
 
   create ()
