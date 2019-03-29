@@ -1,4 +1,14 @@
 {
-  "volcan":"Le volcan va exploser MonSeigneur",
-  "volcan2":"Le volcan va exploser MonSeigneur2"
+  "volcan": {
+    "text":"Le volcan va exploser MonSeigneur",
+    "texture":"1"
+    },
+    "taxe1": {
+      "text":"Le gouvernement attaque les usines produisant des déchets plastiques ! Une taxe de 20% a été appliqué !",
+      "texture":"1"
+    },
+    "prime1": {
+      "text":"Le gouvernement offre des primes de fin d'année ! Productivité augmenté de 20 % pendant les fêtes!",
+      "texture":"1"
+    }
 }
