@@ -8,7 +8,7 @@ class Tile{
       this.image = level.phaser.add.image(32*x, 32*y, 'tile' + stats.name).setOrigin(0, 0).setInteractive().on('pointerover', () => {
         level.phaser.mouseInteraction.update(x,y);
       }).on('pointerdown', () => {
-        if(level.phaser.UI.selectedObject < 0){
+        if(level.phaser.selectedObject < -1){
           level.phaser.UI.container.destroy();
           level.phaser.selectedObject = -1;
         }
