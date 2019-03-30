@@ -17,6 +17,10 @@ class Event{
     console.log("Volcan");
   }
 
+  update(time){
+    
+  }
+
   rand(){
     if(1 == this.getRandomInt(30)) // Une chance sur 30+1 de réliser l'event
       this.erruption();

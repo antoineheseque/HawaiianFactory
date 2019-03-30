@@ -31,5 +31,6 @@ class GameEngine extends Phaser.Scene {
   {
     this.level.money.update(time);
     this.level.time.update(time);
+    this.level.event.update(time);
   }
 }
