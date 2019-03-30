@@ -14,16 +14,17 @@ class Event{
 
   erruption(){
     this.level.chat.open("volcan");
-    console.log("Volcan");
+    this.level.cameras.main.shake(1000, 0.02); // Effet pour eruption volcanique
   }
 
   update(time){
-    
+    if(time > 150){
+      this.rand();
+    }
   }
 
   rand(){
-    if(1 == this.getRandomInt(30)) // Une chance sur 30+1 de réliser l'event
+    if(1 == this.getRandomInt(300000)) // Une chance sur X+1 de réliser l'event
       this.erruption();
   }
-
 }

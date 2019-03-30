@@ -20,14 +20,20 @@ class Chat{
       // deleteOnMatch: false,
     });
     //this.open('prime1');
-    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open('prime1'); }, this); 
+    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open('prime1'); }, this);
   }
 
   open(key){
+    if(this.container != null)
+      this.container.destroy();
+
     this.container = this.level.UI.add.container(300, 500);
     var fontChat = this.level.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
     fontChat.fillRect(0, 0, this.level.width-500, 200);
+    console.log(this.level.width-500);
+    var destroyBox = this.level.UI.add.image(470, 0, 'blank');
+
     var girl = this.level.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
     var message = this.level.UI.make.text({
@@ -42,20 +48,20 @@ class Chat{
     });
     girl.setInteractive().on('pointerdown', () =>
     {
-      var girl = this.level.UI.add.image(0, 25, 'girl' + 6).setScale(0.4);
-      this.container.add(girl);
+      //var girl = this.level.UI.add.image(0, 25, 'girl' + 6).setScale(0.4);
+      //this.container.add(girl);
+      this.open('touche');
     });
-    fontChat.setInteractive().on('pointerdown', () =>
+    destroyBox.setInteractive().on('pointerdown', () =>
     {
+      console.log("Destroy");
       this.container.destroy();
     });
-    message.setInteractive().on('pointerdown', () =>
-    {
-      this.container.destroy();
-    });
+
     this.container.add(fontChat);
     this.container.add(girl);
     this.container.add(message);
+    this.container.add(destroyBox);
 
   }
 }

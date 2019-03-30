@@ -31,7 +31,6 @@ class Time{
 
   update(time){
     if(time - this.time > 150){
-      //this.event = new Event(this)
       this.date.setDate(this.date.getDate()+1);
       this.timeText.text = this.formatDate(this.date);
       this.money += this.addMoneyAmount;
