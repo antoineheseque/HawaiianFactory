@@ -1,15 +1,23 @@
 {
   "_commentaire": "1 timide, 2 souriante, 3 étonné, 4 triste, 5 énnervé (en à ras la casquette), 6 énnervé (en à ras la casquette) ++, 7 souriante ++ ,7 triste ++",
+  "bienvenue1": {
+    "text":"Bonjour, je suis Julie votre assistante ...",
+    "texture":"1"
+  },
   "volcan": {
     "text":"Le volcan va bientôt exploser MonSeigneur",
     "texture":"3"
-    },
-    "taxe1": {
+  },
+  "taxe1": {
       "text":"Le gouvernement attaque les usines produisant des déchets plastiques ! Une taxe de 20% a été appliqué !",
       "texture":"6"
-    },
-    "prime1": {
+  },
+  "prime1": {
       "text":"Le gouvernement offre des primes de fin d'année ! Productivité augmenté de 20 % pendant les fêtes!",
       "texture":"7"
-    }
+  },
+  "touche": {
+      "text":"Bas les pattes ! ",
+      "texture":"6"
+  }
 }
