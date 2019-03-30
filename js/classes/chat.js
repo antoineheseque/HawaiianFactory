@@ -10,6 +10,8 @@ class Chat{
       mI.chat = JSON.parse(response);
     }, this);
 
+    console.log('open chat');
+
     // Cheat code
     var keyCombo = this.level.input.keyboard.createCombo(['T','X','T'], {
       resetOnWrongKey: true,
@@ -17,8 +19,8 @@ class Chat{
       resetOnMatch: true,
       // deleteOnMatch: false,
     });
-    //this.open('prime1'); //Fonctionne pas
-    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open('prime1'); }, this); //Fonctionne
+    //this.open('prime1');
+    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open('prime1'); }, this); 
   }
 
   open(key){

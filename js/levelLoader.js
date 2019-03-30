@@ -82,8 +82,6 @@ class LoadLevel extends Phaser.Scene {
     this.scene.launch('gameUI', this);
     this.game = this.scene.launch('gameEngine', this);
 
-    this.chat = new Chat(this);
-
     this.loadLevel(0);
 
     this.miniCam = this.cameras.add(10, 50, 140, 85);
