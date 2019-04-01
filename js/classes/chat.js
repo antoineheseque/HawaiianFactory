@@ -10,17 +10,12 @@ class Chat{
       mI.chat = JSON.parse(response);
     }, this);
 
-    console.log('open chat');
-
     // Cheat code
-    var keyCombo = this.level.input.keyboard.createCombo(['T','X','T'], {
+    /*var keyCombo = this.level.input.keyboard.createCombo(['T','X','T'], {
       resetOnWrongKey: true,
-      // maxKeyDelay: 0,
       resetOnMatch: true,
-      // deleteOnMatch: false,
     });
-    //this.open('prime1');
-    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open('prime1'); }, this);
+    this.level.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open('prime1'); }, this);*/
   }
 
   open(key){
@@ -36,7 +31,7 @@ class Chat{
     var fontChat = this.level.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
     fontChat.fillRect(0, 0, this.level.width-500, 200);
-    var destroyBox = this.level.UI.add.image(470, 0, 'blank');
+    var destroyBox = this.level.UI.add.image(350, 100, 'blank');
 
     // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
     if(key != 'touche')
@@ -71,9 +66,8 @@ class Chat{
     });
 
     this.container.add(fontChat);
-    this.container.add(girl);
     this.container.add(message);
     this.container.add(destroyBox);
-
+    this.container.add(girl);
   }
 }
