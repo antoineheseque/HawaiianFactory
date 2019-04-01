@@ -43,7 +43,7 @@ class GameUI extends Phaser.Scene {
     var container = this.add.container(0, this.height-this.menuSize);
 
     // Details Button
-    var factoryButton = this.add.text(250, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setFontSize(16).setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
+    var factoryButton = this.add.text(250, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
       this.loadFactoryDetails();
     });
     container.add(factoryButton);
@@ -95,7 +95,7 @@ class GameUI extends Phaser.Scene {
       });
       this.container.add(gain);
 
-      var upgrade = this.add.text(this.width - 130, this.height - 130, 'Changer d\'Usine', { fill: '#0f0' }).setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
+      var upgrade = this.add.text(this.width - 130, this.height - 130, 'Changer d\'Usine', { fill: '#0f0' }).setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
         this.loadFactoryRent();
       });
@@ -135,7 +135,7 @@ class GameUI extends Phaser.Scene {
       });
       this.container.add(ile);
 
-      var unlock = this.add.text(this.width - 130, this.height - 200, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 250 }}).setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
+      var unlock = this.add.text(this.width - 130, this.height - 200, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 250 }}).setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
         this.level.loadLevel(this.level.worldIndex+1);
       });
@@ -151,11 +151,11 @@ class GameUI extends Phaser.Scene {
 
   loadMainMenu(){
     this.level.selectedType = 'none';
-    var container = this.add.container(300, this.height-this.menuSize);
+    var container = this.add.container(500, this.height-this.menuSize);
     container.width = 500;
-    var machinesButton = this.add.text(200, 50, 'Machines', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);
+    var machinesButton = this.add.text(250, 50, 'Machines', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(machinesButton);
-    var environmentButton = this.add.text(300, 50, 'Environment', { fill: '#0f0' }).setInteractive().setOrigin(0.5, 0.5);
+    var environmentButton = this.add.text(450, 50, 'Environment', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(environmentButton);
 
     machinesButton.on('pointerdown', () => {
@@ -169,11 +169,11 @@ class GameUI extends Phaser.Scene {
   }
 
   loadMachinesMenu(){
-    var container = this.add.container(300, this.height-100);
+    var container = this.add.container(500, this.height-100);
     container.width = 500;
     this.level.selectedType = 'machines';
 
-    var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
+    var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive();
     container.add(clickButton);
 
     // Vérifier si un menu d'info n'est pas ouvert
@@ -182,15 +182,15 @@ class GameUI extends Phaser.Scene {
       this.level.UI.container.destroy();
     }
 
-    var x = 100;
-    var y = 20;
+    var x = 115;
+    var y = 25;
     Object.values(this.objects['machines']).forEach(function(element, index) {
       //var el = gameUI.objects['environment'][element];
 
       // Si il y a une animation
       if(element.upgrades[0].frames > 1){
         var name = element.upgrades[0].texture;
-        var machine = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+        var machine = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
@@ -201,7 +201,7 @@ class GameUI extends Phaser.Scene {
         });
       }
       else{
-        var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+        var obj = this.add.image(x, y, element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
@@ -212,10 +212,10 @@ class GameUI extends Phaser.Scene {
         });
       }
       container.add(machine);
-      x += 40;
-      if(x > 600){
-        x = 100;
-        y += 40;
+      x += 60;
+      if(x > 700){
+        x = 115;
+        y += 55;
       }
     }, this);
 
@@ -232,11 +232,11 @@ class GameUI extends Phaser.Scene {
   }
 
   loadEnvironmentMenu(){
-    var container = this.add.container(300, this.height-100);
+    var container = this.add.container(500, this.height-100);
     container.width = 500;
     this.level.selectedType = 'environment';
 
-    var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setInteractive();
+    var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive();
     container.add(clickButton);
 
     // Vérifier si un menu d'info n'est pas ouvert
@@ -245,15 +245,15 @@ class GameUI extends Phaser.Scene {
       this.level.UI.container.destroy();
     }
 
-    var x = 100;
-    var y = 20;
+    var x = 115;
+    var y = 25;
 
     Object.values(this.objects['environment']).forEach(function(element, index) {
 
       // Si il y a une animation
       if(element.upgrades[0].frames > 1){
         var name = element.upgrades[0].texture;
-        var obj = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+        var obj = this.add.sprite(x, y, element.upgrades[0].texture + '-1').setScale(1.5).play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
@@ -264,7 +264,7 @@ class GameUI extends Phaser.Scene {
         });
       }
       else{
-        var obj = this.add.image(x, y, element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
+        var obj = this.add.image(x, y, element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
@@ -275,10 +275,10 @@ class GameUI extends Phaser.Scene {
         });
       }
       container.add(obj);
-      x += 40;
-      if(x > 600){
-        x = 100;
-        y += 40;
+      x += 60;
+      if(x > 700){
+        x = 115;
+        y += 50;
       }
     }, this);
 
