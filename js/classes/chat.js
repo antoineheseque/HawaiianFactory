@@ -38,7 +38,11 @@ class Chat{
     fontChat.fillRect(0, 0, this.level.width-500, 200);
     console.log(this.level.width-500);
     var destroyBox = this.level.UI.add.image(470, 0, 'blank');
-    this.key = key;
+
+    // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
+    if(key != 'touche')
+      this.key = key;
+
     var girl = this.level.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
     var message = this.level.UI.make.text({
@@ -53,19 +57,18 @@ class Chat{
     });
 
     // Desactive temporairement car fout la merde quand on a plusieur textes d"information a la suite
-    /*girl.setInteractive().on('pointerdown', () =>
+    girl.setInteractive().on('pointerdown', () =>
     {
       this.open('touche');
-    });*/
+    });
     destroyBox.setInteractive().on('pointerdown', () =>
     {
-      console.log("Destroy");
       this.container.destroy();
 
       if(this.chat[this.key].next)
         this.open(this.chat[this.key].next);
-
-      this.key = '';
+      else
+        this.key = '';
     });
 
     this.container.add(fontChat);
