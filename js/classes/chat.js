@@ -36,7 +36,6 @@ class Chat{
     var fontChat = this.level.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
     fontChat.fillRect(0, 0, this.level.width-500, 200);
-    console.log(this.level.width-500);
     var destroyBox = this.level.UI.add.image(470, 0, 'blank');
 
     // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
