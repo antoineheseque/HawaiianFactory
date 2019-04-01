@@ -27,13 +27,18 @@ class Chat{
     if(this.container != null)
       this.container.destroy();
 
+    if(!this.chat[key]){
+      console.error("Aucune clé" + key + " existe");
+      return;
+    }
+
     this.container = this.level.UI.add.container(300, 500);
     var fontChat = this.level.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
     fontChat.fillRect(0, 0, this.level.width-500, 200);
     console.log(this.level.width-500);
     var destroyBox = this.level.UI.add.image(470, 0, 'blank');
-
+    this.key = key;
     var girl = this.level.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
     var message = this.level.UI.make.text({
@@ -46,16 +51,21 @@ class Chat{
         wordWrap: { width: this.level.width-500 - 145}
       }
     });
-    girl.setInteractive().on('pointerdown', () =>
+
+    // Desactive temporairement car fout la merde quand on a plusieur textes d"information a la suite
+    /*girl.setInteractive().on('pointerdown', () =>
     {
-      //var girl = this.level.UI.add.image(0, 25, 'girl' + 6).setScale(0.4);
-      //this.container.add(girl);
       this.open('touche');
-    });
+    });*/
     destroyBox.setInteractive().on('pointerdown', () =>
     {
       console.log("Destroy");
       this.container.destroy();
+
+      if(this.chat[this.key].next)
+        this.open(this.chat[this.key].next);
+
+      this.key = '';
     });
 
     this.container.add(fontChat);

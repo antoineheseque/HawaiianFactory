@@ -80,7 +80,7 @@ class LoadLevel extends Phaser.Scene {
 
 
     this.scene.launch('gameUI', this);
-    this.game = this.scene.launch('gameEngine', this);
+    this.scene.launch('gameEngine', this);
 
     this.loadLevel(0);
 

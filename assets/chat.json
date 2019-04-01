@@ -1,7 +1,30 @@
 {
   "_commentaire": "1 timide, 2 souriante, 3 étonné, 4 triste, 5 énervé (en à ras la casquette), 6 énervé (en à ras la casquette) ++, 7 souriante ++ ,7 triste ++",
   "bienvenue1": {
-    "text":"Bonjour, je suis Julie votre assistante ...",
+    "text":"Bonjour, je suis Julie votre assistante ... Clique sur le texte pour continuer",
+    "texture":"1",
+    "next":"bienvenue2"
+  },
+  "bienvenue2": {
+    "text":"Vous voici aux commandes de votre première usine, très bien! N'ayez pas peur, je suis la pour vous aider ...",
+    "texture":"1",
+    "next":"bienvenue3"
+  },
+  "bienvenue3": {
+    "text":"Pour commencer, il faut gagner de l'argent! Cliquez sur machine pour placer votre première machine...",
+    "texture":"1"
+  },
+  "machine1": {
+    "text":"Voici le menu des machines. Elles vous permettront de gagner de l'argent. Allez-y, placez-en une!...",
+    "texture":"1"
+  },
+  "machine2": {
+    "text":"Bravo, vous avez placé votre première machine ! Quittez le menu des machines en cliquant sur retour...",
+    "texture":"1",
+    "next":"machine3"
+  },
+  "machine3": {
+    "text":"Chacune des machines placé à des stats disponibles! Cliquez sur la machine pour les voir...",
     "texture":"1"
   },
   "volcan": {

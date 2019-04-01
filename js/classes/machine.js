@@ -11,6 +11,7 @@ class Machine extends Tile{
     this.x = x;
     this.y = y;
     this.createTile();
+    
   }
 
   createTile(){

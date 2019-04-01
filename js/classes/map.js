@@ -39,10 +39,17 @@ class Map {
     // Bien sur un sol et aucun objet deja present
     if(this.objects[y][x] == null){
       if(this.phaser.money.buy(stats.upgrades[0].cost)){
-        if(type == 'machines')
+        if(type == 'machines'){
           this.objects[y][x] = new Machine('machines', stats, x, y, this);
-        else if(type == 'environment')
+
+          if(!this.event_firstMachine){
+            this.event_firstMachine = "loaded";
+            this.phaser.chat.open('machine2');
+          }
+        }
+        else if(type == 'environment'){
           this.objects[y][x] = new Environment('environment', stats, x, y, this);
+        }
       }
     }
   }

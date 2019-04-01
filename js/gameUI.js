@@ -224,6 +224,11 @@ class GameUI extends Phaser.Scene {
       this.loadMainMenu();
       container.destroy();
     });
+
+    if(!this.event_createMachine){
+      this.event_createMachine = "loaded";
+      this.level.chat.open('machine1');
+    }
   }
 
   loadEnvironmentMenu(){

@@ -25,8 +25,8 @@ class GameEngine extends Phaser.Scene {
 
   create ()
   {
+    this.level.chat.open('bienvenue1');
     console.log("ENGINE loaded!");
-
   }
 
   update (time, delta)

@@ -24,7 +24,11 @@ class Event{
   }
 
   rand(){
-    if(1 == this.getRandomInt(300000)) // Une chance sur X+1 de réliser l'event
-      this.erruption();
+    if(this.level.chat.key == ''){
+      if(1 == this.getRandomInt(300000)){ // Une chance sur X+1 de réaliser l'event
+       // Si aucun texte est en train d'être joué alors on joue l'événement
+        this.erruption();
+      }
+    }
   }
 }
