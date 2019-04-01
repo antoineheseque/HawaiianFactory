@@ -37,26 +37,11 @@ class MouseInteraction{
           var stats = this.objects[this.level.selectedType][this.level.selectedObject];
           var image = stats.upgrades[0].frames > 1 ? stats.upgrades[0].texture + '-1' : stats.upgrades[0].texture;
 
-          if(this.level.level.objects[y][x] == null){
-            // 13 = GROUND ID
-            if(this.level.level.background[y][x].stats.name == 13 &&
-              (this.level.selectedType == 'machines' || (this.level.selectedType == 'environment' && stats.isInside)))
-            {
-
+          if(this.level.level.objects[y][x] == null && this.checkConditions(this.level.selectedType, stats, x, y)){
               this.image = this.level.add.sprite(x*32, y*32, 'gray-1').play('gray').setOrigin(0, 0).setAlpha(0.5);
               this.image.setInteractive().on('pointerdown', () => {
                 this.level.level.addObject(this.level.selectedType, stats, x, y);
               });
-            }
-            else if(this.level.level.background[y][x].stats.name == 1 && this.level.selectedType == 'environment'){
-              this.image = this.level.add.sprite(x*32, y*32, 'gray-1').play('gray').setOrigin(0, 0).setAlpha(0.5);
-              this.image.setInteractive().on('pointerdown', () => {
-                this.level.level.addObject(this.level.selectedType, stats, x, y);
-              });
-            }
-            else {
-              this.image = this.level.add.sprite(x*32, y*32, 'red-1').play('red').setOrigin(0, 0).setAlpha(0.5);
-            }
           }
           else {
             this.image = this.level.add.sprite(x*32, y*32, 'red-1').play('red').setOrigin(0, 0).setAlpha(0.5);
@@ -76,5 +61,21 @@ class MouseInteraction{
         this.image2.destroy();
       }
     }
+  }
+
+  checkConditions(type, stats, x, y){
+    if(type == 'machines'){
+      if (this.level.level.background[y][x].stats.name == 14 && stats.special == 'sea') // Si dans la mer
+        return true;
+      else if (this.level.level.background[y][x].stats.name == 13 && !stats.special)
+        return true;
+    }
+    else if(type == 'environment'){
+      if (this.level.level.background[y][x].stats.name == 13 && stats.special == 'inside') // Si dans la mer
+        return true;
+      else if (this.level.level.background[y][x].stats.name == 1 && !stats.special)
+        return true;
+    }
+    return false;
   }
 }

@@ -25,6 +25,7 @@
     },
     "generateur1":{
       "name":"Générateur de courant",
+      "special":"sea",
       "upgrades":[
         {
           "cost":500,
@@ -77,39 +78,9 @@
     }
   },
   "environment":{
-    "turbine":{
-      "name":"Éolienne à triple pâles",
-      "upgrades":[
-        {
-          "cost":1000,
-          "texture":"turbine1",
-          "frames":1
-        }
-      ]
-    },
-    "turbine2":{
-      "name":"Éolienne à triple pâles améliorée",
-      "upgrades":[
-        {
-          "cost":10000,
-          "texture":"turbine2",
-          "frames":1
-        }
-      ]
-    },
-    "turbine3":{
-      "name":"Turbine écologique en Rubis",
-      "upgrades":[
-        {
-          "cost":1000,
-          "texture":"ecoturbine1",
-          "frames":3
-        }
-      ]
-    },
     "tree1":{
       "name":"Arbres fruitiers",
-      "isInside":true,
+      "special":"inside",
       "upgrades":[
         {
           "cost":250,
@@ -118,13 +89,52 @@
         }
       ]
     },
-    "billard":{
-      "name":"Billard",
-      "isInside":true,
+    "tree2":{
+      "name":"Sequoïa",
       "upgrades":[
         {
-          "cost":3000,
-          "texture":"billard",
+          "cost":500,
+          "texture":"tree2",
+          "frames":1
+        }
+      ]
+    },
+    "tree3":{
+      "name":"Sapin baumier",
+      "upgrades":[
+        {
+          "cost":500,
+          "texture":"tree3",
+          "frames":1
+        }
+      ]
+    },
+    "tree4":{
+      "name":"Mélèze",
+      "upgrades":[
+        {
+          "cost":500,
+          "texture":"tree4",
+          "frames":1
+        }
+      ]
+    },
+    "tree5":{
+      "name":"Epinète de Norvège",
+      "upgrades":[
+        {
+          "cost":500,
+          "texture":"tree5",
+          "frames":1
+        }
+      ]
+    },
+    "tree6":{
+      "name":"Févier épineux",
+      "upgrades":[
+        {
+          "cost":500,
+          "texture":"tree6",
           "frames":1
         }
       ]
@@ -144,13 +154,44 @@
         }
       ]
     },
-    "tree2":{
-      "name":"Arbre",
+    "turbine":{
+      "name":"Éolienne à triple pâles",
       "upgrades":[
         {
-          "cost":50,
-          "texture":"tree2",
-          "frames":2
+          "cost":1000,
+          "texture":"turbine1",
+          "frames":1
+        }
+      ]
+    },
+    "turbine3":{
+      "name":"Turbine écologique en Rubis",
+      "upgrades":[
+        {
+          "cost":1000,
+          "texture":"ecoturbine1",
+          "frames":3
+        }
+      ]
+    },
+    "billard":{
+      "name":"Billard",
+      "special":"inside",
+      "upgrades":[
+        {
+          "cost":3000,
+          "texture":"billard",
+          "frames":1
+        }
+      ]
+    },
+    "turbine2":{
+      "name":"Éolienne à triple pâles améliorée",
+      "upgrades":[
+        {
+          "cost":10000,
+          "texture":"turbine2",
+          "frames":1
         }
       ]
     }

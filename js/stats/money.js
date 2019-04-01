@@ -29,7 +29,7 @@ class MoneyStat{
       resetOnMatch: true,
       // deleteOnMatch: false,
     });
-    this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; }, this);
+    this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; this.game.productivity = 1000; }, this);
   }
 
   create(){
@@ -38,7 +38,7 @@ class MoneyStat{
 
   update(time){
     if(time - this.time > 50){
-      this.money += (this.addMoneyAmount/3);
+      this.money += (this.addMoneyAmount/3)*this.game.productivity;
       // time.js executé tt les 150, ici tout les 50 pour avoir un beau visuel donc /3 sinon on gagne 3x plus d'argent
       this.moneyText.text = Phaser.Math.RoundTo(this.money) + ' €';
       this.time = time;
@@ -54,7 +54,6 @@ class MoneyStat{
   }
 
   checkPriceSelected(cost){
-
     if(this.money >= cost){
       return true;
     }

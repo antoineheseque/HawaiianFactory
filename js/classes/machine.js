@@ -5,6 +5,7 @@ class Machine extends Tile{
     this.stats = stats;
     this.type = type;
     this.level = 1;
+    this.productivity = 1;
     this.phaser = level;
 
     this.x = x;
@@ -26,6 +27,14 @@ class Machine extends Tile{
       }).on('pointerover', () => {
         this.phaser.phaser.mouseInteraction.update(this.x,this.y);
       });
+  }
+
+  addProductivity(pdt){
+    this.productivity += pdt;
+  }
+
+  removeProductivity(pdt){
+    this.productivity -= pdt;
   }
 
   upgrade(){

@@ -14,6 +14,8 @@ class GameEngine extends Phaser.Scene {
     this.level.chat = new Chat(this.level);
     this.level.event = new Event(this.level);
 
+    this.productivity = 1;
+    this.taxes = 1;
   }
 
   preload ()
