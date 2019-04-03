@@ -15,7 +15,8 @@ class GameEngine extends Phaser.Scene {
     this.level.event = new Event(this.level);
 
     this.productivity = 1;
-    this.taxes = 1;
+    this.taxes = 0;
+    this.loyer = 0;
   }
 
   preload ()

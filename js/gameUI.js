@@ -72,28 +72,169 @@ class GameUI extends Phaser.Scene {
 
       var ile = this.make.text({
         x: this.width - 250,
-        y: 50,
+        y: 40,
         text: 'L\'Usine est située à ' + this.level.worlds[this.level.worldIndex].name,
         style: {
-          font: '16px monospace',
+          font: '15px monospace',
           fill: '#ffffff',
           wordWrap: { width: 240 }
         }
       });
       this.container.add(ile);
 
+      var info = this.make.text({
+        x: this.width - 250,
+        y: 70,
+        text: 'Pour chaque mois:',
+        style: {
+          font: '15px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
+        }
+      });
+      this.container.add(info);
+
       // Show gain
       var gain = this.make.text({
         x: this.width - 250,
-        y: 80,
-        text: 'Gain: ' + (this.level.money.addMoneyAmount*30) + '€ / mois',
+        y: 95,
+        text: '+     Production:',
+        style: {
+          font: '15px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 220 }
+        }
+      });
+      this.container.add(gain);
+
+      var gain = this.make.text({
+        x: this.width,
+        y: 95,
+        text: this.level.money.addMoneyAmount*30 + '€ ',
+        style: {
+          font: '20px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 50 }
+        }
+      });
+      gain.setOrigin(1, 0.2);
+      this.container.add(gain);
+
+      var productivity = this.make.text({
+        x: this.width - 250,
+        y: 115,
+        text: 'x Multiplicateur:',
+        style: {
+          font: '15px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
+        }
+      });
+      this.container.add(productivity);
+
+      var productivity2 = this.make.text({
+        x: this.width,
+        y: 115,
+        text: this.level.game.productivity + 'x ',
+        style: {
+          font: '20px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 50 }
+        }
+      });
+      productivity2.setOrigin(1, 0.2);
+      this.container.add(productivity2);
+
+      // Show gain
+      var taxes = this.make.text({
+        x: this.width - 250,
+        y: 135,
+        text: '-         Taxes :',
+        style: {
+          font: '15px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
+        }
+      });
+      this.container.add(taxes);
+
+      var taxes2 = this.make.text({
+        x: this.width,
+        y: 135,
+        text: this.level.game.taxes + '€ ',
+        style: {
+          font: '20px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 50 }
+        }
+      });
+      taxes2.setOrigin(1, 0.2);
+      this.container.add(taxes2);
+
+      var loyer = this.make.text({
+        x: this.width - 250,
+        y: 155,
+        text: '-         Loyer : ',
+        style: {
+          font: '15px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
+        }
+      });
+      this.container.add(loyer);
+
+      var loyer2 = this.make.text({
+        x: this.width,
+        y: 155,
+        text: this.level.game.loyer + '€ ',
+        style: {
+          font: '20px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 50 }
+        }
+      });
+      loyer2.setOrigin(1, 0.2);
+      this.container.add(loyer2);
+
+      var space = this.make.text({
+        x: this.width-125,
+        y: 175,
+        text: '---------------------------',
         style: {
           font: '16px monospace',
           fill: '#ffffff',
           wordWrap: { width: 240 }
         }
       });
-      this.container.add(gain);
+      space.setOrigin(0.5, 0.5);
+      this.container.add(space);
+
+      var total = this.make.text({
+        x: this.width - 250,
+        y: 185,
+        text: '= Total par mois :',
+        style: {
+          font: '15px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
+        }
+      });
+      this.container.add(total);
+
+      var eq = this.level.money.addMoneyAmount*30*this.level.game.productivity - this.level.game.taxes - this.level.game.loyer;
+
+      var total2 = this.make.text({
+        x: this.width - 10,
+        y: 185,
+        text: eq + '€',
+        style: {
+          font: '20px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 150 }
+        }
+      });
+      total2.setOrigin(1, 0.2);
+      this.container.add(total2);
 
       var upgrade = this.add.text(this.width - 130, this.height - 130, 'Changer d\'Usine', { fill: '#0f0' }).setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
@@ -146,6 +287,13 @@ class GameUI extends Phaser.Scene {
         this.loadFactoryDetails();
       });
       this.container.add(back);
+
+      // Afficher texte avant de changer d'Usine assurez vous d'avoir de
+      // l'argent pour payer le prochain loyer et les 25% de frais de changement d'usin
+      if(!this.event_changerUsine){
+        this.event_changerUsine = "loaded";
+        this.level.chat.open('changeUsine');
+      }
     }
   }
 
@@ -294,26 +442,26 @@ class GameUI extends Phaser.Scene {
     if(this.previewObjectStats != null){
         this.previewObjectStats.destroy();
     }
-    this.previewObjectStats = this.add.container(300+x-40, this.height-100+y-75);
-    this.previewObjectStats.width = 80;
-    this.previewObjectStats.height = 55;
+    this.previewObjectStats = this.add.container(500+x-80, this.height-100+y-150);
+    this.previewObjectStats.width = 160;
+    this.previewObjectStats.height = 125;
     var bgMenu = this.add.graphics();
     bgMenu.fillStyle(0x222222, 1);
-    bgMenu.fillRect(0, 0, 80, 55);
+    bgMenu.fillRect(0, 0, 160, 125);
     this.previewObjectStats.add(bgMenu);
 
     // Show name
     var name = this.make.text({
-      x: 40,
-      y: 10,
+      x: 80,
+      y: 20,
       text: obj.name,
       style: {
-        font: '10px monospace',
+        font: '16px monospace',
         fill: '#ffffff',
-        wordWrap: { width: 75 }
+        wordWrap: { width: 150 }
       }
     });
-    name.setOrigin(0.5, 0.5);
+    name.setOrigin(0.5);
     this.previewObjectStats.add(name);
 
     // Show gain
@@ -321,12 +469,12 @@ class GameUI extends Phaser.Scene {
       // Show Level
       var level = this.make.text({
         x: 5,
-        y: 25,
+        y: 40,
         text: (obj.upgrades[0].gain*30) + '€ / mois',
         style: {
-          font: '10px monospace',
+          font: '14px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 75 }
+          wordWrap: { width: 150 }
         }
       });
       this.previewObjectStats.add(level);
@@ -337,13 +485,13 @@ class GameUI extends Phaser.Scene {
     if(!this.level.money.checkPriceSelected(obj.upgrades[0].cost))
       color = '#e9431b';
     var cost = this.make.text({
-      x: 40,
-      y: 45,
+      x: 80,
+      y: 110,
       text: obj.upgrades[0].cost + " $",
       style: {
-        font: '12px monospace',
+        font: '16px monospace',
         fill: color,
-        wordWrap: { width: 75 }
+        wordWrap: { width: 150 }
       }
     });
 

@@ -27,6 +27,10 @@
     "text":"Chacune des machines placé à des stats disponibles! Cliquez sur la machine pour les voir...",
     "texture":"1"
   },
+  "changeUsine": {
+    "text":"Ici vous pouvez changer d'Usine. Attention! assurez-vous d'avoir assez d'argent pour payer le prochain loyer, 25% de frais de déménagements ainsi que vos premières machines!",
+    "texture":"1"
+  },
   "volcan": {
     "text":"Le volcan va bientôt exploser MonSeigneur",
     "texture":"3"

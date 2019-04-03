@@ -50,7 +50,6 @@ class Chat{
       }
     });
 
-    // Desactive temporairement car fout la merde quand on a plusieur textes d"information a la suite
     girl.setInteractive().on('pointerdown', () =>
     {
       this.open('touche');
