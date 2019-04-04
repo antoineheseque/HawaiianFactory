@@ -80,7 +80,6 @@
   "environment":{
     "tree1":{
       "name":"Arbres fruitiers",
-      "special":"inside",
       "upgrades":[
         {
           "cost":250,

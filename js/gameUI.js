@@ -306,6 +306,10 @@ class GameUI extends Phaser.Scene {
     var environmentButton = this.add.text(450, 50, 'Environment', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(environmentButton);
 
+    if(this.selected != null){
+      this.selected.destroy();
+    }
+
     machinesButton.on('pointerdown', () => {
       this.loadMachinesMenu();
       container.destroy();
@@ -325,7 +329,7 @@ class GameUI extends Phaser.Scene {
     container.add(clickButton);
 
     // Vérifier si un menu d'info n'est pas ouvert
-    if(this.level.selectedObject == -2){
+    if(this.level.selectedObject < -1){
       this.level.selectedObject = -1;
       this.level.UI.container.destroy();
     }
@@ -340,6 +344,9 @@ class GameUI extends Phaser.Scene {
         var name = element.upgrades[0].texture;
         var machine = this.add.sprite(x, y, element.upgrades[0].texture + '-1').play(element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
+          if(this.selected != null)
+            this.selected.destroy();
+          this.selected = this.add.image(500+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
         }).on('pointerout', () => {
@@ -351,6 +358,9 @@ class GameUI extends Phaser.Scene {
       else{
         var obj = this.add.image(x, y, element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
+          if(this.selected != null)
+            this.selected.destroy();
+          this.selected = this.add.image(500+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
         }).on('pointerout', () => {
@@ -388,7 +398,7 @@ class GameUI extends Phaser.Scene {
     container.add(clickButton);
 
     // Vérifier si un menu d'info n'est pas ouvert
-    if(this.level.selectedObject == -2){
+    if(this.level.selectedObject < -1){
       this.level.selectedObject = -1;
       this.level.UI.container.destroy();
     }
@@ -403,6 +413,9 @@ class GameUI extends Phaser.Scene {
         var name = element.upgrades[0].texture;
         var obj = this.add.sprite(x, y, element.upgrades[0].texture + '-1').setScale(1.5).play(element.upgrades[0].texture).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
+          if(this.selected != null)
+            this.selected.destroy();
+          this.selected = this.add.image(500+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
         }).on('pointerout', () => {
@@ -414,6 +427,9 @@ class GameUI extends Phaser.Scene {
       else{
         var obj = this.add.image(x, y, element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
+          if(this.selected != null)
+            this.selected.destroy();
+          this.selected = this.add.image(500+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
         }).on('pointerout', () => {
@@ -442,6 +458,8 @@ class GameUI extends Phaser.Scene {
     if(this.previewObjectStats != null){
         this.previewObjectStats.destroy();
     }
+    if(500+x+80 > this.level.width)
+      x-=30;
     this.previewObjectStats = this.add.container(500+x-80, this.height-100+y-150);
     this.previewObjectStats.width = 160;
     this.previewObjectStats.height = 125;
@@ -464,12 +482,32 @@ class GameUI extends Phaser.Scene {
     name.setOrigin(0.5);
     this.previewObjectStats.add(name);
 
-    // Show gain
+    // Show Emplacement
+    var empl = this.level.selectedType == 'machines' ? 'Usine' : 'Extérieur';
+    if(obj.special){
+      if(obj.special == 'sea')
+        empl = 'Mer';
+      if(obj.special == 'inside')
+        empl = 'Usine';
+    }
+
+    var emplacement = this.make.text({
+      x: 5,
+      y: 40,
+      text: 'Emplacement: ' + empl,
+      style: {
+        font: '14px monospace',
+        fill: '#ffffff',
+        wordWrap: { width: 150 }
+      }
+    });
+    this.previewObjectStats.add(emplacement);
+
     if(this.level.selectedType == 'machines'){
       // Show Level
       var level = this.make.text({
         x: 5,
-        y: 40,
+        y: 60,
         text: (obj.upgrades[0].gain*30) + '€ / mois',
         style: {
           font: '14px monospace',

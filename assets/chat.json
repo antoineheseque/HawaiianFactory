@@ -11,7 +11,7 @@
     "next":"bienvenue3"
   },
   "bienvenue3": {
-    "text":"Pour commencer, il faut gagner de l'argent! Cliquez sur machine pour placer votre première machine...",
+    "text":"Pour commencer, il faut gagner de l'argent! Cliquez sur 'Machines' pour placer votre première machine...",
     "texture":"1"
   },
   "machine1": {
@@ -25,6 +25,11 @@
   },
   "machine3": {
     "text":"Chacune des machines placé à des stats disponibles! Cliquez sur la machine pour les voir...",
+    "texture":"1",
+    "next":"machine4"
+  },
+  "machine4": {
+    "text":"Les stats vous permettent de voir combien vous gagnez par machines, mais vous pouvez aussi les améliorer ou les vendre!...",
     "texture":"1"
   },
   "changeUsine": {
