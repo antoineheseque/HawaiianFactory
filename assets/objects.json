@@ -60,19 +60,19 @@
           "cost":15000,
           "gain":15,
           "texture":"broyeur1",
-          "frames":16
+          "frames":4
         },
         {
           "cost":50000,
           "gain":45,
           "texture":"broyeur2",
-          "frames":17
+          "frames":4
         },
         {
           "cost":100000,
           "gain":150,
           "texture":"broyeur3",
-          "frames":17
+          "frames":4
         }
       ]
     }

@@ -28,6 +28,55 @@ class GameEngine extends Phaser.Scene {
   {
     this.level.chat.open('bienvenue1');
     console.log("ENGINE loaded!");
+
+    this.add.image(100, this.level.height - 190, 'cursor');
+    this.add.image(55, this.level.height - 235, 'zoomOut').setScale(0.7).setInteractive().on('pointerdown', () => {
+      this.resetDirection();
+      this.zoomOut = 1;
+    }).on('pointerup', () => {
+      this.zoomOut = 0;
+    });
+    this.add.image(145, this.level.height - 235, 'zoomIn').setScale(0.7).setInteractive().on('pointerdown', () => {
+      this.resetDirection();
+      this.zoomIn = 1;
+    }).on('pointerup', () => {
+      this.zoomIn = 0;
+    });
+
+    var left = this.add.image(60,this.level.height-190).setScale(1.3,1.2).setInteractive().on('pointerdown', () => {
+      this.resetDirection();
+      this.moveX = -1;
+    }).on('pointerup', () => {
+      this.moveX = 0;
+    });
+
+    var right = this.add.image(140,this.level.height-190).setScale(1.3,1.2).setInteractive().on('pointerdown', () => {
+      this.resetDirection();
+      this.moveX = 1;
+    }).on('pointerup', () => {
+      this.moveX = 0;
+    });
+
+    var up = this.add.image(100,this.level.height-230).setScale(1.3,1.2).setInteractive().on('pointerdown', () => {
+      this.resetDirection();
+      this.moveY = -1;
+    }).on('pointerup', () => {
+      this.moveY = 0;
+    });
+
+    var down = this.add.image(100,this.level.height-150).setScale(1.3,1.2).setInteractive().on('pointerdown', () => {
+      this.resetDirection();
+      this.moveY = 1;
+    }).on('pointerup', () => {
+      this.moveY = 0;
+    });
+  }
+
+  resetDirection(){
+    this.zoomOut = 0;
+    this.zoomIn = 0;
+    this.moveX = 0;
+    this.moveY = 0;
   }
 
   update (time, delta)
@@ -35,5 +84,7 @@ class GameEngine extends Phaser.Scene {
     this.level.money.update(time);
     this.level.time.update(time);
     this.level.event.update(time);
+
+    this.level.cameraMovement.move(this.moveX,this.moveY,this.zoomIn,this.zoomOut);
   }
 }

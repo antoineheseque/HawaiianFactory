@@ -522,13 +522,13 @@ class GameUI extends Phaser.Scene {
 
       // Show Level
       var level = this.make.text({
-        x: this.width - 100,
+        x: this.width - 130,
         y: 40,
         text: 'Niveau ' + object.level,
         style: {
-          font: '12px monospace',
+          font: '16px monospace',
           fill: '#ffffff',
-          wordWrap: { width: 180 }
+          wordWrap: { width: 250 }
         }
       });
       level.setOrigin(0.5, 0.5);
@@ -537,13 +537,13 @@ class GameUI extends Phaser.Scene {
       if(object.type == 'machines'){
         // Show Level
         var level = this.make.text({
-          x: this.width - 190,
+          x: this.width - 250,
           y: 65,
           text: 'Gain: ' + (object.stats.upgrades[object.level-1].gain*30) + '€ / mois',
           style: {
-            font: '12px monospace',
+            font: '16px monospace',
             fill: '#ffffff',
-            wordWrap: { width: 200 }
+            wordWrap: { width: 240 }
           }
         });
         this.container.add(level);
@@ -562,7 +562,7 @@ class GameUI extends Phaser.Scene {
       if(!this.level.money.checkPriceSelected(price) || cost == "Niveau MAX atteint!")
         color = '#e9431b';
 
-      var upgrade = this.add.text(this.width - 190, 280, cost, { fill: color, wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      var upgrade = this.add.text(this.width - 250, this.height - 190, cost, { fill: color, wordWrap: { width: 240 } }).setFontSize(18).setInteractive().on('pointerdown', () =>
       {
         if(object.stats.upgrades.length > object.level){
           var price = object.stats.upgrades[object.level].cost;
@@ -575,7 +575,7 @@ class GameUI extends Phaser.Scene {
       });
       this.container.add(upgrade);
 
-      var sell = this.add.text(this.width - 190, 320, 'Vendre pour ' + object.stats.upgrades[object.level-1].cost/2, { wordWrap: { width: 180 } }).setFontSize(12).setInteractive().on('pointerdown', () =>
+      var sell = this.add.text(this.width - 250, this.height-140, 'Vendre pour ' + object.stats.upgrades[object.level-1].cost/2, { wordWrap: { width: 240 } }).setFontSize(18).setInteractive().on('pointerdown', () =>
       {
         this.level.level.removeObject(object);
         if(this.container != null)
