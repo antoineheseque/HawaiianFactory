@@ -269,18 +269,76 @@ class GameUI extends Phaser.Scene {
         y: 50,
         text: 'L\'Usine est située à ' + this.level.worlds[this.level.worldIndex].name,
         style: {
-          font: '16px monospace',
-          fill: '#ffffff',
-          wordWrap: { width: 240 }
+          font: '15px monospace',
+          fill: '#ffffff'
         }
       });
       this.container.add(ile);
 
-      var unlock = this.add.text(this.width - 130, this.height - 200, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 250 }}).setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
-      {
-        this.level.loadLevel(this.level.worldIndex+1);
+      var loyer = this.make.text({
+        x: this.width - 250,
+        y: 75,
+        text: 'Loyer Actuel: ',
+        style: {
+          font: '18px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 240 }
+        }
       });
-      this.container.add(unlock);
+      this.container.add(loyer);
+
+      var loyer2 = this.make.text({
+        x: this.width,
+        y: 75,
+        text: this.level.worlds[this.level.worldIndex].rent + '€ ',
+        style: {
+          font: '20px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: 50 }
+        }
+      });
+      loyer2.setOrigin(1, 0.1);
+      this.container.add(loyer2);
+
+      if(this.level.worldIndex+1 < this.level.worlds.length){
+        var loyer = this.make.text({
+          x: this.width - 250,
+          y: 100,
+          text: 'Prochain loyer : ',
+          style: {
+            font: '18px monospace',
+            fill: '#ffffff',
+            wordWrap: { width: 240 }
+          }
+        });
+        this.container.add(loyer);
+
+        var loyer2 = this.make.text({
+          x: this.width,
+          y: 100,
+          text: this.level.worlds[this.level.worldIndex+1].rent + '€ ',
+          style: {
+            font: '20px monospace',
+            fill: '#ffffff',
+            wordWrap: { width: 50 }
+          }
+        });
+        loyer2.setOrigin(1, 0.1);
+        this.container.add(loyer2);
+
+        var unlock = this.add.text(this.width - 130, this.height - 200, 'Passer au niveau suivant', { fill: '#0f0' , wordWrap: { width: 250 }}).setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
+        {
+          this.level.loadLevel(this.level.worldIndex+1);
+          this.level.selectedObject = -1;
+          if(this.container != null)
+            this.container.destroy();
+        });
+        this.container.add(unlock);
+      }
+      else{
+        var unlock = this.add.text(this.width - 130, this.height - 200, 'Dernier niveau atteint', { fill: '#ffffff' , wordWrap: { width: 250 }}).setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5)
+        this.container.add(unlock);
+      }
 
       var back = this.add.text(this.width - 130, this.height - 130, 'Retour', { fill: '#0f0' }).setFontSize(20).setOrigin(0.5, 0.5).setInteractive().on('pointerdown', () =>
       {
