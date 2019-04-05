@@ -527,12 +527,15 @@ class GameUI extends Phaser.Scene {
     this.previewObjectStats.add(bgMenu);
 
     // Show name
+    var font = '16px monospace';
+    if(obj.name.length > 23)
+      font = '14px monospace';
     var name = this.make.text({
       x: 80,
       y: 20,
       text: obj.name,
       style: {
-        font: '16px monospace',
+        font: font,
         fill: '#ffffff',
         wordWrap: { width: 150 }
       }
