@@ -356,6 +356,9 @@ class GameUI extends Phaser.Scene {
   }
 
   loadMainMenu(){
+    if(this.previewObjectStats != null){
+        this.previewObjectStats.destroy();
+    }
     this.level.selectedType = 'none';
     var container = this.add.container(500, this.height-this.menuSize);
     container.width = 500;
@@ -404,6 +407,7 @@ class GameUI extends Phaser.Scene {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
           if(this.selected != null)
             this.selected.destroy();
+          this.loadPreviewObjectStats(element, machine.x, machine.y);
           this.selected = this.add.image(500+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
@@ -418,6 +422,7 @@ class GameUI extends Phaser.Scene {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
           if(this.selected != null)
             this.selected.destroy();
+          this.loadPreviewObjectStats(element, machine.x, machine.y);
           this.selected = this.add.image(500+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
@@ -473,6 +478,7 @@ class GameUI extends Phaser.Scene {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
           if(this.selected != null)
             this.selected.destroy();
+          this.loadPreviewObjectStats(element, obj.x, obj.y);
           this.selected = this.add.image(500+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
@@ -487,6 +493,7 @@ class GameUI extends Phaser.Scene {
           this.level.selectedObject = Object.keys(this.objects['environment'])[index];
           if(this.selected != null)
             this.selected.destroy();
+          this.loadPreviewObjectStats(element, obj.x, obj.y);
           this.selected = this.add.image(500+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
