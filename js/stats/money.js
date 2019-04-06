@@ -5,6 +5,15 @@ class MoneyStat{
     this.game = game;
     this.time = 0;
     this.preload();
+    this.stat = new Stats(40, game.level.height-100+10, 'Economique', 1000, 0, 500000,0xFF8C00, this);
+  }
+
+  onMin(){
+
+  }
+
+  onMax(){
+
   }
 
   preload(){
@@ -25,9 +34,7 @@ class MoneyStat{
     // Cheat code qui donne 1 000 000 €
     var keyCombo = this.game.input.keyboard.createCombo(['M','O','N','Y'], {
       resetOnWrongKey: true,
-      // maxKeyDelay: 0,
       resetOnMatch: true,
-      // deleteOnMatch: false,
     });
     this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; this.game.productivity = 1000; }, this);
   }
