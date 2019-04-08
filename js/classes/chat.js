@@ -39,16 +39,30 @@ class Chat{
 
     var girl = this.level.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
-    var message = this.level.UI.make.text({
-      x: 130,
-      y: 20,
-      text: msg,
-      style: {
-        font: '30px monospace',
-        fill: '#ffffff',
-        wordWrap: { width: this.level.width-500 - 145}
-      }
-    });
+    if(key == 'changeUsine'){
+      var message = this.level.UI.make.text({
+        x: 130,
+        y: 20,
+        text: msg,
+        style: {
+          font: '25px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: this.level.width-500 - 145}
+        }
+      });
+    }
+    else {
+      var message = this.level.UI.make.text({
+        x: 130,
+        y: 20,
+        text: msg,
+        style: {
+          font: '30px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: this.level.width-500 - 145}
+        }
+      });
+    }
 
     girl.setInteractive().on('pointerdown', () =>
     {
@@ -68,5 +82,9 @@ class Chat{
     this.container.add(message);
     this.container.add(destroyBox);
     this.container.add(girl);
+  }
+
+  destroy(){
+    this.container.destroy();
   }
 }
