@@ -33,11 +33,11 @@
     "texture":"1"
   },
   "changeUsine": {
-    "text":"Ici vous pouvez changer d'Usine. Attention! assurez-vous d'avoir assez d'argent pour payer le prochain loyer, 25% de frais de déménagements ainsi que vos premières machines!",
+    "text":"Ici vous pouvez changer d'Usine. Attention! Assurez-vous d'avoir assez d'argent pour payer le prochain loyer, 25% de frais de déménagements ainsi que vos premières machines!",
     "texture":"1"
   },
   "volcan": {
-    "text":"Le volcan va bientôt exploser MonSeigneur",
+    "text":"Le volcan va bientôt exploser monsieur le Directeur",
     "texture":"3"
   },
   "taxe1": {
