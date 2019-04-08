@@ -9,11 +9,38 @@ class MoneyStat{
   }
 
   onMin(){
+    if(this.played != 'min'){
+      this.played = 'min';
 
+      var mBackground = this.game.add.graphics();
+      mBackground.fillStyle(0x222222, 0.7);
+      mBackground.fillRect(0, 0, this.game.level.width, this.game.level.height);
+
+      this.game.add.image(200,this.game.level.height-220,'girl4').setScale(0.5,0.5);
+
+      var text = this.game.make.text({
+        x: this.game.level.width / 2,
+        y: this.game.level.height / 2 - 100,
+        text: 'Vous n\'avez malheureusement pas sû gérer correctement votre argent, faites plus attention la prochaine fois!',
+        style: {
+          font: '40px monospace',
+          fill: '#ffffff',
+          wordWrap: { width: this.game.level.width / 1.5 }
+        }
+      });
+      text.setOrigin(0.5,0.5);
+
+      var replay = this.game.add.text(this.game.level.width / 2, this.game.level.height/2 + 100, 'Rejouer', { fill: '#0f0' }).setFontSize(50).setFontStyle('bold').setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
+        location.reload();
+      });
+    }
   }
 
   onMax(){
+    if(this.played != 'max'){
+      this.played = 'max';
 
+    }
   }
 
   preload(){
@@ -46,6 +73,7 @@ class MoneyStat{
   update(time){
     if(time - this.time > 50){
       this.money += (this.addMoneyAmount/3)*this.game.productivity;
+      this.stat.update((this.addMoneyAmount/3)*this.game.productivity);
       // time.js executé tt les 150, ici tout les 50 pour avoir un beau visuel donc /3 sinon on gagne 3x plus d'argent
       this.moneyText.text = Phaser.Math.RoundTo(this.money) + ' €';
       this.time = time;

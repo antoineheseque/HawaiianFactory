@@ -42,7 +42,7 @@ class Event{
 
   rand(){
     if(this.level.chat.key == ''){
-      if(1 == this.getRandomInt(20)){ // Une chance sur X+1 de réaliser l'event
+      if(1 == this.getRandomInt(20000)){ // Une chance sur X+1 de réaliser l'event
        // Si aucun texte est en train d'être joué alors on joue l'événement
         this.erruption();
       }

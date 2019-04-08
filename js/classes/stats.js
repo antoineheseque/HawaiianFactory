@@ -4,6 +4,9 @@ class Stats{
     this.value = start;
     this.min = min;
     this.max = max;
+    this.color;
+    this.x = x;
+    this.y = y;
     this.instance = instance;
     // Progress bar ///////////////
     this.progressBar = instance.game.add.graphics();
@@ -47,10 +50,10 @@ class Stats{
 
   update(val){
     this.value += val;
-    var percent = Phaser.Math.Percent(this.value, min, max);
+    var percent = Phaser.Math.Percent(this.value, this.min, this.max);
     this.progressBar.clear();
-    this.progressBar.fillStyle(color, 1);
-    this.progressBar.fillRect(x+5, y+5, 190 * percent, 20);
+    this.progressBar.fillStyle(this.color, 1);
+    this.progressBar.fillRect(this.x+5, this.y+5, 190 * percent, 20);
 
     if(this.value < this.min){
       this.instance.onMin();

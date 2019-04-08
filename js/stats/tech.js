@@ -5,10 +5,16 @@ class TechnologicalStat{
   }
 
   onMin(){
+    if(this.played != 'min'){
+      this.played = 'min';
 
+    }
   }
 
   onMax(){
+    if(this.played != 'max'){
+      this.played = 'max';
 
+    }
   }
 }
