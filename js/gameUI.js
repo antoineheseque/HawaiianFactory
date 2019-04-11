@@ -110,7 +110,7 @@ class GameUI extends Phaser.Scene {
       var gain = this.make.text({
         x: this.width,
         y: 95,
-        text: this.level.money.addMoneyAmount*30 + '€ ',
+        text: this.level.game.money.addMoneyAmount*30 + '€ ',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -221,7 +221,7 @@ class GameUI extends Phaser.Scene {
       });
       this.container.add(total);
 
-      var eq = this.level.money.addMoneyAmount*30*this.level.game.productivity - this.level.game.taxes - this.level.game.loyer;
+      var eq = this.level.game.money.addMoneyAmount*30*this.level.game.productivity - this.level.game.taxes - this.level.game.loyer;
 
       var total2 = this.make.text({
         x: this.width - 10,
@@ -350,7 +350,7 @@ class GameUI extends Phaser.Scene {
       // l'argent pour payer le prochain loyer et les 25% de frais de changement d'usin
       if(!this.event_changerUsine){
         this.event_changerUsine = "loaded";
-        this.level.chat.open('changeUsine');
+        this.level.game.chat.open('changeUsine');
       }
     }
   }
@@ -448,7 +448,7 @@ class GameUI extends Phaser.Scene {
 
     if(!this.event_createMachine){
       this.event_createMachine = "loaded";
-      this.level.chat.open('machine1');
+      this.level.game.chat.open('machine1');
     }
   }
 
@@ -588,7 +588,7 @@ class GameUI extends Phaser.Scene {
 
     // Show cost
     var color = '#0f0';
-    if(!this.level.money.checkPriceSelected(obj.upgrades[0].cost))
+    if(!this.level.game.money.checkPriceSelected(obj.upgrades[0].cost))
       color = '#e9431b';
     var cost = this.make.text({
       x: 80,
@@ -665,7 +665,7 @@ class GameUI extends Phaser.Scene {
         cost = "Niveau MAX atteint!";
       }
       var color = '#0f0';
-      if(!this.level.money.checkPriceSelected(price) || cost == "Niveau MAX atteint!")
+      if(!this.level.game.money.checkPriceSelected(price) || cost == "Niveau MAX atteint!")
         color = '#e9431b';
 
       var upgrade = this.add.text(this.width - 250, this.height - 190, cost, { fill: color, wordWrap: { width: 240 } }).setFontSize(18).setInteractive().on('pointerdown', () =>
@@ -673,7 +673,7 @@ class GameUI extends Phaser.Scene {
         if(object.stats.upgrades.length > object.level){
           var price = object.stats.upgrades[object.level].cost;
           // Vérifier si on peut acheter et augmenter d'un niveau.
-          if(this.level.money.buy(price)){
+          if(this.level.game.money.buy(price)){
             object.upgrade();
             this.getInformations(object);
           }

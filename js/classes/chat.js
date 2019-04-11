@@ -1,7 +1,11 @@
 class Chat{
-  constructor(level){
-    this.level = level;
+  constructor(game){
+    this.game = game;
     this.preload();
+    this.width = this.game.level.width;
+    this.height = this.game.level.height;
+    this.UI = this.game.level.UI;
+    this.key == '';
   }
 
   preload(){
@@ -27,39 +31,39 @@ class Chat{
       return;
     }
 
-    this.container = this.level.UI.add.container(300, 500);
-    var fontChat = this.level.UI.add.graphics();
+    this.container = this.UI.add.container(300, 500);
+    var fontChat = this.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
-    fontChat.fillRect(0, 0, this.level.width-500, 200);
-    var destroyBox = this.level.UI.add.image(350, 100, 'blank');
+    fontChat.fillRect(0, 0, this.width-500, 200);
+    var destroyBox = this.UI.add.image(350, 100, 'blank');
 
     // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
     if(key != 'touche')
       this.key = key;
 
-    var girl = this.level.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
+    var girl = this.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
     if(key == 'changeUsine'){
-      var message = this.level.UI.make.text({
+      var message = this.UI.make.text({
         x: 130,
         y: 20,
         text: msg,
         style: {
           font: '25px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.level.width-500 - 145}
+          wordWrap: { width: this.width-500 - 145}
         }
       });
     }
     else {
-      var message = this.level.UI.make.text({
+      var message = this.UI.make.text({
         x: 130,
         y: 20,
         text: msg,
         style: {
           font: '30px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.level.width-500 - 145}
+          wordWrap: { width: this.width-500 - 145}
         }
       });
     }

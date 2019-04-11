@@ -9,14 +9,14 @@ class GameEngine extends Phaser.Scene {
     this.level = level;
     this.level.game = this;
 
-    this.level.money = new MoneyStat(1000, this);
-    this.level.environment = new EnvironmentalStat(0, this);
-    this.level.tech = new TechnologicalStat(0, this);
-    this.level.social = new SocialStat(0, this);
+    this.money = new MoneyStat(1000, this);
+    this.environment = new EnvironmentalStat(0, this);
+    this.tech = new TechnologicalStat(0, this);
+    this.social = new SocialStat(0, this);
 
-    this.level.time = new Time(this, this.level);
-    this.level.chat = new Chat(this.level);
-    this.level.event = new Event(this, this.level);
+    this.time = new Time(this);
+    this.chat = new Chat(this);
+    this.event = new Event(this);
 
     this.productivity = 1;
     this.taxes = 0;
@@ -25,12 +25,27 @@ class GameEngine extends Phaser.Scene {
 
   preload ()
   {
-    this.level.money.create();
+    this.money.create();
+  }
+
+  // Evenement joue en boucle
+  update (time, delta)
+  {
+    this.money.update(time);
+    this.time.update(time);
+
+    this.level.cameraMovement.move(this.moveX,this.moveY,this.zoomIn,this.zoomOut);
+  }
+
+  // Evenement joué chaque nouveau jour
+  newDay(day, month){
+    this.event.update(day,month);
+    this.money.addMoney(day,month);
   }
 
   create ()
   {
-    this.level.chat.open('bienvenue1');
+    this.chat.open('bienvenue1');
     console.log("ENGINE loaded!");
 
     this.add.image(100, this.level.height - 190, 'cursor');
@@ -81,14 +96,5 @@ class GameEngine extends Phaser.Scene {
     this.zoomIn = 0;
     this.moveX = 0;
     this.moveY = 0;
-  }
-
-  update (time, delta)
-  {
-    this.level.money.update(time);
-    this.level.time.update(time);
-    this.level.event.update(time);
-
-    this.level.cameraMovement.move(this.moveX,this.moveY,this.zoomIn,this.zoomOut);
   }
 }

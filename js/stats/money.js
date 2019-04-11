@@ -1,6 +1,7 @@
 class MoneyStat{
   constructor(startMoney, game){
     this.money = startMoney;
+    this.moneyShown = startMoney;
     this.addMoneyAmount = 0;
     this.game = game;
     this.time = 0;
@@ -71,13 +72,17 @@ class MoneyStat{
   }
 
   update(time){
-    if(time - this.time > 50){
-      this.money += (this.addMoneyAmount/3)*this.game.productivity;
-      this.stat.update((this.addMoneyAmount/3)*this.game.productivity);
-      // time.js executé tt les 150, ici tout les 50 pour avoir un beau visuel donc /3 sinon on gagne 3x plus d'argent
-      this.moneyText.text = Phaser.Math.RoundTo(this.money) + ' €';
+    // Si moneyshown est loin de la monnaie réelle
+    if(time - this.time > 10 && Math.abs(this.moneyShown - this.money) > 0.1){ 
+      this.moneyShown = Phaser.Math.Linear(this.moneyShown, this.money, 0.25);
+      this.moneyText.text = Phaser.Math.RoundTo(this.moneyShown) + ' €';
       this.time = time;
     }
+  }
+
+  addMoney(day, month){
+    this.money += this.addMoneyAmount*this.game.productivity;
+    this.stat.update(this.addMoneyAmount/6*this.game.productivity);
   }
 
   addMoneyEachDay(amount){

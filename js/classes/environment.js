@@ -1,11 +1,11 @@
 class Environment extends Tile{
 
-  constructor(type, stats, x, y, level){
+  constructor(type, stats, x, y, map){
     super();
     this.stats = stats;
     this.type = type;
     this.level = 1;
-    this.phaser = level;
+    this.map = map;
 
     this.x = x;
     this.y = y;
@@ -14,16 +14,16 @@ class Environment extends Tile{
 
   createTile(){
     if(this.stats.upgrades[this.level-1].frames > 1)
-      this.image = this.phaser.phaser.add.sprite(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture + '-1').play(this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
-        this.phaser.phaser.UI.getInformations(this);
+      this.image = this.map.level.add.sprite(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture + '-1').play(this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
+        this.map.level.UI.getInformations(this);
       }).on('pointerover', () => {
-        this.phaser.phaser.mouseInteraction.update(this.x,this.y);
+        this.map.level.mouseInteraction.update(this.x,this.y);
       });
     else
-      this.image = this.phaser.phaser.add.image(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
-        this.phaser.phaser.UI.getInformations(this);
+      this.image = this.map.level.add.image(this.x*32, this.y*32, this.stats.upgrades[this.level-1].texture).setOrigin(0, 0).setInteractive().on('pointerdown', () => {
+        this.map.level.UI.getInformations(this);
       }).on('pointerover', () => {
-        this.phaser.phaser.mouseInteraction.update(this.x,this.y);
+        this.map.level.mouseInteraction.update(this.x,this.y);
       });
   }
 

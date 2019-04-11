@@ -1,7 +1,6 @@
 class Time{
-  constructor(game, level){
+  constructor(game){
     this.game = game;
-    this.level = level;
     this.date = new Date();
 
     this.width = game.cameras.main.width;
@@ -26,19 +25,13 @@ class Time{
     this.timeText.setOrigin(0.5, 0.5);
   }
 
-  // this.phaser.cameras.main.shake(1000, 0.02);
-  // Effet pour eruption volcanique
-
-
   update(time){
-    if(time - this.time > 250){
+    if(time - this.time > 300){
       this.date.setDate(this.date.getDate()+1);
       this.timeText.text = this.formatDate(this.date);
-      this.money += this.addMoneyAmount;
-      this.level.actuel = this.time;
       this.time = time;
-      this.level.day = this.date.getDate();
-      this.level.month = this.date.getMonth()+1;
+
+      this.game.newDay(this.date.getDate(), this.date.getMonth()+1);
     }
   }
 

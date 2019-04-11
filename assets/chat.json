@@ -48,8 +48,12 @@
       "text":"Le gouvernement offre des primes de fin d'année ! Productivité augmenté de 20 % pendant les fêtes!",
       "texture":"7"
   },
+  "prime1_end": {
+      "text":"Les offres de primes viennent malheureusement de se terminer...",
+      "texture":"4"
+  },
   "touche": {
-      "text":"Bas les pattes ! ",
+      "text":"Bas les pattes !",
       "texture":"6"
   }
 }
