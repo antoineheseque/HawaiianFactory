@@ -110,7 +110,7 @@ class GameUI extends Phaser.Scene {
       var gain = this.make.text({
         x: this.width,
         y: 95,
-        text: this.level.game.money.addMoneyAmount*30 + '€ ',
+        text: this.level.game.money.addMoneyAmount*30 + '$ ',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -161,7 +161,7 @@ class GameUI extends Phaser.Scene {
       var taxes2 = this.make.text({
         x: this.width,
         y: 135,
-        text: this.level.game.taxes + '€ ',
+        text: this.level.game.taxes + '$ ',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -186,7 +186,7 @@ class GameUI extends Phaser.Scene {
       var loyer2 = this.make.text({
         x: this.width,
         y: 155,
-        text: this.level.game.loyer + '€ ',
+        text: this.level.game.loyer + '$ ',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -226,7 +226,7 @@ class GameUI extends Phaser.Scene {
       var total2 = this.make.text({
         x: this.width - 10,
         y: 185,
-        text: eq + '€',
+        text: eq + '$',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -290,7 +290,7 @@ class GameUI extends Phaser.Scene {
       var loyer2 = this.make.text({
         x: this.width,
         y: 75,
-        text: this.level.worlds[this.level.worldIndex].rent + '€ ',
+        text: this.level.worlds[this.level.worldIndex].rent + '$ ',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -316,7 +316,7 @@ class GameUI extends Phaser.Scene {
         var loyer2 = this.make.text({
           x: this.width,
           y: 100,
-          text: this.level.worlds[this.level.worldIndex+1].rent + '€ ',
+          text: this.level.worlds[this.level.worldIndex+1].rent + '$ ',
           style: {
             font: '20px monospace',
             fill: '#ffffff',
@@ -576,7 +576,7 @@ class GameUI extends Phaser.Scene {
       var level = this.make.text({
         x: 5,
         y: 60,
-        text: (obj.upgrades[0].gain*30) + '€ / mois',
+        text: (obj.upgrades[0].gain*30) + '$ / mois',
         style: {
           font: '14px monospace',
           fill: '#ffffff',
@@ -645,7 +645,7 @@ class GameUI extends Phaser.Scene {
         var level = this.make.text({
           x: this.width - 250,
           y: 65,
-          text: 'Gain: ' + (object.stats.upgrades[object.level-1].gain*30) + '€ / mois',
+          text: 'Gain: ' + (object.stats.upgrades[object.level-1].gain*30) + '$ / mois',
           style: {
             font: '16px monospace',
             fill: '#ffffff',
@@ -659,7 +659,7 @@ class GameUI extends Phaser.Scene {
       var cost = '';
       if(object.stats.upgrades.length > object.level){
         var price = object.stats.upgrades[object.level].cost;
-        cost = 'Augmenter au niveau ' + (object.level+1) + ' pour ' + price + ' €';
+        cost = 'Augmenter au niveau ' + (object.level+1) + ' pour ' + price + ' $';
       }
       else{
         cost = "Niveau MAX atteint!";

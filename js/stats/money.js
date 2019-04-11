@@ -73,9 +73,9 @@ class MoneyStat{
 
   update(time){
     // Si moneyshown est loin de la monnaie réelle
-    if(time - this.time > 10 && Math.abs(this.moneyShown - this.money) > 0.1){ 
+    if(time - this.time > 10 && Math.abs(this.moneyShown - this.money) > 0.1){
       this.moneyShown = Phaser.Math.Linear(this.moneyShown, this.money, 0.25);
-      this.moneyText.text = Phaser.Math.RoundTo(this.moneyShown) + ' €';
+      this.moneyText.text = Phaser.Math.RoundTo(this.moneyShown) + ' $';
       this.time = time;
     }
   }
