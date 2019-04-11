@@ -80,9 +80,12 @@ class MoneyStat{
     }
   }
 
-  addMoney(day, month){
+  newDay(day, month){
     this.money += this.addMoneyAmount*this.game.productivity;
     this.stat.update(this.addMoneyAmount/6*this.game.productivity);
+
+    if(day == 1)
+      this.money -= this.game.loyer;
   }
 
   addMoneyEachDay(amount){
