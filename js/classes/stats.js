@@ -48,6 +48,15 @@ class Stats{
     percentText.setOrigin(0.5, 0.5);
   }
 
+  changeRange(min,max){
+    this.min = min;
+    this.max = max;
+    var percent = Phaser.Math.Percent(this.value, this.min, this.max);
+    this.progressBar.clear();
+    this.progressBar.fillStyle(this.color, 1);
+    this.progressBar.fillRect(this.x+5, this.y+5, 190 * percent, 20);
+  }
+
   update(val){
 
     if(this.value+val < this.min){
@@ -57,7 +66,21 @@ class Stats{
       this.instance.onMax();
     }
 
-    this.value = Phaser.Math.Clamp(this.value + val, this.min, this.max);
+    if(this.name != 'Technologique'){ // Si normal
+      this.value = this.value + val; //Phaser.Math.Clamp(this.value + val, this.min, this.max);
+    } else { // Si technologique cumuler et remettre à 0
+      if(this.value + val > this.max){
+        this.value = (this.value + val) - Math.abs(this.max) - Math.abs(this.min);
+        this.instance.played = '';
+      }
+      else if (this.value + val < this.min){
+        this.value = (this.value + val) + Math.abs(this.max) + Math.abs(this.min);
+        this.instance.played = '';
+      }
+      else{
+        this.value += val;
+      }
+    }
     var percent = Phaser.Math.Percent(this.value, this.min, this.max);
     this.progressBar.clear();
     this.progressBar.fillStyle(this.color, 1);

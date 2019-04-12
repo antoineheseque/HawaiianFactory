@@ -15,6 +15,7 @@ class TechnologicalStat{
     if(this.played != 'max'){
       this.played = 'max';
 
+      console.log('Niveau atteint !');
     }
   }
 }

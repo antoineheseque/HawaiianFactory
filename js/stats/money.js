@@ -76,7 +76,7 @@ class MoneyStat{
     // Si moneyshown est loin de la monnaie réelle
     if(time - this.time > 10 && Math.abs(this.moneyShown - this.money) > 0.005){
       this.moneyShown = Phaser.Math.Linear(this.moneyShown, this.money, 0.25);
-      this.moneyText.text = this.moneyShown.toFixed(2) + ' $';
+      this.moneyText.text = this.moneyShown.toFixed(2) + '$';
       this.time = time;
     }
   }
