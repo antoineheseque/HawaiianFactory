@@ -47,17 +47,18 @@ class MoneyStat{
   preload(){
     var mBackground = this.game.add.graphics();
     mBackground.fillStyle(0x222222, 0.8);
-    mBackground.fillRect(10, 10, 140, 40);
+    mBackground.fillRect(10, 10, 200, 40);
     this.moneyText = this.game.make.text({
-      x: 100,
+      x: 195,
       y: 30,
       text: '0 $',
       style: {
         font: '18px monospace',
-        fill: '#ffffff'
+        fill: '#ffffff',
+        align: 'right'
       }
     });
-    this.moneyText.setOrigin(0.5, 0.5);
+    this.moneyText.setOrigin(1, 0.5);
 
     // Cheat code qui donne 1 000 000 €
     var keyCombo = this.game.input.keyboard.createCombo(['M','O','N','Y'], {
