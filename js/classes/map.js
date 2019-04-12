@@ -50,6 +50,10 @@ class Map {
         else if(type == 'environment'){
           this.objects[y][x] = new Environment('environment', stats, x, y, this);
         }
+
+        this.level.game.environment.stat.update(stats.stats.environment);
+        this.level.game.social.stat.update(stats.stats.social);
+        this.level.game.tech.stat.update(stats.stats.tech);
       }
     }
   }
@@ -69,6 +73,11 @@ class Map {
     this.level.game.money.sell(obj.stats.upgrades[obj.level-1].cost/2);
     if(obj.type == 'machines')
       this.level.game.money.removeMoneyEachDay(obj.stats.upgrades[obj.level-1].gain);
+
+    this.level.game.environment.stat.update(-stats.stats.environment);
+    this.level.game.social.stat.update(-stats.stats.social);
+    this.level.game.tech.stat.update(-stats.stats.tech);
+
     this.objects[obj.y][obj.x].image.destroy();
     this.objects[obj.y][obj.x] = null;
 

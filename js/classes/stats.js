@@ -4,7 +4,7 @@ class Stats{
     this.value = start;
     this.min = min;
     this.max = max;
-    this.color;
+    this.color = color;
     this.x = x;
     this.y = y;
     this.instance = instance;
@@ -49,7 +49,7 @@ class Stats{
   }
 
   update(val){
-    this.value += val;
+    this.value = Phaser.Math.Clamp(this.value + val, this.min, this.max);
     var percent = Phaser.Math.Percent(this.value, this.min, this.max);
     this.progressBar.clear();
     this.progressBar.fillStyle(this.color, 1);
@@ -63,7 +63,7 @@ class Stats{
     }
   }
 
-  open(x,y){
+  /*open(x,y){
     var container = this.instance.game.add.container(x, y-80);
 
     // Add Background
@@ -73,5 +73,5 @@ class Stats{
     container.add(background);
 
     return container;
-  }
+  }*/
 }
