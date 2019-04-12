@@ -1,7 +1,7 @@
 class MoneyStat{
   constructor(startMoney, game){
     this.money = startMoney;
-    this.moneyShown = startMoney;
+    this.moneyShown = 0;
     this.addMoneyAmount = 0;
     this.game = game;
     this.time = 0;

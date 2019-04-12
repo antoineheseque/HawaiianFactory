@@ -2,6 +2,11 @@
   "machines":{
     "compacteur1":{
       "name":"Compacteur à déchets",
+      "stats":{
+        "environment":-100,
+        "tech":50,
+        "social":-100
+      },
       "upgrades":[
         {
           "cost":500,
@@ -26,6 +31,11 @@
     "generateur1":{
       "name":"Générateur de courant",
       "special":"sea",
+      "stats":{
+        "environment":-50,
+        "tech":150,
+        "social":-200
+      },
       "upgrades":[
         {
           "cost":500,
@@ -55,6 +65,11 @@
     },
     "broyeur1":{
       "name":"Broyeur à déchets",
+      "stats":{
+        "environment":-500,
+        "tech":750,
+        "social":-500
+      },
       "upgrades":[
         {
           "cost":15000,
@@ -80,6 +95,11 @@
   "environment":{
     "tree1":{
       "name":"Arbres fruitiers",
+      "stats":{
+        "environment":25,
+        "tech":0,
+        "social":10
+      },
       "upgrades":[
         {
           "cost":250,
@@ -90,6 +110,11 @@
     },
     "tree2":{
       "name":"Sequoïa",
+      "stats":{
+        "environment":50,
+        "tech":0,
+        "social":10
+      },
       "upgrades":[
         {
           "cost":500,
@@ -100,6 +125,11 @@
     },
     "tree3":{
       "name":"Sapin baumier",
+      "stats":{
+        "environment":50,
+        "tech":0,
+        "social":10
+      },
       "upgrades":[
         {
           "cost":500,
@@ -110,6 +140,11 @@
     },
     "tree4":{
       "name":"Mélèze",
+      "stats":{
+        "environment":50,
+        "tech":0,
+        "social":10
+      },
       "upgrades":[
         {
           "cost":500,
@@ -120,6 +155,11 @@
     },
     "tree5":{
       "name":"Epinète de Norvège",
+      "stats":{
+        "environment":50,
+        "tech":0,
+        "social":10
+      },
       "upgrades":[
         {
           "cost":500,
@@ -130,6 +170,11 @@
     },
     "tree6":{
       "name":"Févier épineux",
+      "stats":{
+        "environment":50,
+        "tech":0,
+        "social":10
+      },
       "upgrades":[
         {
           "cost":500,
@@ -140,6 +185,11 @@
     },
     "buisson1":{
       "name":"Buisson à fruits rouge",
+      "stats":{
+        "environment":75,
+        "tech":0,
+        "social":25
+      },
       "upgrades":[
         {
           "cost":750,
@@ -155,6 +205,11 @@
     },
     "turbine":{
       "name":"Éolienne à triple pâles",
+      "stats":{
+        "environment":400,
+        "tech":100,
+        "social":-150
+      },
       "upgrades":[
         {
           "cost":1000,
@@ -165,6 +220,11 @@
     },
     "turbine3":{
       "name":"Turbine écologique en Rubis",
+      "stats":{
+        "environment":750,
+        "tech":150,
+        "social":-250
+      },
       "upgrades":[
         {
           "cost":1000,
@@ -176,6 +236,11 @@
     "billard":{
       "name":"Billard",
       "special":"inside",
+      "stats":{
+        "environment":0,
+        "tech":0,
+        "social":500
+      },
       "upgrades":[
         {
           "cost":3000,
@@ -186,6 +251,11 @@
     },
     "turbine2":{
       "name":"Éolienne à triple pâles améliorée",
+      "stats":{
+        "environment":750,
+        "tech":200,
+        "social":-50
+      },
       "upgrades":[
         {
           "cost":10000,

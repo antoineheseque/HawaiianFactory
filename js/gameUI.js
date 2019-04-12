@@ -586,6 +586,42 @@ class GameUI extends Phaser.Scene {
       this.previewObjectStats.add(level);
     }
 
+    var stat1 = this.make.text({
+      x: 10,
+      y: 80,
+      text: (obj.stats.environment > 0 ? '+' : '') + obj.stats.environment,
+      style: {
+        font: '18px monospace',
+        fill: '#0FDD43',
+        wordWrap: { width: 50 }
+      }
+    });
+    this.previewObjectStats.add(stat1);
+
+    var stat2 = this.make.text({
+      x: 60,
+      y: 80,
+      text: (obj.stats.tech > 0 ? '+' : '') + obj.stats.tech,
+      style: {
+        font: '18px monospace',
+        fill: '#0F73DD',
+        wordWrap: { width: 50 }
+      }
+    });
+    this.previewObjectStats.add(stat2);
+
+    var stat3 = this.make.text({
+      x: 110,
+      y: 80,
+      text: (obj.stats.social > 0 ? '+' : '') + obj.stats.social,
+      style: {
+        font: '18px monospace',
+        fill: '#E5FF50',
+        wordWrap: { width: 50 }
+      }
+    });
+    this.previewObjectStats.add(stat3);
+
     // Show cost
     var color = '#0f0';
     if(!this.level.game.money.checkPriceSelected(obj.upgrades[0].cost))
