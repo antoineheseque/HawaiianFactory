@@ -29,10 +29,7 @@ class Event{
     if(day == 1 && month == 12){
       if(this.game.chat.key == '') // Si rien n'est ouvert (tuto ou event special) on affiche qqch
         this.game.chat.open("prime1");
-      else
-        console.log("L'événement prime1 commence");
-      // Rajouter un else afficher un texte dans une future console à implementer
-      // (pr que le joueur sache quandd meme qu'il y a eu qqch mais sans avoir eu la grosse notif du chat ?)
+      this.game.chat.open_small("prime1", true);
 
       this.prime1_played = true;
       this.game.productivity *= 1.2;
@@ -42,8 +39,7 @@ class Event{
                        // Sinon il se serait tapé une productivité divisée par 1.2 alors qu'il était à 1
         if(this.game.chat.key == '') // Si rien n'est ouvert (tuto ou event special) on affiche qqch
           this.game.chat.open("prime1_end");
-        else
-          console.log("L'événement prime1 est terminé");
+        this.game.chat.open_small("prime1_end", true);
 
         this.prime1_played = false;
         this.game.productivity /= 1.2;

@@ -64,7 +64,7 @@ class MoneyStat{
       resetOnWrongKey: true,
       resetOnMatch: true,
     });
-    this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; this.game.productivity = 1000; }, this);
+    this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; this.game.productivity = 1000; this.game.time.speed = 10; }, this);
   }
 
   create(){
@@ -73,9 +73,9 @@ class MoneyStat{
 
   update(time){
     // Si moneyshown est loin de la monnaie réelle
-    if(time - this.time > 10 && Math.abs(this.moneyShown - this.money) > 0.1){
+    if(time - this.time > 10 && Math.abs(this.moneyShown - this.money) > 0.005){
       this.moneyShown = Phaser.Math.Linear(this.moneyShown, this.money, 0.25);
-      this.moneyText.text = Phaser.Math.RoundTo(this.moneyShown) + ' $';
+      this.moneyText.text = this.moneyShown.toFixed(2) + ' $';
       this.time = time;
     }
   }

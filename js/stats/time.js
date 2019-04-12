@@ -6,6 +6,7 @@ class Time{
     this.width = game.cameras.main.width;
     this.height = game.cameras.main.height;
     this.time = 0;
+    this.speed = 1;
     this.preload();
   }
 
@@ -26,12 +27,12 @@ class Time{
   }
 
   update(time){
-    if(time - this.time > 300){
+    if(time - this.time > 300/this.speed){
       this.date.setDate(this.date.getDate()+1);
       this.timeText.text = this.formatDate(this.date);
       this.time = time;
 
-      this.game.newDay(this.date.getDate(), this.date.getMonth()+1);
+      this.game.newDay(this.date.getDate(), this.date.getMonth()+1, this.date.getFullYear().toString().substr(-2));
     }
   }
 

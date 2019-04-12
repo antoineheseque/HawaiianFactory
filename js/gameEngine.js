@@ -39,7 +39,10 @@ class GameEngine extends Phaser.Scene {
   }
 
   // Evenement joué chaque nouveau jour
-  newDay(day, month){
+  newDay(day, month, year){
+    this.day = day;
+    this.month = month;
+    this.year = year;
     this.event.update(day,month);
     this.money.newDay(day,month);
   }

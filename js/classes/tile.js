@@ -12,6 +12,7 @@ class Tile{
         if(map.level.selectedObject < -1){
           map.level.UI.container.destroy();
           map.level.selectedObject = -1;
+          map.level.game.chat.show_small();
         }
       });
     }

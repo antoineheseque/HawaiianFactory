@@ -74,9 +74,9 @@ class Map {
     if(obj.type == 'machines')
       this.level.game.money.removeMoneyEachDay(obj.stats.upgrades[obj.level-1].gain);
 
-    this.level.game.environment.stat.update(-stats.stats.environment);
-    this.level.game.social.stat.update(-stats.stats.social);
-    this.level.game.tech.stat.update(-stats.stats.tech);
+    this.level.game.environment.stat.update(-obj.stats.stats.environment);
+    this.level.game.social.stat.update(-obj.stats.stats.social);
+    this.level.game.tech.stat.update(-obj.stats.stats.tech);
 
     this.objects[obj.y][obj.x].image.destroy();
     this.objects[obj.y][obj.x] = null;

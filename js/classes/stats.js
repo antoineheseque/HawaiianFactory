@@ -49,18 +49,19 @@ class Stats{
   }
 
   update(val){
+
+    if(this.value+val < this.min){
+      this.instance.onMin();
+    }
+    if(this.value+val > this.max){
+      this.instance.onMax();
+    }
+
     this.value = Phaser.Math.Clamp(this.value + val, this.min, this.max);
     var percent = Phaser.Math.Percent(this.value, this.min, this.max);
     this.progressBar.clear();
     this.progressBar.fillStyle(this.color, 1);
     this.progressBar.fillRect(this.x+5, this.y+5, 190 * percent, 20);
-
-    if(this.value < this.min){
-      this.instance.onMin();
-    }
-    if(this.value > this.max){
-      this.instance.onMax();
-    }
   }
 
   /*open(x,y){

@@ -392,6 +392,7 @@ class GameUI extends Phaser.Scene {
     // Vérifier si un menu d'info n'est pas ouvert
     if(this.level.selectedObject < -1){
       this.level.selectedObject = -1;
+      this.level.game.chat.show_small();
       this.level.UI.container.destroy();
     }
 
@@ -463,6 +464,7 @@ class GameUI extends Phaser.Scene {
     // Vérifier si un menu d'info n'est pas ouvert
     if(this.level.selectedObject < -1){
       this.level.selectedObject = -1;
+      this.level.game.chat.show_small();
       this.level.UI.container.destroy();
     }
 
@@ -730,12 +732,19 @@ class GameUI extends Phaser.Scene {
   showInformationsMenu(){
     var container = this.add.container(0, 0);
 
+    // Cacher la petite console
+    this.level.game.chat.hide_small();
+
     // Add Background
     var background = this.add.graphics();
     background.fillStyle(0x222222, 0.6);
     background.fillRect(this.width - 260, 0, 260, this.height-100);
     container.add(background);
-    var closeButton = this.add.text(this.width - 20, 10, 'X', { fill: '#0f0' }).setFontSize(20).setInteractive().on('pointerdown', () => { container.destroy(); this.level.selectedObject = -1;});
+    var closeButton = this.add.text(this.width - 20, 10, 'X', { fill: '#0f0' }).setFontSize(20).setInteractive().on('pointerdown', () => {
+      container.destroy();
+      this.level.selectedObject = -1;
+      this.level.game.chat.show_small();
+    });
     container.add(closeButton);
 
     return container;
