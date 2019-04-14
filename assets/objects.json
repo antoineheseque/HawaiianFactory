@@ -214,7 +214,7 @@
         {
           "cost":1000,
           "texture":"turbine1",
-          "frames":1
+          "frames":3
         }
       ]
     },
@@ -260,7 +260,7 @@
         {
           "cost":10000,
           "texture":"turbine2",
-          "frames":1
+          "frames":3
         }
       ]
     }
