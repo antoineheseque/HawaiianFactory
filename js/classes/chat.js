@@ -38,39 +38,39 @@ class Chat{
       return;
     }
 
-    this.container = this.UI.add.container(300, 500);
+    this.container = this.UI.add.container(this.width/3, this.height*(5/8));
     var fontChat = this.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
-    fontChat.fillRect(0, 0, this.width-500, 200);
-    var destroyBox = this.UI.add.image(350, 100, 'blank');
+    fontChat.fillRect(0, 0, this.width*(7/12), this.height*(2/8));
+    var destroyBox = this.UI.add.image(this.width*(35/120), this.height*(1/8), 'blank');
 
     // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
     if(key != 'touche')
       this.key = key;
 
-    var girl = this.UI.add.image(0, 25, 'girl' + this.chat[key].texture).setScale(0.4);
+    var girl = this.UI.add.image(0, this.height*(25/800), 'girl' + this.chat[key].texture).setScale(0.4);
     var msg = this.chat[key].text;
     if(key == 'changeUsine'){
       var message = this.UI.make.text({
-        x: 130,
-        y: 20,
+        x: this.width*(13/120),
+        y: this.height*(2/80),
         text: msg,
         style: {
           font: '25px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.width-500 - 145}
+          wordWrap: { width: this.width*(555/1200)}
         }
       });
     }
     else {
       var message = this.UI.make.text({
-        x: 130,
-        y: 20,
+        x: this.width*(13/120),
+        y: this.height*(2/80),
         text: msg,
         style: {
           font: '30px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.width-500 - 145}
+          wordWrap: { width: this.width*(555/1200)}
         }
       });
     }
@@ -131,14 +131,14 @@ class Chat{
           style: {
             font: '12px monospace',
             fill: '#ffffff',
-            wordWrap: { width:290 }
+            wordWrap: { width: this.width*(29/120) }
           }
         });
 
         var msg = text.basicWordWrap(text.text, text.context, 290);
         var lines = msg.split(/\r\n|\r|\n/).length;
 
-        text.setPosition(this.width-300, 10+(this.linesCount-1)*13);
+        text.setPosition(this.width*(9/12), 10+(this.linesCount-1)*13);
         this.linesCount += lines;
 
         var obj = {
@@ -150,7 +150,7 @@ class Chat{
       }
       this.fondChat.clear();
       this.fondChat.fillStyle(0x222222, 0.7);
-      this.fondChat.fillRect(this.width - 305, 5, 295, 13*this.linesCount);
+      this.fondChat.fillRect(this.width*(895/1200), this.height*(5/800), this.width*(295/800), 13*this.linesCount);
     }
   }
 
