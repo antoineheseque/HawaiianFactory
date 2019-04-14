@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var port = process.env.PORT || 1234;
+
 app.use(express.static('assets/'))
 app.use(express.static('js/'))
 app.use(express.static('js/classes/'))
@@ -12,6 +14,6 @@ app.get('/', function (req, res) {
   res.sendFile('/index.html');
 });
 
-app.listen(1234, function () {
-  console.log('HawaiianFactory Server on port 1234!');
+app.listen(port, function () {
+  console.log('HawaiianFactory Server on port ' + port + '!');
 });
