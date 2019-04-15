@@ -24,6 +24,15 @@ class Time{
       }
     });
     this.timeText.setOrigin(0.5, 0.5);
+
+    var time = this;
+    this.game.level.socket.on('setTime', function(date) { time.setTime(date); }, this);
+  }
+
+  setTime(date){
+    this.date = new Date(date);
+    this.game.newDay(this.date.getDate(), this.date.getMonth()+1, this.date.getFullYear().toString().substr(-2));
+    update(this.game.time.now);
   }
 
   update(time){
@@ -44,6 +53,7 @@ class Time{
       "Août", "Septembre", "Octobre",
       "Novembre", "Décembre"
     ];
+
     var day = date.getDate();
     var monthIndex = date.getMonth();
     var year = date.getFullYear();

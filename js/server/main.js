@@ -18,11 +18,18 @@ const config = {
   }
 };
 
-function preload() {}
+function preload() { this.time = 0; }
 
 function create() {}
 
-function update() {}
+var date = new Date();
+var time = 0;
+function update(t) {
+  if(t - time > 300){
+    date.setDate(date.getDate()+1);
+    time = t;
+  }
+}
 
 const game = new Phaser.Game(config);
 window.gameLoaded();
@@ -31,9 +38,14 @@ window.gameLoaded();
 const players = {}; // Faire une liste de toute les connexions (tout les joueurs)
 const self = this;
 
-
 io.on('connection', function (socket) {
-  console.log('a user connected');
+  console.log('A user connected');
+
+  console.log(Object.keys(players).length);
+  if(Object.keys(players).length < 1){ // Si c'est le premier joueur alors reset le temps au premier jour.
+    date = new Date();
+    console.log('Time reset');
+  }
 
   // Create a players
   players[socket.id] = {
@@ -41,9 +53,12 @@ io.on('connection', function (socket) {
   };
 
   socket.emit('playerConnected', players[socket.id]);
+  socket.emit('setTime', date);
   socket.broadcast.emit('playerConnected', players[socket.id]);
 
   socket.on('disconnect', function () {
+    console.log('A user disconnected');
+    delete players[socket.id];
     socket.emit('playerConnected', players[socket.id]);
     socket.broadcast.emit('playerDisconnected', players[socket.id]);
   });
