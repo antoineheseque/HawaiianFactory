@@ -11,6 +11,9 @@ class LoadLevel extends Phaser.Scene {
   {
     this.width = this.cameras.main.width;
     this.height = this.cameras.main.height;
+
+    // Server part
+    this.socket = io();
   }
 
   create ()
