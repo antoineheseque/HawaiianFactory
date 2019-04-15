@@ -63,4 +63,10 @@ io.on('connection', function (socket) {
     socket.broadcast.emit('playerDisconnected', players[socket.id]);
     delete players[socket.id];
   });
+
+  socket.on('receiveMessage', function(msg) {
+    socket.emit('receiveMessage', players[socket.id].name + ': ' + msg);
+    socket.broadcast.emit('receiveMessage', players[socket.id].name + ': ' + msg);
+  });
+
 });

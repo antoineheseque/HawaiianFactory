@@ -32,7 +32,7 @@ class Time{
   setTime(date){
     this.date = new Date(date);
     this.game.newDay(this.date.getDate(), this.date.getMonth()+1, this.date.getFullYear().toString().substr(-2));
-    update(this.game.time.now);
+    this.update(this.game.time.now);
   }
 
   update(time){

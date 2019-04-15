@@ -49,6 +49,7 @@ class GameEngine extends Phaser.Scene {
 
   create ()
   {
+    this.chat.create();
     this.chat.open('bienvenue1');
     console.log("ENGINE loaded!");
 

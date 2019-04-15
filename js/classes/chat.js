@@ -13,6 +13,14 @@ class Chat{
     this.fondChat = this.UI.add.graphics();
   }
 
+  create(){
+    var button = this.game.add.text(this.width - 205, this.height - 25, 'Envoyer un message', { fill: '#0f0' }).setFontSize(16).setFontStyle('bold').setInteractive().on('pointerdown', () => {
+      var msg = prompt("Entrez votre message :", "");
+      console.log(this.game.level.socket);
+      this.game.level.socket.emit('receiveMessage', msg);
+    });
+  }
+
   preload(){
     this.counter = 0;
 
@@ -32,6 +40,7 @@ class Chat{
     var chat = this;
     this.game.level.socket.on('playerConnected', function(p) { chat.open_small('L\'Usine ' + p.name + ' viens de s\'installer en ville!') }, this);
     this.game.level.socket.on('playerDisconnected', function(p) { chat.open_small('L\'Usine ' + p.name + ' viens de quitter la ville!') }, this);
+    this.game.level.socket.on('receiveMessage', function(msg) { chat.open_small(msg) }, this);
   }
 
   open(key){
