@@ -1,5 +1,5 @@
-var width = screen.width; // screen.width > 1200 ? 1200 :
-var height = screen.height; // screen.width > 1200 ? 800 : 
+var width = screen.width > 1200 ? 1200 : screen.width; //
+var height = screen.width > 1200 ? 800 : screen.height; // 
 
 const engineConfig = {
     type: Phaser.AUTO,
