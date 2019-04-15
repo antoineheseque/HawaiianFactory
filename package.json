@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/antoineheseque/HawaiianFactory#readme",
   "dependencies": {
+    "canvas": "^2.4.1",
     "express": "^4.16.4",
     "jsdom": "^14.0.0",
     "node-static": "0.7.11",
