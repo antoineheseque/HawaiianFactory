@@ -14,7 +14,8 @@ class Chat{
   }
 
   create(){
-    var button = this.game.add.text(this.width - 205, this.height - 25, 'Envoyer un message', { fill: '#0f0' }).setFontSize(16).setFontStyle('bold').setInteractive().on('pointerdown', () => {
+    this.open('bienvenue1');
+    var button = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
       var msg = prompt("Entrez votre message :", "");
       console.log(this.game.level.socket);
       this.game.level.socket.emit('receiveMessage', msg);
@@ -152,7 +153,7 @@ class Chat{
         var msg = text.basicWordWrap(text.text, text.context, 290);
         var lines = msg.split(/\r\n|\r|\n/).length;
 
-        text.setPosition(this.width*(9/12), 10+(this.linesCount-1)*13);
+        text.setPosition(this.width-305, 10+(this.linesCount-1)*13);
         this.linesCount += lines;
 
         var obj = {
@@ -164,7 +165,7 @@ class Chat{
       }
       this.fondChat.clear();
       this.fondChat.fillStyle(0x222222, 0.7);
-      this.fondChat.fillRect(this.width*(895/1200), this.height*(5/800), this.width*(295/800), 13*this.linesCount);
+      this.fondChat.fillRect(this.width-310, 5, 305, 13*this.linesCount);
     }
   }
 

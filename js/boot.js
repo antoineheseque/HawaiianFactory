@@ -112,6 +112,7 @@ class Boot extends Phaser.Scene{
     this.load.image('cursor', 'images/ui/cursor.png');
     this.load.image('zoomIn', 'images/ui/zoomIn.png');
     this.load.image('zoomOut', 'images/ui/zoomOut.png');
+    this.load.image('reply', 'images/ui/reply.png');
 
     this.load.image('blank', 'images/ui/blank.png');
 
