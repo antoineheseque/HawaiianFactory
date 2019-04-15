@@ -27,6 +27,11 @@ class Chat{
       resetOnMatch: true,
     });
     this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.open_small('Ceci est le message n' + this.counter); this.counter++; }, this);
+
+    // SERVER PART
+    var chat = this;
+    this.game.level.socket.on('playerConnected', function(p) { chat.open_small('L\'Usine ' + p.name + ' viens de s\'installer en ville!') }, this);
+    this.game.level.socket.on('playerDisconnected', function(p) { chat.open_small('L\'Usine ' + p.name + ' viens de quitter la ville!') }, this);
   }
 
   open(key){

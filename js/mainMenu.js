@@ -19,13 +19,8 @@ class MainMenu extends Phaser.Scene {
     var width = this.cameras.main.width;
     var height = this.cameras.main.height;
 
-    /*var player = prompt("Entrez le nom du directeur :", "Gilbert Montagné");
-    this.username = player;*/
-
     var music = this.sound.add('theme');
     music.play();
-
-    this.username = "Gilbert Montagné";
 
     var background = this.add.image(0,0,'background').setOrigin(0,0).setDisplaySize(width, height);
 
@@ -42,7 +37,7 @@ class MainMenu extends Phaser.Scene {
 
       // FULLSCREEN (PROBLEM)
 
-      var canvas = this.sys.game.canvas;
+      /*var canvas = this.sys.game.canvas;
       var fullscreen = this.sys.game.device.fullscreen;
 
       if (!fullscreen.available)
@@ -50,11 +45,10 @@ class MainMenu extends Phaser.Scene {
           return;
       }
 
-      canvas[fullscreen.request]();
+      canvas[fullscreen.request]();*/
 
 
       this.scene.start('loadLevel');
     });
   }
-
 }

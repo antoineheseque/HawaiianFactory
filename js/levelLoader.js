@@ -12,8 +12,12 @@ class LoadLevel extends Phaser.Scene {
     this.width = this.cameras.main.width;
     this.height = this.cameras.main.height;
 
-    // Server part
-    this.socket = io();
+    var player = prompt("Entrez le nom de votre Usine :", "Unknown");
+    this.username = player;
+
+    // SERVER PART
+    console.log(this.username);
+    this.socket = io.connect('', {query: 'name=' + this.username}); // Crée le socket du joueur 
   }
 
   create ()
