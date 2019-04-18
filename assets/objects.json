@@ -90,6 +90,34 @@
           "frames":4
         }
       ]
+    },
+    "compacteur1":{
+      "name":"Décapeur à matériaux",
+      "stats":{
+        "environment":-100,
+        "tech":50,
+        "social":-100
+      },
+      "upgrades":[
+        {
+          "cost":500,
+          "gain":1.25,
+          "texture":"decapeur1",
+          "frames":17
+        },
+        {
+          "cost":5000,
+          "gain":20,
+          "texture":"decapeur2",
+          "frames":17
+        },
+        {
+          "cost":30000,
+          "gain":75,
+          "texture":"decapeur3",
+          "frames":17
+        }
+      ]
     }
   },
   "environment":{
