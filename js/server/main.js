@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
       });
 
     }
-    if(message[0] == '/online'){
+    else if(message[0] == '/online'){
       var str = '';
       str += '(' + Object.keys(players).length + ' Joueur(s)): ';
       Object.keys(players).forEach(function(key) {
