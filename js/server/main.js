@@ -41,7 +41,6 @@ const self = this;
 io.on('connection', function (socket) {
   console.log('A user connected');
 
-  console.log(Object.keys(players).length);
   if(Object.keys(players).length < 1){ // Si c'est le premier joueur alors reset le temps au premier jour.
     date = new Date();
     console.log('Time reset');
@@ -65,8 +64,30 @@ io.on('connection', function (socket) {
   });
 
   socket.on('receiveMessage', function(msg) {
-    socket.emit('receiveMessage', players[socket.id].name + ': ' + msg);
-    socket.broadcast.emit('receiveMessage', players[socket.id].name + ': ' + msg);
+    var message = msg.split(' ');
+    if(message[0] == '/w'){
+      var username = 'unknown';
+      Object.keys(players).forEach(function(key) {
+          if(players[key].name == message[1]){
+              io.to(key).emit('receiveMessage', msg.replace("/w " + players[key].name, '[Privé] ' + players[socket.id].name + ':'));
+              socket.emit('receiveMessage', '[Privé] Message envoyé à ' + players[key].name + '.');
+          }
+      });
+
+    }
+    if(message[0] == '/online'){
+      var str = '';
+      str += '(' + Object.keys(players).length + ' Joueur(s)): ';
+      Object.keys(players).forEach(function(key) {
+          str += players[key] + ' ';
+      });
+      str += '.';
+      socket.emit('receiveMessage', str);
+    }
+    else{
+      socket.emit('receiveMessage', players[socket.id].name + ': ' + msg);
+      socket.broadcast.emit('receiveMessage', players[socket.id].name + ': ' + msg);
+    }
   });
 
 });
