@@ -79,7 +79,7 @@ io.on('connection', function (socket) {
       var str = '';
       str += '(' + Object.keys(players).length + ' Joueur(s)): ';
       Object.keys(players).forEach(function(key) {
-          str += players[key] + ' ';
+          str += players[key].name + ' ';
       });
       str += '.';
       socket.emit('receiveMessage', str);
