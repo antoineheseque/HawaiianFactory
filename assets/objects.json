@@ -66,26 +66,26 @@
     "broyeur1":{
       "name":"Broyeur à déchets",
       "stats":{
-        "environment":-500,
-        "tech":750,
-        "social":-500
+        "environment":-300,
+        "tech":600,
+        "social":-350
       },
       "upgrades":[
         {
-          "cost":15000,
-          "gain":15,
+          "cost":6500,
+          "gain":5,
           "texture":"broyeur1",
+          "frames":4
+        },
+        {
+          "cost":20000,
+          "gain":20,
+          "texture":"broyeur2",
           "frames":4
         },
         {
           "cost":50000,
           "gain":45,
-          "texture":"broyeur2",
-          "frames":4
-        },
-        {
-          "cost":100000,
-          "gain":150,
           "texture":"broyeur3",
           "frames":4
         }
@@ -94,26 +94,26 @@
     "decapeur1":{
       "name":"Décapeur à matériaux",
       "stats":{
-        "environment":-100,
-        "tech":50,
-        "social":-100
+        "environment":-500,
+        "tech":750,
+        "social":-500
       },
       "upgrades":[
         {
-          "cost":500,
-          "gain":1.25,
+          "cost":15000,
+          "gain":15,
           "texture":"decapeur1",
           "frames":17
         },
         {
-          "cost":5000,
-          "gain":20,
+          "cost":50000,
+          "gain":45,
           "texture":"decapeur2",
           "frames":17
         },
         {
-          "cost":30000,
-          "gain":75,
+          "cost":125000,
+          "gain":150,
           "texture":"decapeur3",
           "frames":17
         }
