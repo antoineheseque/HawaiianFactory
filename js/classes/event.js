@@ -35,10 +35,11 @@ class Event{
         }
       }
     }
-  }
+  } //lol
 
   addToList(event, date){
     var newEvent = new Array(event, date);
+
   }
 
   /////////////// TOUT LES EVENEMENTS INCERTAINS
