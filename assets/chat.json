@@ -48,11 +48,15 @@
       "text":"Le gouvernement augmente les taxes pour continuer de construire le mur à la frontière ! Une taxe de 10% a été appliqué !",
       "texture":"6"
   },
+  "taxe_end": {
+      "text":"Le gouvernement revient sur ses décisions et réduit les taxes !",
+      "texture":"7"
+  },
   "prime1": {
       "text":"Le gouvernement offre des primes de fin d'année ! Productivité augmenté de 20 % pendant les fêtes!",
       "texture":"7"
   },
-  "prime1_end": {
+  "prime_end": {
       "text":"Les offres de primes viennent malheureusement de se terminer...",
       "texture":"4"
   },
@@ -60,9 +64,25 @@
       "text":"Johnny Hallyday fait son grand retour sur scène ! Productivité multiplié par 3 !",
       "texture":"7"
   },
+  "concert1_end": {
+      "text":"Johnny Hallyday a arrêté sa tournée !  La productivité est revenu à la normale !",
+      "texture":"4"
+  },
   "concert2": {
-      "text":"Charles Aznavour fait son grand retour sur scène ! Productivité multiplié par 3 !",
+      "text":"Patrick Sébastien fait son grand retour sur scène ! Productivité multiplié par 3 !",
       "texture":"7"
+  },
+  "concert2_end": {
+      "text":"Patrick Sébastien a arrêté sa tournée !  La productivité est revenu à la normale !",
+      "texture":"4"
+  },
+  "concert3": {
+      "text":"Malaa est actuellement sur l'île ! Productivité multiplié par 3 !",
+      "texture":"7"
+  },
+  "concert3_end": {
+      "text":"Malaa a arrêté sa tournée !  La productivité est revenu à la normale !",
+      "texture":"4"
   },
   "touche": {
       "text":"Bas les pattes !",
