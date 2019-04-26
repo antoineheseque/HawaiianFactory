@@ -97,6 +97,40 @@
         }
       ]
     },
+    "solar1":{
+      "name":"Panneau solaire à moyenne rentabilité",
+      "special":"dirt",
+      "stats":{
+        "environment":250,
+        "tech":250,
+        "social":-300
+      },
+      "upgrades":[
+        {
+          "cost":3500,
+          "gain":30,
+          "texture":"solaire1",
+          "frames":1
+        }
+      ]
+    },
+    "solar2":{
+      "name":"Panneau solaire à haute rentabilité",
+      "special":"dirt",
+      "stats":{
+        "environment":350,
+        "tech":400,
+        "social":-300
+      },
+      "upgrades":[
+        {
+          "cost":6000,
+          "gain":75,
+          "texture":"solaire2",
+          "frames":1
+        }
+      ]
+    },
     "broyeur1":{
       "name":"Broyeur à déchets",
       "stats":{

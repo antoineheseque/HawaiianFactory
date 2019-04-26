@@ -417,7 +417,7 @@ class GameUI extends Phaser.Scene {
         });
       }
       else{
-        var obj = this.add.image(x, y, element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
+        var machine = this.add.image(x, y, element.upgrades[0].texture).setScale(1.5).setInteractive().on('pointerdown', () => {
           this.level.selectedObject = Object.keys(this.objects['machines'])[index];
           if(this.selected != null)
             this.selected.destroy();
@@ -431,6 +431,7 @@ class GameUI extends Phaser.Scene {
           }
         });
       }
+      console.log(machine);
       container.add(machine);
       x += 60;
       if(x > 700){
