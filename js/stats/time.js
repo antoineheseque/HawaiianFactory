@@ -41,7 +41,7 @@ class Time{
       this.timeText.text = this.formatDate(this.date);
       this.time = time;
 
-      this.game.newDay(this.date.getDate(), this.date.getMonth()+1, this.date.getFullYear().toString().substr(-2));
+      this.game.newDay(this.date.getDate(), this.date.getMonth()+1, this.date.getFullYear());
     }
   }
 

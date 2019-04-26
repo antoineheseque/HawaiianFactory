@@ -9,12 +9,10 @@ class Event{
     if(this.game.chat.key == '') // Vérifier qu'aucun tuto est ouvert est en train d'être joué
       this.rand(day, month, year);
 
-    // Jouer les événements certains
-    this.prime1(day, month);
-
-    for(var i = 0; i < this.listEvent.lenght; i++){
-      if(this.listEvent[i][1].getDate() == day && this.listEvent[i][1].getMonth() == month && this.listEvent[i][1].getFullYear() == year){
-        if(this.listEvent[i][0] == "erruption")
+    for(var i = 0; i < this.listEvent.length; i++){
+      var date = this.listEvent[i][1];
+      if(date.getDate() == day && date.getMonth() == month && date.getFullYear() == year){
+        if(this.listEvent[i][0] == "eruption")
           this.game.level.cameras.main.shake(1000, 0.02); // Effet pour eruption volcanique
         if(this.listEvent[i][0] == "prime1"){
           this.game.chat.open("prime1_end");
@@ -33,56 +31,59 @@ class Event{
         if(this.listEvent[i][0] == "taxe2"){
           this.game.productivity *= 1.1;
         }
+        this.listEvent.splice(i,1);
+        i--;
       }
     }
   }
 
   addToList(event, date){
     var newEvent = new Array(event, date);
+    this.listEvent.push(newEvent);
   }
 
   /////////////// TOUT LES EVENEMENTS INCERTAINS
   rand(day, month, year){
     if(this.game.chat.key == ''){
+      var date = new Date(year, month, day);
       if(1 == this.getRandomInt(3000)){ // Une chance sur X+1 de réaliser l'event
-        var date = new Date(year, month, day + 5);
+        date.setDate(date.getDate()+15);
         this.game.chat.open("volcan");
-        addToList("erruption", date);
+        this.addToList("eruption", date);
       }
-      if(1 == this.getRandomInt(5000)){ // Une chance sur X+1 de réaliser l'event
-        var date = new Date(year, month, day + 30);
+      else if(1 == this.getRandomInt(5000)){ // Une chance sur X+1 de réaliser l'event
+        date.setDate(date.getDate()+30);
         this.game.chat.open("concert1");
         this.game.productivity *= 3;
-        addToList("concert1", date);
+        this.addToList("concert1", date);
       }
-      if(1 == this.getRandomInt(5000)){ // Une chance sur X+1 de réaliser l'event
-        var date = new Date(year, month, day + 30);
+      else if(1 == this.getRandomInt(5000)){ // Une chance sur X+1 de réaliser l'event
+        date.setDate(date.getDate()+30);
         this.game.chat.open("concert2");
         this.game.productivity *= 3;
-        addToList("concert2", date);
+        this.addToList("concert2", date);
       }
-      if(1 == this.getRandomInt(1000)){ // Une chance sur X+1 de réaliser l'event
-        var date = new Date(year, month, day + 20);
+      else if(1 == this.getRandomInt(1000)){ // Une chance sur X+1 de réaliser l'event
+        date.setDate(date.getDate()+20);
         this.game.chat.open("taxe1");
         this.game.productivity /= 1.2;
-        addToList("taxe1", date);
+        this.addToList("taxe1", date);
       }
-      if(1 == this.getRandomInt(1000)){ // Une chance sur X+1 de réaliser l'event
-        var date = new Date(year, month, day + 20);
+      else if(1 == this.getRandomInt(1000)){ // Une chance sur X+1 de réaliser l'event
+        date.setDate(date.getDate()+20);
         this.game.chat.open("taxe1");
         this.game.productivity /= 1.1;
-        addToList("taxe2", date);
+        this.addToList("taxe2", date);
       }
-      if(1 == this.getRandomInt(2)){ // Une chance sur X+1 de réaliser l'event
+      else if(1 == this.getRandomInt(2)){ // Une chance sur X+1 de réaliser l'event
         if(day == 1 && month == 12){
-          var date = new Date(year, month, day + 30);
+          date.setDate(date.getDate()+30);
           this.game.chat.open("prime1");
           this.game.chat.open_small("prime1", true);
           this.game.productivity *= 1.2;
-          addToList("prime1", date);
+          this.addToList("prime1", date);
         }
       }
-
   }
 }
 
