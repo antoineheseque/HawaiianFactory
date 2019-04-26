@@ -35,11 +35,15 @@ class Event{
         i--;
       }
     }
-  }
+  } //lol
 
   addToList(event, date){
     var newEvent = new Array(event, date);
+<<<<<<< HEAD
     this.listEvent.push(newEvent);
+=======
+
+>>>>>>> 790867ecd126836acc6dff0a0b792fe406ace3c3
   }
 
   /////////////// TOUT LES EVENEMENTS INCERTAINS
