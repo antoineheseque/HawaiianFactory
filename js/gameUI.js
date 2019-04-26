@@ -431,7 +431,6 @@ class GameUI extends Phaser.Scene {
           }
         });
       }
-      console.log(machine);
       container.add(machine);
       x += 60;
       if(x > 700){
