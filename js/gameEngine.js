@@ -10,7 +10,7 @@ class GameEngine extends Phaser.Scene {
     this.level.game = this;
 
     // Stats
-    this.money = new MoneyStat(1000, this);
+    this.money = new MoneyStat(1500, this);
     this.environment = new EnvironmentalStat(0, this);
     this.tech = new TechnologicalStat(0, this);
     this.social = new SocialStat(0, this);

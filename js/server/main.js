@@ -48,10 +48,9 @@ io.on('connection', function (socket) {
 
   // Create a players
   players[socket.id] = {
-    name:socket.handshake.query.name
+    name:socket.handshake.query.name,
+    initialDay:date
   };
-
-  socket.emit('setTime', date);
 
   socket.emit('playerConnected', players[socket.id]);
   socket.broadcast.emit('playerConnected', players[socket.id]);

@@ -6,7 +6,7 @@ class MoneyStat{
     this.game = game;
     this.time = 0;
     this.preload();
-    this.stat = new Stats(40, game.level.height-100+10, 'Economique', 1000, 0, 500000,0xFF8C00, this);
+    this.stat = new Stats(40, game.level.height-100+10, 'Economique', startMoney, 0, 500000,0xFF8C00, this);
   }
 
   onMin(){
