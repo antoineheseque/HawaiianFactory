@@ -67,6 +67,8 @@ class MouseInteraction{
     if(type == 'machines'){
       if (this.level.level.background[y][x].stats.name == 14 && stats.special == 'sea') // Si dans la mer
         return true;
+      else if(this.level.level.background[y][x].stats.name == 1 && stats.special == 'dirt') // Si sur terre
+        return true;
       else if (this.level.level.background[y][x].stats.name == 13 && !stats.special)
         return true;
     }

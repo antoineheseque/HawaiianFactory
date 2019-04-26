@@ -399,8 +399,6 @@ class GameUI extends Phaser.Scene {
     var x = 115;
     var y = 25;
     Object.values(this.objects['machines']).forEach(function(element, index) {
-      //var el = gameUI.objects['environment'][element];
-
       // Si il y a une animation
       if(element.upgrades[0].frames > 1){
         var name = element.upgrades[0].texture;
@@ -527,12 +525,12 @@ class GameUI extends Phaser.Scene {
     }
     if(500+x+80 > this.level.width)
       x-=30;
-    this.previewObjectStats = this.add.container(500+x-80, this.height-100+y-150);
-    this.previewObjectStats.width = 160;
+    this.previewObjectStats = this.add.container(500+x-90, this.height-100+y-150);
+    this.previewObjectStats.width = 180;
     this.previewObjectStats.height = 125;
     var bgMenu = this.add.graphics();
     bgMenu.fillStyle(0x222222, 1);
-    bgMenu.fillRect(0, 0, 160, 125);
+    bgMenu.fillRect(0, 0, 180, 125);
     this.previewObjectStats.add(bgMenu);
 
     // Show name
@@ -540,13 +538,13 @@ class GameUI extends Phaser.Scene {
     if(obj.name.length > 23)
       font = '14px monospace';
     var name = this.make.text({
-      x: 80,
+      x: 90,
       y: 20,
       text: obj.name,
       style: {
         font: font,
         fill: '#ffffff',
-        wordWrap: { width: 150 }
+        wordWrap: { width: 176 }
       }
     });
     name.setOrigin(0.5);
@@ -559,6 +557,8 @@ class GameUI extends Phaser.Scene {
         empl = 'Mer';
       if(obj.special == 'inside')
         empl = 'Usine';
+        if(obj.special == 'dirt')
+          empl = 'Extérieur';
     }
 
     var emplacement = this.make.text({
@@ -568,7 +568,7 @@ class GameUI extends Phaser.Scene {
       style: {
         font: '14px monospace',
         fill: '#ffffff',
-        wordWrap: { width: 150 }
+        wordWrap: { width: 180 }
       }
     });
     this.previewObjectStats.add(emplacement);
@@ -595,31 +595,31 @@ class GameUI extends Phaser.Scene {
       style: {
         font: '18px monospace',
         fill: '#0FDD43',
-        wordWrap: { width: 50 }
+        wordWrap: { width: 60 }
       }
     });
     this.previewObjectStats.add(stat1);
 
     var stat2 = this.make.text({
-      x: 60,
+      x: 65,
       y: 80,
       text: (obj.stats.tech > 0 ? '+' : '') + obj.stats.tech,
       style: {
         font: '18px monospace',
         fill: '#0F73DD',
-        wordWrap: { width: 50 }
+        wordWrap: { width: 60 }
       }
     });
     this.previewObjectStats.add(stat2);
 
     var stat3 = this.make.text({
-      x: 110,
+      x: 120,
       y: 80,
       text: (obj.stats.social > 0 ? '+' : '') + obj.stats.social,
       style: {
         font: '18px monospace',
         fill: '#E5FF50',
-        wordWrap: { width: 50 }
+        wordWrap: { width: 60 }
       }
     });
     this.previewObjectStats.add(stat3);

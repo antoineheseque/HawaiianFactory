@@ -39,7 +39,10 @@ class Chat{
 
     // SERVER PART
     var chat = this;
-    this.game.level.socket.on('playerConnected', function(p) { chat.open_small('L\'Usine ' + p.name + ' viens de s\'installer en ville!') }, this);
+    this.game.level.socket.on('playerConnected', function(p) {
+      chat.open_small('L\'Usine ' + p.name + ' viens de s\'installer en ville!');
+      chat.game.time.setTime(p.initialDay);
+    }, this);
     this.game.level.socket.on('playerDisconnected', function(p) { chat.open_small('L\'Usine ' + p.name + ' viens de quitter la ville!') }, this);
     this.game.level.socket.on('receiveMessage', function(msg) { chat.open_small(msg) }, this);
   }

@@ -63,6 +63,40 @@
         }
       ]
     },
+    "turbine":{
+      "name":"Éolienne à triple pâles",
+      "special":"dirt",
+      "stats":{
+        "environment":400,
+        "tech":100,
+        "social":-150
+      },
+      "upgrades":[
+        {
+          "cost":1000,
+          "gain":1.8,
+          "texture":"turbine1",
+          "frames":3
+        }
+      ]
+    },
+    "turbine2":{
+      "name":"Turbine écologique en Rubis",
+      "special":"dirt",
+      "stats":{
+        "environment":650,
+        "tech":150,
+        "social":-250
+      },
+      "upgrades":[
+        {
+          "cost":1000,
+          "gain":2,
+          "texture":"ecoturbine1",
+          "frames":3
+        }
+      ]
+    },
     "broyeur1":{
       "name":"Broyeur à déchets",
       "stats":{
@@ -88,6 +122,23 @@
           "gain":45,
           "texture":"broyeur3",
           "frames":4
+        }
+      ]
+    },
+    "turbine3":{
+      "name":"Éolienne à triple pâles améliorée",
+      "special":"dirt",
+      "stats":{
+        "environment":750,
+        "tech":200,
+        "social":-50
+      },
+      "upgrades":[
+        {
+          "cost":10000,
+          "gain":30,
+          "texture":"turbine2",
+          "frames":3
         }
       ]
     },
@@ -231,36 +282,6 @@
         }
       ]
     },
-    "turbine":{
-      "name":"Éolienne à triple pâles",
-      "stats":{
-        "environment":400,
-        "tech":100,
-        "social":-150
-      },
-      "upgrades":[
-        {
-          "cost":1000,
-          "texture":"turbine1",
-          "frames":3
-        }
-      ]
-    },
-    "turbine3":{
-      "name":"Turbine écologique en Rubis",
-      "stats":{
-        "environment":750,
-        "tech":150,
-        "social":-250
-      },
-      "upgrades":[
-        {
-          "cost":1000,
-          "texture":"ecoturbine1",
-          "frames":3
-        }
-      ]
-    },
     "billard":{
       "name":"Billard",
       "special":"inside",
@@ -274,21 +295,6 @@
           "cost":3000,
           "texture":"billard",
           "frames":1
-        }
-      ]
-    },
-    "turbine2":{
-      "name":"Éolienne à triple pâles améliorée",
-      "stats":{
-        "environment":750,
-        "tech":200,
-        "social":-50
-      },
-      "upgrades":[
-        {
-          "cost":10000,
-          "texture":"turbine2",
-          "frames":3
         }
       ]
     }
