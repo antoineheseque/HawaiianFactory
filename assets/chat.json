@@ -44,6 +44,10 @@
       "text":"Le gouvernement attaque les usines produisant des déchets plastiques ! Une taxe de 20% a été appliqué !",
       "texture":"6"
   },
+  "taxe2": {
+      "text":"Le gouvernement augmente les taxes pour continuer de construire le mur à la frontière ! Une taxe de 10% a été appliqué !",
+      "texture":"6"
+  },
   "prime1": {
       "text":"Le gouvernement offre des primes de fin d'année ! Productivité augmenté de 20 % pendant les fêtes!",
       "texture":"7"
@@ -51,6 +55,14 @@
   "prime1_end": {
       "text":"Les offres de primes viennent malheureusement de se terminer...",
       "texture":"4"
+  },
+  "concert1": {
+      "text":"Johnny Hallyday fait son grand retour sur scène ! Productivité multiplié par 3 !",
+      "texture":"7"
+  },
+  "concert2": {
+      "text":"Charles Aznavour fait son grand retour sur scène ! Productivité multiplié par 3 !",
+      "texture":"7"
   },
   "touche": {
       "text":"Bas les pattes !",

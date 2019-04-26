@@ -21,6 +21,18 @@ class Event{
           this.game.chat.open_small("prime1_end", true);
           this.game.productivity /= 1.2;
         }
+        if(this.listEvent[i][0] == "concert1"){
+          this.game.productivity /= 3;
+        }
+        if(this.listEvent[i][0] == "concert2"){
+          this.game.productivity /= 3;
+        }
+        if(this.listEvent[i][0] == "taxe1"){
+          this.game.productivity *= 1.2;
+        }
+        if(this.listEvent[i][0] == "taxe2"){
+          this.game.productivity *= 1.1;
+        }
       }
     }
   }
@@ -32,11 +44,36 @@ class Event{
   /////////////// TOUT LES EVENEMENTS INCERTAINS
   rand(day, month, year){
     if(this.game.chat.key == ''){
-      if(1 == this.getRandomInt(1000)) // Une chance sur X+1 de réaliser l'event
+      if(1 == this.getRandomInt(3000)){ // Une chance sur X+1 de réaliser l'event
         var date = new Date(year, month, day + 5);
         this.game.chat.open("volcan");
         addToList("erruption", date);
-      if(1 == this.getRandomInt(2)){
+      }
+      if(1 == this.getRandomInt(5000)){ // Une chance sur X+1 de réaliser l'event
+        var date = new Date(year, month, day + 30);
+        this.game.chat.open("concert1");
+        this.game.productivity *= 3;
+        addToList("concert1", date);
+      }
+      if(1 == this.getRandomInt(5000)){ // Une chance sur X+1 de réaliser l'event
+        var date = new Date(year, month, day + 30);
+        this.game.chat.open("concert2");
+        this.game.productivity *= 3;
+        addToList("concert2", date);
+      }
+      if(1 == this.getRandomInt(1000)){ // Une chance sur X+1 de réaliser l'event
+        var date = new Date(year, month, day + 20);
+        this.game.chat.open("taxe1");
+        this.game.productivity /= 1.2;
+        addToList("taxe1", date);
+      }
+      if(1 == this.getRandomInt(1000)){ // Une chance sur X+1 de réaliser l'event
+        var date = new Date(year, month, day + 20);
+        this.game.chat.open("taxe1");
+        this.game.productivity /= 1.1;
+        addToList("taxe2", date);
+      }
+      if(1 == this.getRandomInt(2)){ // Une chance sur X+1 de réaliser l'event
         if(day == 1 && month == 12){
           var date = new Date(year, month, day + 30);
           this.game.chat.open("prime1");
@@ -44,35 +81,12 @@ class Event{
           this.game.productivity *= 1.2;
           addToList("prime1", date);
         }
-      } // Une chance sur X+1 de réaliser l'event
+      }
 
   }
+}
 
-
-  /////////////// TOUT LES EVENEMENTS CERTAINS
-
-  /*prime1(day, month){
-    if(day == 1 && month == 12){
-      if(this.game.chat.key == '') // Si rien n'est ouvert (tuto ou event special) on affiche qqch
-        this.game.chat.open("prime1");
-      this.game.chat.open_small("prime1", true);
-
-      this.prime1_played = true;
-      this.game.productivity *= 1.2;
-    }
-    if(day == 1 && month == 2){
-      if(this.prime1_played == true){ // Assure une sécurité si jamais le joueur démarre pendant la période de l'event,
-                       // Sinon il se serait tapé une productivité divisée par 1.2 alors qu'il était à 1
-        if(this.game.chat.key == '') // Si rien n'est ouvert (tuto ou event special) on affiche qqch
-          this.game.chat.open("prime1_end");
-        this.game.chat.open_small("prime1_end", true);
-
-        this.prime1_played = false;
-        this.game.productivity /= 1.2;
-      }
-    }
-  }*/
-  /////////////////////////////
+  ///////////////////////////
 
   getRandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
