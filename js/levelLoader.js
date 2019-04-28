@@ -17,7 +17,7 @@ class LoadLevel extends Phaser.Scene {
 
     // SERVER PART
     console.log(this.username);
-    this.socket = io.connect('', {query: 'name=' + this.username}); // Crée le socket du joueur 
+    this.socket = io.connect('', {query: 'name=' + this.username}); // Crée le socket du joueur
   }
 
   create ()
@@ -31,11 +31,13 @@ class LoadLevel extends Phaser.Scene {
         element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
           if(element2.frames > 1){ // Quand il n'y a qu'une frame pour l'upgrade
             var frames = phaser.getFrames(element2.texture, element2.frames);
-
+            var frameRate = 2*element2.frames;
+            if(element2.speed)
+              frameRate *= element2.speed;
             var config = {
                 key: element2.texture,
                 frames: frames,
-                frameRate: 2*element2.frames,
+                frameRate: frameRate,
                 repeat: -1
             };
             phaser.anims.create(config);
@@ -70,10 +72,13 @@ class LoadLevel extends Phaser.Scene {
         element.upgrades.forEach(function(element2){ // Parcourir toute les upgrades
           if(element2.frames > 1){ // Quand il n'y a qu'une frame pour l'upgrade
             var frames = phaser.getFrames(element2.texture, element2.frames);
+            var frameRate = 2*element2.frames;
+            if(element2.speed)
+              frameRate *= element2.speed;
             phaser.anims.create({
                 key: element2.texture,
                 frames: frames,
-                frameRate: 2*element2.frames,
+                frameRate: frameRate,
                 repeat: -1
             });
           }

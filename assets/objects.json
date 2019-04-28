@@ -12,19 +12,22 @@
           "cost":500,
           "gain":1.25,
           "texture":"compacteur1",
-          "frames":2
+          "frames":2,
+          "speed":0.8
         },
         {
           "cost":5000,
           "gain":20,
           "texture":"compacteur2",
-          "frames":2
+          "frames":2,
+          "speed":0.8
         },
         {
           "cost":30000,
           "gain":75,
           "texture":"compacteur3",
-          "frames":2
+          "frames":2,
+          "speed":0.8
         }
       ]
     },
@@ -188,19 +191,22 @@
           "cost":15000,
           "gain":15,
           "texture":"decapeur1",
-          "frames":17
+          "frames":17,
+          "speed":0.5
         },
         {
           "cost":50000,
           "gain":45,
           "texture":"decapeur2",
-          "frames":17
+          "frames":17,
+          "speed":0.5
         },
         {
           "cost":125000,
           "gain":150,
           "texture":"decapeur3",
-          "frames":17
+          "frames":17,
+          "speed":0.5
         }
       ]
     }
@@ -334,6 +340,7 @@
     },
     "casino1":{
       "name":"Machine à sous",
+      "special":"inside",
       "stats":{
         "environment":0,
         "tech":0,
@@ -343,7 +350,8 @@
         {
           "cost":20000,
           "texture":"casino1",
-          "frames":30
+          "frames":30,
+          "speed":0.4
         }
       ]
     }
