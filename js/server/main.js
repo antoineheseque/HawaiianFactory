@@ -63,6 +63,9 @@ io.on('connection', function (socket) {
   });
 
   socket.on('receiveMessage', function(msg) {
+    if(msg == null)
+      return;
+
     var message = msg.split(' ');
     if(message[0] == '/w'){
       var username = 'unknown';
