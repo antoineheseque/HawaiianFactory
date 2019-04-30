@@ -209,7 +209,91 @@
           "speed":0.5
         }
       ]
-    }
+    },
+    "presse1":{
+      "name":"Forge à pelle",
+      "stats":{
+        "environment":-500,
+        "tech":800,
+        "social":-600
+      },
+      "upgrades":[
+        {
+          "cost":18000,
+          "gain":15,
+          "texture":"presse1",
+          "frames":7
+        },
+        {
+          "cost":60000,
+          "gain":30,
+          "texture":"presse2",
+          "frames":7
+        },
+        {
+          "cost":130000,
+          "gain":100,
+          "texture":"presse3",
+          "frames":7
+        },
+      ]
+    },
+    "presse4":{
+      "name":"Forge à pioche",
+      "stats":{
+        "environment":-500,
+        "tech":800,
+        "social":-600
+      },
+      "upgrades":[
+        {
+          "cost":18000,
+          "gain":15,
+          "texture":"presse4",
+          "frames":7
+        },
+        {
+          "cost":60000,
+          "gain":30,
+          "texture":"presse5",
+          "frames":7
+        },
+        {
+          "cost":130000,
+          "gain":100,
+          "texture":"presse6",
+          "frames":7
+        },
+      ]
+    },
+    "presse7":{
+      "name":"Forge à hache",
+      "stats":{
+        "environment":-500,
+        "tech":800,
+        "social":-600
+      },
+      "upgrades":[
+        {
+          "cost":18000,
+          "gain":15,
+          "texture":"presse7",
+          "frames":7
+        },
+        {
+          "cost":60000,
+          "gain":30,
+          "texture":"presse8",
+          "frames":7
+        },
+        {
+          "cost":130000,
+          "gain":100,
+          "texture":"presse9",
+          "frames":7
+        },
+      ]
+    },
   },
   "environment":{
     "tree1":{
