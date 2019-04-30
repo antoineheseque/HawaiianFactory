@@ -235,7 +235,7 @@
           "gain":100,
           "texture":"presse3",
           "frames":7
-        },
+        }
       ]
     },
     "presse4":{
@@ -263,7 +263,7 @@
           "gain":100,
           "texture":"presse6",
           "frames":7
-        },
+        }
       ]
     },
     "presse7":{
@@ -291,7 +291,7 @@
           "gain":100,
           "texture":"presse9",
           "frames":7
-        },
+        }
       ]
     }
   },
