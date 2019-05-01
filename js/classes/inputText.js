@@ -18,8 +18,6 @@ class InputText{
     var validMessage = this.element.getChildByName('button');
 
     this.element.addListener('click');
-    console.log(inputMessage);
-    console.log(validMessage);
     inputMessage.placeholder = placeholderText;
     validMessage.value = submitText;
   }

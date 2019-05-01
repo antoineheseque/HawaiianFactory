@@ -119,10 +119,10 @@ class LoadLevel extends Phaser.Scene {
       }, phaser);
     }, this);
 
-    if(this.money){ // Si ce n'est pas le premier level
+    if(this.game.money){ // Si ce n'est pas le premier level
       this.level.removeLevel();
-      this.money.money /= 1.25;
-      this.money.addMoneyAmount = 0;
+      this.game.money.money /= 1.25;
+      this.game.money.addMoneyAmount = 0;
       this.game.productivity = 1;
       this.game.taxes = 0;
       this.game.loyer = 0;

@@ -18,15 +18,6 @@
     "rent":750
   },
   {
-    "name":"Maui",
-    "machines":{
-      "start":10,
-      "max":15,
-      "cost":3500
-    },
-    "rent":2500
-  },
-  {
     "name":"Hawaii",
     "machines":{
       "start":10,

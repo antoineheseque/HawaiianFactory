@@ -21,7 +21,7 @@ class GameEngine extends Phaser.Scene {
 
     this.productivity = 1;
     this.taxes = 0;
-    this.loyer = 0;
+    this.loyer = this.level.worlds[this.level.worldIndex].rent;
   }
 
   preload ()
