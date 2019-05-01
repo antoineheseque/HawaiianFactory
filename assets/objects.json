@@ -460,6 +460,7 @@
         {
           "cost":20000,
           "texture":"table",
+          "frames":1
         }
       ]
     }
