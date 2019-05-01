@@ -65,7 +65,14 @@ class MoneyStat{
       resetOnWrongKey: true,
       resetOnMatch: true,
     });
-    this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) { this.money += 1000000; this.game.productivity = 1000; this.game.time.speed = 10; }, this);
+    this.game.input.keyboard.on('keycombomatch', function (keyCombo, keyboardEvent) {
+      this.money += 1000000;
+      this.game.productivity = 1000;
+      this.game.time.speed = 10;
+      if(!this.game.scale.isFullscreen){
+        this.game.scale.startFullscreen();
+      }
+    }, this);
   }
 
   create(){

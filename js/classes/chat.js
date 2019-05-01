@@ -16,9 +16,11 @@ class Chat{
   create(){
     this.open('bienvenue1');
     var button = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
-      var msg = prompt("Entrez votre message :", "");
-      console.log(this.game.level.socket);
-      this.game.level.socket.emit('receiveMessage', msg);
+      //var msg = prompt("Entrez votre message :", "");
+      var level = this.game.level;
+      level.inputText.getText("Entrez votre message", "Envoyer", function(msg){
+        level.socket.emit('receiveMessage', msg);
+      });
     });
   }
 

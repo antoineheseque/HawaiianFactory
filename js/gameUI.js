@@ -724,7 +724,6 @@ class GameUI extends Phaser.Scene {
         this.level.level.removeObject(object);
         if(this.container != null)
           this.container.destroy();
-        map.level.game.chat.show_small();
       });
       this.container.add(sell);
     }

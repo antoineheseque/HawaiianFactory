@@ -29,11 +29,10 @@ class MainMenu extends Phaser.Scene {
     var play = this.add.image(width/2, height/2+100, 'play').setDisplaySize(160, 80).setInteractive()
     .on('pointerdown', () => {
 
-      /*
+
       if(!this.scale.isFullscreen){
         this.scale.startFullscreen();
       }
-      */
 
       // FULLSCREEN (PROBLEM)
 
@@ -46,7 +45,6 @@ class MainMenu extends Phaser.Scene {
       }
 
       canvas[fullscreen.request]();*/
-
 
       this.scene.start('loadLevel');
     });

@@ -75,7 +75,6 @@ io.on('connection', function (socket) {
               socket.emit('receiveMessage', '[Privé] Message envoyé à ' + players[key].name + '.');
           }
       });
-
     }
     else if(message[0] == '/online'){
       var str = '';

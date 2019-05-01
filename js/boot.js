@@ -115,6 +115,7 @@ class Boot extends Phaser.Scene{
     this.load.image('reply', 'images/ui/reply.png');
 
     this.load.image('blank', 'images/ui/blank.png');
+    this.load.html('textInput', 'userInput.html')
 
     for(var i = 1; i <= 8; i++){
       this.load.image('girl'+i, 'images/ui/girl/' + i + '.png');

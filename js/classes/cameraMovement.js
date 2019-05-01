@@ -2,10 +2,10 @@ class CameraMovement{
   constructor(level){
     // Camera movement system
     this.level = level;
-    var leftKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
-    var rightKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
-    var upKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Z);
-    var downKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);
+    var leftKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+    var rightKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+    var upKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+    var downKey = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
 
     var controlConfig = {
         camera: level.cameras.main,
@@ -21,8 +21,8 @@ class CameraMovement{
 
     this.cam = this.level.cameras.main;
     // Zoom system
-    this.zoomIn = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E);
-    this.zoomOut = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
+    this.zoomIn = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ALT);
+    this.zoomOut = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.CTRL);
     this.zoom = 1;
   }
 
