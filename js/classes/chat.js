@@ -14,7 +14,10 @@ class Chat{
   }
 
   create(){
-    this.open('bienvenue1');
+    if(this.game.level.showTutorial && !this.event_firstMachine){
+      this.event_firstMachine = "loaded";
+      this.open('bienvenue1');
+    }
     var button = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
       //var msg = prompt("Entrez votre message :", "");
       var level = this.game.level;

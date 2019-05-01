@@ -40,13 +40,10 @@ class InputText{
         {
             var inputMessage = this.getChildByName('message');
 
-            //  Have they entered anything?
             if (inputMessage.value !== '')
             {
-                //  Turn off the click events
                 this.removeListener('click');
 
-                //  Populate the text with whatever they typed in as the username!
                 console.log(inputMessage.value);
 
                 if(input.callback != null){

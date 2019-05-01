@@ -5,6 +5,8 @@ class LoadLevel extends Phaser.Scene {
     super({ key: 'loadLevel' });
     this.selectedObject = -1;
     this.selectedType = 'none';
+
+    this.showTutorial = false;
   }
 
   preload ()

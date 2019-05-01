@@ -9,6 +9,8 @@ class GameUI extends Phaser.Scene {
   init(level){
     this.level = level;
     this.level.UI = this;
+
+    this.showTutorial = this.level.showTutorial;
   }
 
   preload(){
@@ -348,7 +350,7 @@ class GameUI extends Phaser.Scene {
 
       // Afficher texte avant de changer d'Usine assurez vous d'avoir de
       // l'argent pour payer le prochain loyer et les 25% de frais de changement d'usin
-      if(!this.event_changerUsine){
+      if(this.showTutorial && !this.event_changerUsine){
         this.event_changerUsine = "loaded";
         this.level.game.chat.open('changeUsine');
       }
@@ -443,9 +445,14 @@ class GameUI extends Phaser.Scene {
       this.level.selectedObject = -1;
       this.loadMainMenu();
       container.destroy();
+
+      if(this.showTutorial && !this.event_leaveMachine){
+        this.event_leaveMachine = "loaded";
+        this.level.game.chat.open('leave1');
+      }
     });
 
-    if(!this.event_createMachine){
+    if(this.showTutorial && !this.event_createMachine){
       this.event_createMachine = "loaded";
       this.level.game.chat.open('machine1');
     }
@@ -726,6 +733,11 @@ class GameUI extends Phaser.Scene {
           this.container.destroy();
       });
       this.container.add(sell);
+    }
+
+    if(this.showTutorial && !this.event_stats){
+      this.event_stats = "loaded";
+      this.level.game.chat.open('stats1');
     }
   }
 

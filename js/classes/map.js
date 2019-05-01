@@ -42,7 +42,7 @@ class Map {
         if(type == 'machines'){
           this.objects[y][x] = new Machine('machines', stats, x, y, this);
 
-          if(!this.event_firstMachine){
+          if(this.level.showTutorial && !this.event_firstMachine){
             this.event_firstMachine = "loaded";
             this.level.game.chat.open('machine2');
           }
