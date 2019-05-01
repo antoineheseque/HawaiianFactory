@@ -447,6 +447,23 @@
           "speed":0.4
         }
       ]
+    },
+    "table":{
+      "name":"Table",
+      "special":"inside",
+      "stats":{
+        "environment":0,
+        "tech":0,
+        "social":2000
+      },
+      "upgrades":[
+        {
+          "cost":20000,
+          "texture":"casino1",
+          "frames":30,
+          "speed":0.4
+        }
+      ]
     }
   }
 }
