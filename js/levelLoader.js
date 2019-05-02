@@ -6,7 +6,7 @@ class LoadLevel extends Phaser.Scene {
     this.selectedObject = -1;
     this.selectedType = 'none';
 
-    this.showTutorial = false;
+    this.showTutorial = true;
   }
 
   preload ()

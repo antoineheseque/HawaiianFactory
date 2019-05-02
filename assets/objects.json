@@ -70,7 +70,7 @@
       "name":"Éolienne à triple pâles",
       "special":"dirt",
       "stats":{
-        "environment":400,
+        "environment":200,
         "tech":100,
         "social":-150
       },
@@ -87,7 +87,7 @@
       "name":"Turbine écologique en Rubis",
       "special":"dirt",
       "stats":{
-        "environment":650,
+        "environment":350,
         "tech":150,
         "social":-250
       },
@@ -104,7 +104,7 @@
       "name":"Panneau solaire à moyenne rentabilité",
       "special":"dirt",
       "stats":{
-        "environment":250,
+        "environment":150,
         "tech":250,
         "social":-300
       },
@@ -121,7 +121,7 @@
       "name":"Panneau solaire à haute rentabilité",
       "special":"dirt",
       "stats":{
-        "environment":350,
+        "environment":250,
         "tech":400,
         "social":-300
       },
@@ -137,7 +137,7 @@
     "broyeur1":{
       "name":"Broyeur à déchets",
       "stats":{
-        "environment":-300,
+        "environment":-280,
         "tech":600,
         "social":-350
       },
@@ -166,7 +166,7 @@
       "name":"Éolienne à triple pâles améliorée",
       "special":"dirt",
       "stats":{
-        "environment":750,
+        "environment":350,
         "tech":200,
         "social":-50
       },
@@ -182,7 +182,7 @@
     "decapeur1":{
       "name":"Décapeur à matériaux",
       "stats":{
-        "environment":-500,
+        "environment":-750,
         "tech":750,
         "social":-500
       },
@@ -213,7 +213,7 @@
     "presse1":{
       "name":"Forge à pelle",
       "stats":{
-        "environment":-500,
+        "environment":-1700,
         "tech":800,
         "social":-600
       },
@@ -244,7 +244,7 @@
     "presse4":{
       "name":"Forge à pioche",
       "stats":{
-        "environment":-500,
+        "environment":-1700,
         "tech":800,
         "social":-600
       },
@@ -275,7 +275,7 @@
     "presse7":{
       "name":"Forge à hache",
       "stats":{
-        "environment":-500,
+        "environment":-1700,
         "tech":800,
         "social":-600
       },
@@ -310,7 +310,7 @@
       "stats":{
         "environment":25,
         "tech":0,
-        "social":10
+        "social":100
       },
       "upgrades":[
         {
@@ -323,9 +323,9 @@
     "tree2":{
       "name":"Sequoïa",
       "stats":{
-        "environment":50,
+        "environment":75,
         "tech":0,
-        "social":10
+        "social":100
       },
       "upgrades":[
         {
@@ -338,9 +338,9 @@
     "tree3":{
       "name":"Sapin baumier",
       "stats":{
-        "environment":50,
+        "environment":75,
         "tech":0,
-        "social":10
+        "social":100
       },
       "upgrades":[
         {
@@ -353,9 +353,9 @@
     "tree4":{
       "name":"Mélèze",
       "stats":{
-        "environment":50,
+        "environment":75,
         "tech":0,
-        "social":10
+        "social":100
       },
       "upgrades":[
         {
@@ -368,9 +368,9 @@
     "tree5":{
       "name":"Epinète de Norvège",
       "stats":{
-        "environment":50,
+        "environment":75,
         "tech":0,
-        "social":10
+        "social":100
       },
       "upgrades":[
         {
@@ -383,9 +383,9 @@
     "tree6":{
       "name":"Févier épineux",
       "stats":{
-        "environment":50,
+        "environment":75,
         "tech":0,
-        "social":10
+        "social":100
       },
       "upgrades":[
         {
@@ -398,9 +398,9 @@
     "buisson1":{
       "name":"Buisson à fruits rouge",
       "stats":{
-        "environment":75,
+        "environment":100,
         "tech":0,
-        "social":25
+        "social":250
       },
       "upgrades":[
         {
@@ -415,17 +415,33 @@
         }
       ]
     },
+    "table":{
+      "name":"Table",
+      "special":"inside",
+      "stats":{
+        "environment":0,
+        "tech":0,
+        "social":750
+      },
+      "upgrades":[
+        {
+          "cost":2500,
+          "texture":"table",
+          "frames":1
+        }
+      ]
+    },
     "billard":{
       "name":"Billard",
       "special":"inside",
       "stats":{
         "environment":0,
         "tech":0,
-        "social":500
+        "social":1000
       },
       "upgrades":[
         {
-          "cost":3000,
+          "cost":5000,
           "texture":"billard",
           "frames":1
         }
@@ -445,22 +461,6 @@
           "texture":"casino1",
           "frames":30,
           "speed":0.4
-        }
-      ]
-    },
-    "table":{
-      "name":"Table",
-      "special":"inside",
-      "stats":{
-        "environment":0,
-        "tech":0,
-        "social":2000
-      },
-      "upgrades":[
-        {
-          "cost":5000,
-          "texture":"table",
-          "frames":1
         }
       ]
     }
