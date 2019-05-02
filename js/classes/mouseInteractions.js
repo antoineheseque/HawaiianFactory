@@ -3,10 +3,11 @@ class MouseInteraction{
   constructor(level){
     this.level = level;
     this.menuSize = 100;
-    this.oldX = 0;
-    this.oldY = 0;
     this.height = level.cameras.main.height;
     this.width = level.cameras.main.width;
+
+    this.pointerX = 0;
+    this.pointerY = 0;
   }
 
   preload(){
@@ -14,6 +15,10 @@ class MouseInteraction{
     loadJSON('../objects.json', function(response, mI) {
       mI.objects = JSON.parse(response);
     }, this);
+  }
+
+  refresh(){
+    this.update(this.pointerX, this.pointerY);
   }
 
   update(x,y){
@@ -49,8 +54,8 @@ class MouseInteraction{
           this.image2 = this.level.add.image(x*32, y*32, image).setOrigin(0, 0);
         }
 
-        this.oldX = x;
-        this.oldY = y;
+        this.pointerX = x;
+        this.pointerY = y;
       }
     }
     else{

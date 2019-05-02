@@ -46,13 +46,18 @@ class GameUI extends Phaser.Scene {
 
     // Details Button
     var factoryButton = this.add.text(250, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
+      // Si un menu machines ou environment est ouvert alors on le ferme
+      if(this.level.selectedObject > 0)
+        this.loadMainMenu();
+
       this.loadFactoryDetails();
+      this.level.mouseInteraction.refresh();
     });
     container.add(factoryButton);
   }
 
   loadFactoryDetails(){
-    if(this.level.selectedObject < 0 && this.level.selectedType == 'none'){
+    //if(this.level.selectedObject < 0){
       this.level.selectedObject = -3;
       if(this.container != null)
         this.container.destroy();
@@ -243,7 +248,7 @@ class GameUI extends Phaser.Scene {
         this.loadFactoryRent();
       });
       this.container.add(upgrade);
-    }
+    //}
   }
 
   loadFactoryRent(){
@@ -362,6 +367,7 @@ class GameUI extends Phaser.Scene {
         this.previewObjectStats.destroy();
     }
     this.level.selectedType = 'none';
+    this.level.mouseInteraction.refresh();
     var container = this.add.container(500, this.height-this.menuSize);
     container.width = 500;
     var machinesButton = this.add.text(150, 50, 'Machines', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
@@ -374,12 +380,12 @@ class GameUI extends Phaser.Scene {
     }
 
     machinesButton.on('pointerdown', () => {
-      this.loadMachinesMenu();
       container.destroy();
+      this.loadMachinesMenu();
     });
     environmentButton.on('pointerdown', () => {
-      this.loadEnvironmentMenu();
       container.destroy();
+      this.loadEnvironmentMenu();
     });
   }
 
