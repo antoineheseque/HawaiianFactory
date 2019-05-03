@@ -75,7 +75,7 @@ class Chat{
     if(key != 'touche')
       this.key = key;
 
-    var girl = this.UI.add.image(0, 200, 'girl' + this.chat[key].texture).setOrigin(0.5,1).setScale(0.4);
+    var girl = this.UI.add.image(0, 200, 'girl' + this.chat[key].texture).setOrigin(0.5,1).setScale(0.4/(800/this.height));
     var msg = this.chat[key].text;
     if(key == 'changeUsine'){
       var message = this.UI.make.text({
@@ -83,7 +83,7 @@ class Chat{
         y: 20,
         text: msg,
         style: {
-          font: '25px monospace',
+          font: this.width > 500 ? '25px monospace' : '13px monospace',
           fill: '#ffffff',
           wordWrap: { width: this.width/2-120 }
         }
@@ -95,7 +95,7 @@ class Chat{
         y: 20,
         text: msg,
         style: {
-          font: '30px monospace',
+          font: this.width > 500 ? '30px monospace' : '18px monospace',
           fill: '#ffffff',
           wordWrap: { width: this.width/2-120 }
         }
@@ -194,7 +194,7 @@ class Chat{
 
   hide_small(){
     this.fondChat.clear();
-    
+
     if(this.sendButton != null){
       this.sendButton.destroy();
       this.sendButton = null;
