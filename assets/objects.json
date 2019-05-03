@@ -274,6 +274,7 @@
     },
     "presse7":{
       "name":"Forge à hache",
+      "special":"dirt",
       "stats":{
         "environment":-1700,
         "tech":800,
@@ -286,19 +287,21 @@
           "texture":"presse7",
           "frames":7,
           "speed":0.2
-        },
+        }
+      ]
+    },"epuration1":{
+      "name":"Station d'épuration",
+      "stats":{
+        "environment":-1700,
+        "tech":600,
+        "social":-500
+      },
+      "upgrades":[
         {
-          "cost":60000,
-          "gain":30,
-          "texture":"presse8",
-          "frames":7,
-          "speed":0.2
-        },
-        {
-          "cost":130000,
-          "gain":100,
-          "texture":"presse9",
-          "frames":7,
+          "cost":18000,
+          "gain":15,
+          "texture":"epuration1",
+          "frames":15,
           "speed":0.2
         }
       ]
@@ -412,6 +415,22 @@
           "cost":15000,
           "texture":"buisson2",
           "frames":3
+        }
+      ]
+    },
+    "chair":{
+      "name":"Chaise",
+      "special":"inside",
+      "stats":{
+        "environment":0,
+        "tech":0,
+        "social":1000
+      },
+      "upgrades":[
+        {
+          "cost":1000,
+          "texture":"chair",
+          "frames":1
         }
       ]
     },
