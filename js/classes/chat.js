@@ -10,6 +10,7 @@ class Chat{
     this.messages = [];
     this.list = [];
 
+    this.sendButton = null;
     this.fondChat = this.UI.add.graphics();
   }
 
@@ -18,13 +19,16 @@ class Chat{
       this.event_firstMachine = "loaded";
       this.open('bienvenue1');
     }
-    var button = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
-      //var msg = prompt("Entrez votre message :", "");
-      var level = this.game.level;
-      level.inputText.getText("Entrez votre message", "Envoyer", function(msg){
-        level.socket.emit('receiveMessage', msg);
+
+    if(this.sendButton == null){
+      this.sendButton = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
+        //var msg = prompt("Entrez votre message :", "");
+        var level = this.game.level;
+        level.inputText.getText("Entrez votre message", "Envoyer", function(msg){
+          level.socket.emit('receiveMessage', msg);
+        });
       });
-    });
+    }
   }
 
   preload(){
@@ -61,41 +65,41 @@ class Chat{
       return;
     }
 
-    this.container = this.UI.add.container(this.width/3, this.height*(5/8));
+    this.container = this.UI.add.container(this.width/4, this.height-300);
     var fontChat = this.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
-    fontChat.fillRect(0, 0, this.width*(7/12), this.height*(2/8));
-    var destroyBox = this.UI.add.image(this.width*(35/120), this.height*(1/8), 'blank');
+    fontChat.fillRect(0, 0, this.width/2, 200);
+    var destroyBox = this.UI.add.image(this.width*(35/120), 100, 'blank');
 
     // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
     if(key != 'touche')
       this.key = key;
 
-    var girl = this.UI.add.image(0, this.height*(25/800), 'girl' + this.chat[key].texture).setScale(0.4);
+    var girl = this.UI.add.image(0, 200, 'girl' + this.chat[key].texture).setOrigin(0.5,1).setScale(0.4);
     var msg = this.chat[key].text;
     if(key == 'changeUsine'){
       var message = this.UI.make.text({
-        x: this.width*(13/120),
-        y: this.height*(2/80),
+        x: 120,
+        y: 20,
         text: msg,
         style: {
           font: '25px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.width*(555/1200)}
+          wordWrap: { width: this.width/2-120 }
         }
-      });
+      }).setOrigin(0,0);
     }
     else {
       var message = this.UI.make.text({
-        x: this.width*(13/120),
-        y: this.height*(2/80),
+        x: 120,
+        y: 20,
         text: msg,
         style: {
           font: '30px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.width*(555/1200)}
+          wordWrap: { width: this.width/2-120 }
         }
-      });
+      }).setOrigin(0,0);
     }
 
     girl.setInteractive().on('pointerdown', () =>
@@ -143,6 +147,17 @@ class Chat{
 
   show_small(){
     this.hide_small();
+
+    if(this.sendButton == null){
+      this.sendButton = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
+        //var msg = prompt("Entrez votre message :", "");
+        var level = this.game.level;
+        level.inputText.getText("Entrez votre message", "Envoyer", function(msg){
+          level.socket.emit('receiveMessage', msg);
+        });
+      });
+    }
+
     if(this.messages.length > 0){
       this.linesCount = 1;
 
@@ -179,12 +194,17 @@ class Chat{
 
   hide_small(){
     this.fondChat.clear();
+    
+    if(this.sendButton != null){
+      this.sendButton.destroy();
+      this.sendButton = null;
+    }
+
     if(this.list.length > 0){
       for(var i = this.list.length; i > 0; i--){
         this.list.shift().message.destroy();
       }
     }
-
   }
 
   destroy(){
