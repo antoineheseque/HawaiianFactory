@@ -149,7 +149,7 @@ class Chat{
     this.hide_small();
 
     if(this.sendButton == null){
-      this.sendButton = this.game.add.image(this.width - 330,20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
+      this.sendButton = this.game.add.image(this.width - 330/(800/this.height),20, 'reply').setScale(0.7).setInteractive().on('pointerdown', () => {
         //var msg = prompt("Entrez votre message :", "");
         var level = this.game.level;
         level.inputText.getText("Entrez votre message", "Envoyer", function(msg){
@@ -169,14 +169,14 @@ class Chat{
           style: {
             font: '12px monospace',
             fill: '#ffffff',
-            wordWrap: { width: this.width*(29/120) }
+            wordWrap: { width: 300/(800/this.height) }
           }
         });
 
-        var msg = text.basicWordWrap(text.text, text.context, 290);
+        var msg = text.basicWordWrap(text.text, text.context, 290/(800/this.height));
         var lines = msg.split(/\r\n|\r|\n/).length;
 
-        text.setPosition(this.width-305, 10+(this.linesCount-1)*13);
+        text.setPosition(this.width-305/(800/this.height), 10+(this.linesCount-1)*13);
         this.linesCount += lines;
 
         var obj = {
@@ -188,7 +188,7 @@ class Chat{
       }
       this.fondChat.clear();
       this.fondChat.fillStyle(0x222222, 0.7);
-      this.fondChat.fillRect(this.width-310, 5, 305, 13*this.linesCount);
+      this.fondChat.fillRect(this.width-310/(800/this.height), 5, 305/(800/this.height), 13*this.linesCount);
     }
   }
 
