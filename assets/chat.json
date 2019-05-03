@@ -52,7 +52,7 @@
     "next":"stats5"
   },
   "stats5": {
-    "text":"Les barres d'Environnement et de social dépendent seulement des machines et environnements placées. Gardez les équilibrées (ni trop, ni pas assez), pour ne pas avoir de taxes supplémentaires...",
+    "text":"Les barres d'Environnement et de Social dépendent seulement des machines et environnements placées. Gardez les équilibrées (ni trop, ni pas assez), pour ne pas avoir de taxes supplémentaires...",
     "texture":"1",
     "next":"stats6"
   },
@@ -62,7 +62,7 @@
     "next":"stats7"
   },
   "stats7": {
-    "text":"Je vous ai tout annoncé, à vous de jouer! Faites tout de même attention aux événements, une éruption peut si vite arriver! Je reviendrais vers vous si besoin.",
+    "text":"Je vous ai tout annoncé, à vous de jouer! Faites tout de même attention aux évènements, une éruption peut si vite arriver! Je reviendrais vers vous si besoin.",
     "texture":"1"
   },
   "changeUsine": {
