@@ -369,10 +369,10 @@ class GameUI extends Phaser.Scene {
     this.level.selectedType = 'none';
     this.level.mouseInteraction.refresh();
     var container = this.add.container(500/(800/this.height), this.height-this.menuSize);
-    container.width = 500/(800/this.height);
-    var machinesButton = this.add.text(150/(800/this.height), 50, 'Machines', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
+    container.width = this.width-500/(800/this.height);
+    var machinesButton = this.add.text(container.width/3.5, 50, 'Machines', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(machinesButton);
-    var environmentButton = this.add.text(400/(800/this.height), 50, 'Environnement & Social', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
+    var environmentButton = this.add.text(container.width*2/3, 50, 'Environnement & Social', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(environmentButton);
 
     if(this.selected != null){
@@ -441,7 +441,7 @@ class GameUI extends Phaser.Scene {
       }
       container.add(machine);
       x += 60;
-      if(x > 700/(800/this.height)){
+      if(x > this.width-500/(800/this.height)){
         x = 115;
         y += 55;
       }
@@ -518,7 +518,7 @@ class GameUI extends Phaser.Scene {
       }
       container.add(obj);
       x += 60;
-      if(x > 700/(800/this.height)){
+      if(x > this.width-500/(800/this.height)){
         x = 115;
         y += 50;
       }
