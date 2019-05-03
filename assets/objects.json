@@ -442,7 +442,7 @@
       "upgrades":[
         {
           "cost":2000,
-          "texture":"distriutor",
+          "texture":"distributor",
           "frames":1
         }
       ]

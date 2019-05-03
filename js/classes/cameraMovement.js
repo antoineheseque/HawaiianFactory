@@ -20,6 +20,10 @@ class CameraMovement{
     this.controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
     this.cam = this.level.cameras.main;
+
+    this.zoomMin = 1.7 / (760 / this.cam.height);
+    this.zoomMax = 0.5 / (760 / this.cam.height);
+
     // Zoom system
     this.zoomIn = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ALT);
     this.zoomOut = level.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.CTRL);
@@ -35,12 +39,12 @@ class CameraMovement{
     }
 
     if(zoomIn > 0){
-      if(this.zoom < 1.7)
+      if(this.zoom < this.zoomMin)
         this.zoom += 0.015;
         this.cam.setZoom(this.zoom);
     }
     if(zoomOut > 0){
-      if(this.zoom > 0.5)
+      if(this.zoom > this.zoomMax)
         this.zoom -= 0.015;
         this.cam.setZoom(this.zoom);
     }
@@ -48,9 +52,9 @@ class CameraMovement{
 
   update(delta){
     this.controls.update(delta);
-    if(this.zoomIn.isDown && this.zoom < 1.7)
+    if(this.zoomIn.isDown && this.zoom < this.zoomMin)
       this.zoom += 0.015;
-    if(this.zoomOut.isDown && this.zoom > 0.5)
+    if(this.zoomOut.isDown && this.zoom > this.zoomMax)
       this.zoom -= 0.015;
     this.cam.setZoom(this.zoom);
   }
