@@ -425,8 +425,24 @@
       },
       "upgrades":[
         {
-          "cost":2500,
+          "cost":1500,
           "texture":"table",
+          "frames":1
+        }
+      ]
+    },
+    "distribor":{
+      "name":"Distributeur",
+      "special":"inside",
+      "stats":{
+        "environment":0,
+        "tech":50,
+        "social":1500
+      },
+      "upgrades":[
+        {
+          "cost":2000,
+          "texture":"distriutor",
           "frames":1
         }
       ]
