@@ -11,11 +11,16 @@
     "next":"bienvenue3"
   },
   "bienvenue3": {
+    "text":"Si tu joue sur PC, utilise les flèches pour te déplacer, ALT pour zoomer et CTRL pour dézoomer ...",
+    "texture":"1",
+    "next":"bienvenue4"
+  },
+  "bienvenue4": {
     "text":"Pour commencer, il faut gagner de l'argent! Cliquez sur 'Machines' pour placer votre première machine...",
     "texture":"1"
   },
   "machine1": {
-    "text":"Voici le menu des machines. Elles vous permettront de gagner de l'argent. Allez-y, placez-en une!...",
+    "text":"Voici le menu des machines. Elles vous permettront de gagner de l'argent. Allez-y, placez-en une! Attention: Chaque machine modifie les 4 stats en bas à gauche...",
     "texture":"1"
   },
   "machine2": {
@@ -28,6 +33,36 @@
   },
   "stats1": {
     "text":"Les stats vous permettent de voir combien vous gagnez par machines, mais vous pouvez aussi les améliorer ou les vendre!...",
+    "texture":"1",
+    "next":"stats2"
+  },
+  "stats2": {
+    "text":"Lorsque vous placez une machine, celle-ci affecte l'économie, l'environnement, le social et la technologie! Voyons chaque barre en détails...",
+    "texture":"1",
+    "next":"stats3"
+  },
+  "stats3": {
+    "text":"La première barre affiche votre économie. Le but d'une usine est de se développer afin de produire au maximum...",
+    "texture":"1",
+    "next":"stats4"
+  },
+  "stats4": {
+    "text":"Cette barre augmente avec le temps si vous ne developpez pas votre usine. Attention! Si le maximum est atteint, l'état peut vous ajouter des taxes supplémentaires! ...",
+    "texture":"1",
+    "next":"stats5"
+  },
+  "stats5": {
+    "text":"Les barres d'Environnement et de social dépendent seulement des machines et environnements placées. Gardez les équilibrées (ni trop, ni pas assez), pour ne pas avoir de taxes supplémentaires...",
+    "texture":"1",
+    "next":"stats6"
+  },
+  "stats6": {
+    "text":"La barre de technologie dépends des machines placées. Elle augmente par différents paliers (100 points, 200points, ...) et vous apporte différents bonus à chaque nouveau palier atteint!...",
+    "texture":"1",
+    "next":"stats7"
+  },
+  "stats7": {
+    "text":"Je vous ai tout annoncé, à vous de jouer! Faites tout de même attention aux événements, une éruption peut si vite arriver! Je reviendrais vers vous si besoin.",
     "texture":"1"
   },
   "changeUsine": {
