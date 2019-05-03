@@ -179,6 +179,24 @@
         }
       ]
     },
+    "epuration1":{
+      "name":"Station d'épuration",
+      "special":"dirt",
+      "stats":{
+        "environment":-1700,
+        "tech":600,
+        "social":-500
+      },
+      "upgrades":[
+        {
+          "cost":15000,
+          "gain":15,
+          "texture":"epuration1",
+          "frames":5,
+          "speed":0.2
+        }
+      ]
+    },
     "decapeur1":{
       "name":"Décapeur à matériaux",
       "stats":{
@@ -274,7 +292,6 @@
     },
     "presse7":{
       "name":"Forge à hache",
-      "special":"dirt",
       "stats":{
         "environment":-1700,
         "tech":800,
@@ -289,23 +306,7 @@
           "speed":0.2
         }
       ]
-    },"epuration1":{
-      "name":"Station d'épuration",
-      "stats":{
-        "environment":-1700,
-        "tech":600,
-        "social":-500
-      },
-      "upgrades":[
-        {
-          "cost":18000,
-          "gain":15,
-          "texture":"epuration1",
-          "frames":15,
-          "speed":0.2
-        }
-      ]
-    }
+    },
   },
   "environment":{
     "tree1":{
