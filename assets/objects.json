@@ -314,7 +314,7 @@
       },
       "upgrades":[
         {
-          "cost":250,
+          "cost":150,
           "texture":"tree1",
           "frames":1
         }
@@ -329,7 +329,7 @@
       },
       "upgrades":[
         {
-          "cost":500,
+          "cost":250,
           "texture":"tree2",
           "frames":1
         }
@@ -344,7 +344,7 @@
       },
       "upgrades":[
         {
-          "cost":500,
+          "cost":250,
           "texture":"tree3",
           "frames":1
         }
@@ -359,7 +359,7 @@
       },
       "upgrades":[
         {
-          "cost":500,
+          "cost":250,
           "texture":"tree4",
           "frames":1
         }
@@ -374,7 +374,7 @@
       },
       "upgrades":[
         {
-          "cost":500,
+          "cost":250,
           "texture":"tree5",
           "frames":1
         }
@@ -389,7 +389,7 @@
       },
       "upgrades":[
         {
-          "cost":500,
+          "cost":250,
           "texture":"tree6",
           "frames":1
         }

@@ -537,7 +537,7 @@ class GameUI extends Phaser.Scene {
         this.previewObjectStats.destroy();
     }
     if(500+x+80 > this.level.width)
-      x-=30;
+      x-=40;
     this.previewObjectStats = this.add.container(500+x-90, this.height-100+y-150);
     this.previewObjectStats.width = 180;
     this.previewObjectStats.height = 125;
@@ -691,11 +691,18 @@ class GameUI extends Phaser.Scene {
       level.setOrigin(0.5, 0.5);
       this.container.add(level);
 
+      var rotate = this.add.text(this.width - 250, 65, 'Tourner l\'objet de 90°', { fill: '#0f0', wordWrap: { width: 240 } }).setFontSize(18).setInteractive().on('pointerdown', () =>
+      {
+         object.image.setAngle(object.image.angle + 90);
+      });
+      this.container.add(rotate);
+      //////////////////////////////////////////////////////////////////////////////////////////////////
+
       if(object.type == 'machines'){
         // Show Level
         var level = this.make.text({
           x: this.width - 250,
-          y: 65,
+          y: 100,
           text: 'Gain: ' + (object.stats.upgrades[object.level-1].gain*30) + '$ / mois',
           style: {
             font: '16px monospace',
