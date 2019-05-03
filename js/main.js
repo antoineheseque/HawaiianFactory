@@ -6,6 +6,9 @@ const engineConfig = {
     width: width, //1200
     height: height, //800
     parent: 'phaser-hf',
+    input: {
+      queue: true
+    },
     dom: {
         createContainer: true
     },
