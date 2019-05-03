@@ -65,25 +65,25 @@ class Chat{
       return;
     }
 
-    this.container = this.UI.add.container(this.width/4, this.height-300);
+    this.container = this.UI.add.container(this.width/4, this.height-100);
     var fontChat = this.UI.add.graphics();
     fontChat.fillStyle(0x222222, 1);
-    fontChat.fillRect(0, 0, this.width/2, 200);
-    var destroyBox = this.UI.add.image(this.width*(35/120), 100, 'blank');
+    fontChat.fillRect(0, -200/(800/this.height), this.width/2, 200/(800/this.height));
+    var destroyBox = this.UI.add.image(this.width*(35/120), -200/(800/this.height)+100/(800/this.height), 'blank');
 
     // Permet de garder l'ancienne clé et de continuer l'événement sans couper les 'next'
     if(key != 'touche')
       this.key = key;
 
-    var girl = this.UI.add.image(0, 200, 'girl' + this.chat[key].texture).setOrigin(0.5,1).setScale(0.4/(800/this.height));
+    var girl = this.UI.add.image(0, 0, 'girl' + this.chat[key].texture).setOrigin(0.5,1).setScale(0.4/(800/this.height));
     var msg = this.chat[key].text;
     if(key == 'changeUsine'){
       var message = this.UI.make.text({
         x: 120/(800/this.height),
-        y: 20,
+        y: -200/(800/this.height)+20,
         text: msg,
         style: {
-          font: this.width > 500 ? '25px monospace' : '12px monospace',
+          font: this.width > 1000 ? '25px monospace' : '12px monospace',
           fill: '#ffffff',
           wordWrap: { width: this.width/2-120/(800/this.height) }
         }
@@ -92,10 +92,10 @@ class Chat{
     else {
       var message = this.UI.make.text({
         x: 120/(800/this.height),
-        y: 20,
+        y: -200/(800/this.height)+20,
         text: msg,
         style: {
-          font: this.width > 500 ? '30px monospace' : '14px monospace',
+          font: this.width > 1000 ? '30px monospace' : '14px monospace',
           fill: '#ffffff',
           wordWrap: { width: this.width/2-120/(800/this.height) }
         }
