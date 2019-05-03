@@ -1,7 +1,7 @@
 class TechnologicalStat{
   constructor(startVal, game){
     this.game = game;
-    this.stat = new Stats(260, game.level.height-100+45, 'Technologique', startVal, 0, 2500, 0x0F73DD, this);
+    this.stat = new Stats(260/(800/game.level.height), game.level.height-100+45, 'Technologique', startVal, 0, 2500, 0x0F73DD, this);
   }
 
   onMin(){

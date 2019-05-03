@@ -28,12 +28,12 @@ class GameUI extends Phaser.Scene {
     // Background Menu
     var bgMenu = this.add.graphics();
     bgMenu.fillStyle(0x222222, 0.7);
-    bgMenu.fillRect(500, this.height-this.menuSize, this.width-500, this.menuSize);
+    bgMenu.fillRect(500/(800/this.height), this.height-this.menuSize, this.width-500/(800/this.height), this.menuSize);
 
     // Background Factory
     var bgFactory = this.add.graphics();
     bgFactory.fillStyle(0x222222, 1);
-    bgFactory.fillRect(0, this.height-this.menuSize, 500, this.menuSize);
+    bgFactory.fillRect(0, this.height-this.menuSize, 500/(800/this.height), this.menuSize);
 
     // Afficher le menu en bas
     this.loadMainMenu();
@@ -45,7 +45,7 @@ class GameUI extends Phaser.Scene {
     var container = this.add.container(0, this.height-this.menuSize);
 
     // Details Button
-    var factoryButton = this.add.text(250, 90, 'Détails de l\'Usine', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
+    var factoryButton = this.add.text(250/(800/this.height), 90, 'Détails de l\'Usine', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive().setOrigin(0.5, 0.5).on('pointerdown', () => {
       // Si un menu machines ou environment est ouvert alors on le ferme
       if(this.level.selectedObject > 0)
         this.loadMainMenu();
@@ -368,11 +368,11 @@ class GameUI extends Phaser.Scene {
     }
     this.level.selectedType = 'none';
     this.level.mouseInteraction.refresh();
-    var container = this.add.container(500, this.height-this.menuSize);
-    container.width = 500;
-    var machinesButton = this.add.text(150, 50, 'Machines', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
+    var container = this.add.container(500/(800/this.height), this.height-this.menuSize);
+    container.width = 500/(800/this.height);
+    var machinesButton = this.add.text(150/(800/this.height), 50, 'Machines', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(machinesButton);
-    var environmentButton = this.add.text(400, 50, 'Environnement & Social', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
+    var environmentButton = this.add.text(400/(800/this.height), 50, 'Environnement & Social', { fill: '#0f0' }).setInteractive().setFontStyle('bold').setFontSize(20).setOrigin(0.5, 0.5);
     container.add(environmentButton);
 
     if(this.selected != null){
@@ -390,8 +390,8 @@ class GameUI extends Phaser.Scene {
   }
 
   loadMachinesMenu(){
-    var container = this.add.container(500, this.height-100);
-    container.width = 500;
+    var container = this.add.container(500/(800/this.height), this.height-100);
+    container.width = 500/(800/this.height);
     this.level.selectedType = 'machines';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive();
@@ -415,7 +415,7 @@ class GameUI extends Phaser.Scene {
           if(this.selected != null)
             this.selected.destroy();
           this.loadPreviewObjectStats(element, machine.x, machine.y);
-          this.selected = this.add.image(500+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
+          this.selected = this.add.image(500/(800/this.height)+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
         }).on('pointerout', () => {
@@ -430,7 +430,7 @@ class GameUI extends Phaser.Scene {
           if(this.selected != null)
             this.selected.destroy();
           this.loadPreviewObjectStats(element, machine.x, machine.y);
-          this.selected = this.add.image(500+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
+          this.selected = this.add.image(500/(800/this.height)+machine.x,this.height-100+machine.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, machine.x, machine.y);
         }).on('pointerout', () => {
@@ -441,7 +441,7 @@ class GameUI extends Phaser.Scene {
       }
       container.add(machine);
       x += 60;
-      if(x > 700){
+      if(x > 700/(800/this.height)){
         x = 115;
         y += 55;
       }
@@ -465,8 +465,8 @@ class GameUI extends Phaser.Scene {
   }
 
   loadEnvironmentMenu(){
-    var container = this.add.container(500, this.height-100);
-    container.width = 500;
+    var container = this.add.container(500/(800/this.height), this.height-100);
+    container.width = 500/(800/this.height);
     this.level.selectedType = 'environment';
 
     var clickButton = this.add.text(10, 40, 'Retour', { fill: '#0f0' }).setFontSize(20).setFontStyle('bold').setInteractive();
@@ -492,7 +492,7 @@ class GameUI extends Phaser.Scene {
           if(this.selected != null)
             this.selected.destroy();
           this.loadPreviewObjectStats(element, obj.x, obj.y);
-          this.selected = this.add.image(500+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
+          this.selected = this.add.image(500/(800/this.height)+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
         }).on('pointerout', () => {
@@ -507,7 +507,7 @@ class GameUI extends Phaser.Scene {
           if(this.selected != null)
             this.selected.destroy();
           this.loadPreviewObjectStats(element, obj.x, obj.y);
-          this.selected = this.add.image(500+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
+          this.selected = this.add.image(500/(800/this.height)+obj.x,this.height-100+obj.y,'gray-1').setScale(1.5);
         }).on('pointerover', () => {
           this.loadPreviewObjectStats(element, obj.x, obj.y);
         }).on('pointerout', () => {
@@ -518,7 +518,7 @@ class GameUI extends Phaser.Scene {
       }
       container.add(obj);
       x += 60;
-      if(x > 700){
+      if(x > 700/(800/this.height)){
         x = 115;
         y += 50;
       }
@@ -536,9 +536,9 @@ class GameUI extends Phaser.Scene {
     if(this.previewObjectStats != null){
         this.previewObjectStats.destroy();
     }
-    if(500+x+80 > this.level.width)
+    if(500/(800/this.height)+x+80 > this.level.width)
       x-=40;
-    this.previewObjectStats = this.add.container(500+x-90, this.height-100+y-150);
+    this.previewObjectStats = this.add.container(500/(800/this.height)+x-90, this.height-100+y-150);
     this.previewObjectStats.width = 180;
     this.previewObjectStats.height = 125;
     var bgMenu = this.add.graphics();
