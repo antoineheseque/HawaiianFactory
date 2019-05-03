@@ -79,25 +79,25 @@ class Chat{
     var msg = this.chat[key].text;
     if(key == 'changeUsine'){
       var message = this.UI.make.text({
-        x: 120,
+        x: 120/(800/this.height),
         y: 20,
         text: msg,
         style: {
-          font: this.width > 500 ? '25px monospace' : '13px monospace',
+          font: this.width > 500 ? '25px monospace' : '12px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.width/2-120 }
+          wordWrap: { width: this.width/2-120/(800/this.height) }
         }
       }).setOrigin(0,0);
     }
     else {
       var message = this.UI.make.text({
-        x: 120,
+        x: 120/(800/this.height),
         y: 20,
         text: msg,
         style: {
-          font: this.width > 500 ? '30px monospace' : '18px monospace',
+          font: this.width > 500 ? '30px monospace' : '14px monospace',
           fill: '#ffffff',
-          wordWrap: { width: this.width/2-120 }
+          wordWrap: { width: this.width/2-120/(800/this.height) }
         }
       }).setOrigin(0,0);
     }
