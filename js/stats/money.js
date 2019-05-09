@@ -40,7 +40,6 @@ class MoneyStat{
   onMax(){
     if(this.played != 'max'){
       this.played = 'max';
-
     }
   }
 
