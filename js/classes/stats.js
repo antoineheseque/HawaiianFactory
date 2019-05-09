@@ -20,7 +20,7 @@ class Stats{
     this.show();
 
     //Fonctionnel, plus qu'à remplir
-    var trigger = instance.game.add.image(x+100/(800/this.height),y+15/(800/this.height)).setScale(6.8/(800/this.height),1.1/(800/this.height)).setOrigin(0.5,0.5).setInteractive().on('pointerover', () => {
+    var trigger = instance.game.add.image(x+100/(800/this.height),y+15/(800/this.height)).setScale(6.8/(800/this.height),1/(800/this.height)).setOrigin(0.5,0.5).setInteractive().on('pointerover', () => {
       if(this.previewStats != null)
           this.previewStats.destroy();
       this.previewStats = this.open(x,y);
