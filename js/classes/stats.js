@@ -11,14 +11,13 @@ class Stats{
     this.height = this.instance.game.level.height;
 
     // Progress bar ///////////////
-    this.progressBar = instance.game.add.graphics();
     var progressBox = instance.game.add.graphics();
     progressBox.fillStyle(color, 0.2);
     progressBox.fillRect(x, y, 200/(800/this.height), 30);
 
+    this.progressBar = instance.game.add.graphics();
     this.progressBar.fillStyle(color, 1);
-    var value = Phaser.Math.Percent(start, min, max);
-    this.progressBar.fillRect(x+5, y+5, 190/(800/this.height) * value, 20);
+    this.show();
 
     /* Fonctionnel, plus qu'à remplir
     var trigger = instance.game.add.image(x+100,y+15).setScale(6.8,1.1).setOrigin(0.5,0.5).setInteractive().on('pointerover', () => {
@@ -53,10 +52,6 @@ class Stats{
   changeRange(min,max){
     this.min = min;
     this.max = max;
-    var percent = Phaser.Math.Percent(this.value, this.min, this.max);
-    this.progressBar.clear();
-    this.progressBar.fillStyle(this.color, 1);
-    this.progressBar.fillRect(this.x+5, this.y+5, 190/(800/this.height) * percent, 20);
   }
 
   update(val){
@@ -69,7 +64,7 @@ class Stats{
     }
 
     if(this.name != 'Technologique'){ // Si normal
-      this.value = this.value + val; //Phaser.Math.Clamp(this.value + val, this.min, this.max);
+      this.value += val; //Phaser.Math.Clamp(this.value + val, this.min, this.max);
     } else { // Si technologique cumuler et remettre à 0
       if(this.value + val > this.max){
         this.value = (this.value + val) - Math.abs(this.max) - Math.abs(this.min);
@@ -83,10 +78,19 @@ class Stats{
         this.value += val;
       }
     }
+    this.show();
+  }
+
+  show(){
     var percent = Phaser.Math.Percent(this.value, this.min, this.max);
     this.progressBar.clear();
     this.progressBar.fillStyle(this.color, 1);
     this.progressBar.fillRect(this.x+5, this.y+5, 190/(800/this.height) * percent, 20);
+  }
+
+  updateFixed(val){
+    this.value = val;
+    this.show();
   }
 
   /*open(x,y){

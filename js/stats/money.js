@@ -6,7 +6,7 @@ class MoneyStat{
     this.game = game;
     this.time = 0;
     this.preload();
-    this.stat = new Stats(40/(800/game.level.height), game.level.height-100+10, 'Economique', startMoney, 0, 500000,0xFF8C00, this);
+    this.stat = new Stats(40/(800/game.level.height), game.level.height-100+10, 'Economique', startMoney, 0, 0,0xFF8C00, this);
   }
 
   onMin(){
@@ -90,10 +90,12 @@ class MoneyStat{
 
   newDay(day, month){
     this.money += this.addMoneyAmount*this.game.productivity;
-    this.stat.update(this.addMoneyAmount/6*this.game.productivity);
+    this.stat.changeRange(0, this.addMoneyAmount*30*6*this.game.productivity); // 6 mois
 
     if(day == 1)
       this.money -= this.game.loyer;
+
+    this.stat.update(this.addMoneyAmount*this.game.productivity);
   }
 
   addMoneyEachDay(amount){
@@ -114,6 +116,7 @@ class MoneyStat{
   buy(cost){
     if(this.money >= cost){
       this.money -= cost;
+      this.stat.updateFixed(0);
       return true;
     }
     return false;
@@ -121,5 +124,6 @@ class MoneyStat{
 
   sell(cost){
     this.money += cost;
+    this.stat.update(cost);
   }
 }
