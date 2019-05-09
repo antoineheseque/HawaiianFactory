@@ -90,7 +90,7 @@ class MoneyStat{
 
   newDay(day, month){
     this.money += this.addMoneyAmount*this.game.productivity;
-    this.stat.changeRange(0, this.addMoneyAmount*30*6*this.game.productivity); // 6 mois
+    this.stat.changeRange(0, this.addMoneyAmount*30*7*this.game.productivity); // 6 mois
 
     if(day == 1)
       this.money -= this.game.loyer;
