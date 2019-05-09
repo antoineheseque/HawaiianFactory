@@ -15,9 +15,9 @@ class Event{
         if(this.listEvent[i][0] == "eruption")
           this.game.level.cameras.main.shake(1000, 0.02); // Effet pour eruption volcanique
         if(this.listEvent[i][0] == "prime1"){
+          this.game.productivity /= 1.2;
           this.game.chat.open("prime_end");
           this.game.chat.open_small("prime_end", true);
-          this.game.productivity /= 1.2;
         }
         if(this.listEvent[i][0] == "concert1"){
           this.game.productivity /= 3;

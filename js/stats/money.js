@@ -100,6 +100,7 @@ class MoneyStat{
 
   addMoneyEachDay(amount){
     this.addMoneyAmount += amount;
+    this.stat.updateFixed(0);
   }
 
   removeMoneyEachDay(amount){
@@ -116,7 +117,7 @@ class MoneyStat{
   buy(cost){
     if(this.money >= cost){
       this.money -= cost;
-      this.stat.updateFixed(0);
+      this.stat.updateFixed(this.stat.value/2);
       return true;
     }
     return false;
