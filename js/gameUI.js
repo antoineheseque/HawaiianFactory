@@ -142,7 +142,7 @@ class GameUI extends Phaser.Scene {
       var productivity2 = this.make.text({
         x: this.width,
         y: 115,
-        text: this.level.game.productivity + 'x ',
+        text: this.level.game.productivity.toFixed(2) + 'x ',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
@@ -233,7 +233,7 @@ class GameUI extends Phaser.Scene {
       var total2 = this.make.text({
         x: this.width - 10,
         y: 185,
-        text: eq + '$',
+        text: eq.toFixed(2) + '$',
         style: {
           font: '20px monospace',
           fill: '#ffffff',
